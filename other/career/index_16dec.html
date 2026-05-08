@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="UTF-8">
+
+  <style>
+    @media screen and (min-width: 676px) {
+      .modal-dialog {
+        max-height: 990px;
+        /* New width for default modal */
+        max-width: 990px;
+      }
+    }
+  </style>
+  <style>
+    /*img {
+            width: 100%;
+        }*/
+    .height {
+      height: 10px;
+    }
+
+    /* Image-container design */
+    .image-container {
+      width: 100%;
+      max-width: 650px;
+      position: relative;
+      margin: auto;
+      height: auto;
+
+    }
+
+    .next {
+      right: 0;
+    }
+
+    /* Next and previous icon design */
+    .previous,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      padding: 10px;
+      margin-top: -25px;
+    }
+
+    /* caption decorate */
+    .captionText {
+      color: #000000;
+      font-size: 14px;
+      position: absolute;
+      padding: 12px 12px;
+      bottom: 8px;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Slider image number */
+    .slideNumber {
+      background-color: #5574C5;
+      color: white;
+      border-radius: 25px;
+      right: 0;
+      opacity: .5;
+      margin: 5px;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 24px;
+      position: absolute;
+    }
+
+    .fa {
+      font-size: 32px;
+    }
+
+    .fa:hover {
+      transform: rotate(360deg);
+      transition: 1s;
+      color: white;
+    }
+
+    .footerdot {
+
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #bbbbbb;
+      border-radius: 10%;
+      display: inline-block;
+      transition: background-color 0.5s ease;
+    }
+
+    .active,
+    .footerdot:hover {
+      background-color: black;
+    }
+
+    .responsive {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .bottom-left {
+      position: absolute;
+      bottom: -55px;
+      left: 1px;
+      font-size: 17px;
+      color: cadetblue;
+    }
+
+    .arrow {
+      border: solid black;
+      border-width: 0 3px 3px 0;
+      display: inline-block;
+      padding: 3px;
+    }
+
+    .right {
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+    }
+
+    .left {
+      transform: rotate(135deg);
+      -webkit-transform: rotate(135deg);
+    }
+  </style>
+  <style>
+    .b1 {
+      margin-left: -60px;
+
+      position: absolute;
+    }
+
+    @media screen and (max-width: 480px) {
+      .bottom-left {
+        font-size: 12px;
+      }
+
+      .b1 {
+        margin-left: 1px;
+
+        position: absolute;
+      }
+
+    }
+
+    @media screen and (max-width: 800px) {
+      .b1 {
+        margin-left: 1px;
+
+        position: absolute;
+      }
+
+    }
+
+    @media screen and (max-width: 1000px) {
+      .b1 {
+        margin-left: 1px;
+
+        position: absolute;
+      }
+
+    }
+  </style>
+
+
+
+  <SCRIPT LANGUAGE="javascript">
+    <!--
+    
+        function LoginCheck() {
+            if (document.frm.txtUserId.value == "") {
+                alert("Enter User Id");
+                document.frm.txtUserId.focus();
+                return false;
+            }
+    
+            if (document.frm.txtPassword.value == "") {
+                alert("Enter Password");
+                document.frm.txtPassword.focus();
+                return false;
+            }
+            //document.frm.submit();
+            return true;
+        }
+    
+        //-->
+  </SCRIPT>
+  <title>We are Hiring - Career - TaxManager</title>
+  <link rel="icon" type="image/png" href="images/favicon.ico" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="bootstrap/css/custom.css" />
+  <link rel="stylesheet" href="css/career.css" />
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="bootstrap/js/custom.js" />
+  <link rel="stylesheet" href="font/css/font-awesome.min.css" />
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+
+
+  <script>
+    $(document).ready(function () {
+      activeSlide(1);
+    });
+  </script>
+  <style type="text/css">
+    .popover {
+
+      color: #fff;
+      font-weight: bold;
+      background-color: #03A9F4;
+
+    }
+
+    .popover.top>.arrow:after {
+
+      border-top-color: #03A9F4;
+
+    }
+
+    .popover.top {
+      left: 50px !important;
+    }
+  </style>
+
+</head>
+
+<body>
+  <form name="form1" method="post" action="Login.aspx" id="form1">
+    <div>
+      <input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+      <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE"
+        value="/wEPDwUKMTc1MDI2ODMxNGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFCUNoZWNrQm94Mf6Xjnph1aYKeIgehANyZavyK9dg" />
+    </div>
+
+    <script type="text/javascript">
+      //<![CDATA[
+      var theForm = document.forms['form1'];
+      if (!theForm) {
+        theForm = document.form1;
+      }
+      function __doPostBack(eventTarget, eventArgument) {
+        if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+          theForm.__EVENTTARGET.value = eventTarget;
+          theForm.__EVENTARGUMENT.value = eventArgument;
+          theForm.submit();
+        }
+      }
+      //]]>
+    </script>
+
+
+    <script
+      src="/WebResource.axd?d=l6t4mvcwPzkeTT9YsIzKi0Zx6YY-J_Z3TxKR35RVLhz1EouUwQkcT9nyjSn_9ekaQPEUp-tlftKWckaEKw2OvqRjmns1&amp;t=636271869501517547"
+      type="text/javascript"></script>
+
+
+    <script
+      src="/WebResource.axd?d=GCdFGDjaitlknj0xNWbvhKpNGAk8yfSyB2k6E1vjoH5kBuFYa9dYFZbfAIrsWwEQLm0szDOXuCuLgYPmWdP6tU_CaO81&amp;t=636271869501517547"
+      type="text/javascript"></script>
+    <div>
+
+      <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="1806D926" />
+      <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+      <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+      <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION"
+        value="/wEWBQKbro22BgKz8dy8BQK1qbSRCwKC5Ne7CQKM54rGBlXGZ2a/wPOmaVfywOhPhOWxCMdz" />
+    </div>
+
+
+    <!-- Header - part   -->
+    <header>
+      <div class="col-md-1">
+        <a href="www.TaxManager.in"><img src="http://www.taxmanager.in/images/logo.png" /></a>
+      </div>
+      <nav id="primary_nav_wrap" class="navbar-right">
+        <ul>
+          <li><a href="http://www.taxmanager.in">Home</a></li>
+          <li><a href="#">Tax e-Filing<span class="caret"></span></a>
+            <ul>
+              <li><a href="http://www.taxmanager.in/UserAc/Register.aspx?From=TaxM&Product=Basic">Basic - Self
+                  eFiling</a></li>
+              <li><a href="http://www.taxmanager.in/Efile/efile2.aspx">CA Assisted e-Filing - Let our CA e-File your
+                  Taxes</a></li>
+              <li><a href="http://www.taxmanager.in/Efile/itr4.aspx">ITR 4 - Individual Business/ Professionals</a></li>
+              <li><a href="http://www.taxmanager.in/efile/nriefile.aspx">NRI Returns</a></li>
+              <li><a href="http://www.taxmanager.in/tax-refund.html">Tax Refund</a></li>
+              <li><a href="http://www.taxmanager.in/efileITR4.html">ITR V and 26 AS Tax Credit Check</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Tax Management <span class="caret"></span></a>
+            <ul>
+              <li><a href="http://www.taxmanager.in/taxadvisory.html">Tax Advisory</a></li>
+              <li><a href="http://www.taxmanager.in/asp.html">Annual Subscription Package</a></li>
+              <li><a href="http://www.taxmanager.in/ctc-optimiser.html">CTC Optimizer</a></li>
+              <li><a href="http://www.taxmanager.in/itr-rectification.html">Tax Return Rectification</a></li>
+              <li><a href="http://www.taxmanager.in/itr-notice.html">IT Demand/ Notice</a></li>
+              <li><a href="http://www.taxmanager.in/taxhistory.html">Know your Tax History</a></li>
+              <li><a href="http://www.taxmanager.in/pan-apply.html">PAN Application</a></li>
+              <li><a href="http://www.taxmanager.in/digital-signature.html">Digital Signature</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Investments<span class="caret"></span></a>
+            <ul>
+              <li><a href="http://www.taxmanager.in/planyourtaxsavings.html">Plan You Tax Savings</a></li>
+              <li><a href="../TaxProfessionals/eFilingGateway.html">Start Investing<span class="caret"></span></a></li>
+              <li><a href="http://www.taxmanager.in/invest/mutualfunds/invest_mf.html">&nbsp; &nbsp; &nbsp; &nbsp;
+                  &nbsp;<img src="images/mutul1.png" style="margin-top:-6px;"> &nbsp;Mutual Funds</a></li>
+              <li><a href="http://www.taxmanager.in/invest/LifeInsurance/invest_li.html">&nbsp; &nbsp; &nbsp; &nbsp;
+                  &nbsp;<img src="images/life.png" style="margin-top:-2px;"> &nbsp;Life Insurance</a></li>
+              <li><a href="http://www.taxmanager.in/invest/healthinsurance/invest_hi.html">&nbsp; &nbsp; &nbsp; &nbsp;
+                  &nbsp;<img src="images/health.png" style="margin-top:-6px;"> &nbsp;Health Insurance</a></li>
+              <li><a href="http://www.taxmanager.in/invest/ppf/invest_ppf.html">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<img
+                    src="images/public.png" style="margin-top:6px;">&nbsp; Public Provident Fund</a></li>
+              <li><a href="http://www.taxmanager.in/invest/nsc/invest_nsc.html">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img
+                    src="images/national.png" style="margin-top:-6px;">&nbsp; National Savings Certificates</a></li>
+              <li><a href="http://www.taxmanager.in/invest/nps/invest_nps.html">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<img
+                    src="images/nps.png" style="margin-top:-6px;">&nbsp; NPS</a></li>
+              <li><a href="http://www.taxmanager.in/invest/others/invest_others.html">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                  <img src="images/other.png" style="margin-top:-6px;">&nbsp; Other's</a></li>
+            </ul>
+          </li>
+          <li><a href="#">NRIs <span class="caret"></span></a>
+            <ul>
+              <li><a href="http://www.taxmanager.in/nri_returns.html">NRI Tax Returns</a></li>
+              <li><a href="http://www.taxmanager.in/nri_taxmanagement.html">NRI Tax Management</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Business<span class="caret"></span></a>
+            <ul>
+              <li><a href="http://www.taxmanager.in/corporate-plan.html">Employee Care e-Form 16 and Payrolls</a></li>
+              <li><a href="http://www.taxmanager.in/gst-services.html">GST Services</a></li>
+              <li><a href="http://www.taxmanager.in/startup-program.html">Startup Program</a></li>
+              <li><a href="http://www.taxmanager.in/accounting-management.html">Accounting Management</a></li>
+              <li><a href="http://www.taxmanager.in/tds-taxmanagement.html">TDS and Tax Management</a></li>
+              <li><a href="http://www.taxmanager.in/compliancemgmt.html">Compliance Management</a></li>
+              <li><a href="http://www.taxmanager.in/companyregistration.html">Company Registration</a></li>
+            </ul>
+          </li>
+          <li><a href="http://www.taxmanager.in/KnowledgeBank/index.html">Knowledge Bank<span class="caret"></span></a>
+          </li>
+          <li><a style="color:#fff;" href="http://www.taxmanager.in/career/index.html">We're Hiring<span
+                class="caret"></span></a></li>
+          <li><a style="color:#fff;" href="http://www.taxmanager.in/Login/Login.aspx">Login / Register</a></li>
+        </ul>
+      </nav>
+      <nav class="navbar  mn">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#game-navbar-collapse"
+              aria-expanded="false">
+              <span class="icon-bar" style="background: #212121"></span>
+              <span class="icon-bar" style="background: #212121"></span>
+              <span class="icon-bar" style="background: #212121"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="game-navbar-collapse" aria-expanded="false">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="../index.html"><img src="images/home.png">&nbsp;&nbsp;Home</a></li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img
+                    src="images/file.png">&nbsp;&nbsp;Tax-eFiling
+                  <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="http://www.taxmanager.in/UserAc/Register.aspx?From=TaxM&Product=Basic">Basic - Self
+                      eFiling</a></li>
+                  <li><a href="http://www.taxmanager.in/Efile/efile2.aspx">CA Assisted e-Filing - Let our CA e-File your
+                      Taxes</a></li>
+                  <li><a href="http://www.taxmanager.in/Efile/itr4.aspx">ITR 4 - Individual Business/ Professionals</a>
+                  </li>
+                  <li><a href="http://www.taxmanager.in/efile/nriefile.aspx">NRI Returns</a></li>
+                  <li><a href="http://www.taxmanager.in/tax-refund.html">Tax Refund</a></li>
+                  <li><a href="http://www.taxmanager.in/efileITR4.html">ITR V and 26 AS Tax Credit Check</a></li>>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img
+                    src="images/manager1.png">&nbsp;&nbsp;Tax Management<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="http://www.taxmanager.in/taxadvisory.html">Tax Advisory</a></li>
+                  <li><a href="http://www.taxmanager.in/asp.html">Annual Subscription Package</a></li>
+                  <li><a href="http://www.taxmanager.in/ctc-optimiser.html">CTC Optimizer</a></li>
+                  <li><a href="http://www.taxmanager.in/itr-rectification.html">Tax Return Rectification</a></li>
+                  <li><a href="http://www.taxmanager.in/itr-notice.html">IT Demand/ Notice</a></li>
+                  <li><a href="http://www.taxmanager.in/taxhistory.html">Know your Tax History</a></li>
+                  <li><a href="http://www.taxmanager.in/pan-apply.html">PAN Application</a></li>
+                  <li><a href="http://www.taxmanager.in/digital-signature.html">Digital Signature</a></li>
+                </ul>
+              </li>
+
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img
+                    src="images/earnings.png">&nbsp;&nbsp;Investment<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="http://www.taxmanager.in/planyourtaxsavings.html">Plan You Tax Savings</a></li>
+                  <li><a href="../TaxProfessionals/eFilingGateway.html">Start Investing<span class="caret"></span></a>
+                  </li>
+                  <li><a href="http://www.taxmanager.in/invest/mutualfunds/invest_mf.html">&nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp;<img src="images/mutul1.png" style="margin-top:-6px;"> &nbsp;Mutual Funds</a></li>
+                  <li><a href="http://www.taxmanager.in/invest/LifeInsurance/invest_li.html">&nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp;<img src="images/life.png" style="margin-top:-2px;"> &nbsp;Life Insurance</a></li>
+                  <li><a href="http://www.taxmanager.in/invest/healthinsurance/invest_hi.html">&nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp;<img src="images/health.png" style="margin-top:-6px;"> &nbsp;Health Insurance</a>
+                  </li>
+                  <li><a href="http://www.taxmanager.in/invest/ppf/invest_ppf.html">&nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp;<img src="images/public.png" style="margin-top:6px;">&nbsp; Public Provident Fund</a></li>
+                  <li><a href="http://www.taxmanager.in/invest/nsc/invest_nsc.html">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      <img src="images/national.png" style="margin-top:-6px;">&nbsp; National Savings Certificates</a>
+                  </li>
+                  <li><a href="http://www.taxmanager.in/invest/nps/invest_nps.html">&nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp;<img src="images/nps.png" style="margin-top:-6px;">&nbsp; NPS</a></li>
+                  <li><a href="http://www.taxmanager.in/invest/others/invest_others.html">&nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; <img src="images/other.png" style="margin-top:-6px;">&nbsp; Othres</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="images/fc.png">&nbsp;&nbsp;NRIs
+                  <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="http://www.taxmanager.in/nri_returns.html">NRI Tax Returns</a></li>
+                  <li><a href="http://www.taxmanager.in/nri_taxmanagement.html">NRI Tax Management</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img
+                    src="images/group.png">&nbsp;&nbsp;Business
+                  <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="http://www.taxmanager.in/corporate-plan.html">Employee Care e-Form 16 and Payrolls</a>
+                  </li>
+                  <li><a href="http://www.taxmanager.in/gst-services.html">GST Services</a></li>
+                  <li><a href="http://www.taxmanager.in/startup-program.html">Startup Program</a></li>
+                  <li><a href="http://www.taxmanager.in/accounting-management.html">Accounting Management</a></li>
+                  <li><a href="http://www.taxmanager.in/tds-taxmanagement.html">TDS and Tax Management</a></li>
+                  <li><a href="http://www.taxmanager.in/compliancemgmt.html">Compliance Management</a></li>
+                  <li><a href="http://www.taxmanager.in/companyregistration.html">Company Registration</a></li>
+                </ul>
+              </li>
+              <li><a href="http://www.taxmanager.in/KnowledgeBank/index.html"><img
+                    src="images/investment.png">&nbsp;&nbsp;Knowledge Bank<span class="caret"></span></a></li>
+              <li><a href="http://www.taxmanager.in/career/index.html"><img src="images/hiring.png">&nbsp;&nbsp;We're
+                  Hiring<span class="caret"></span></a></li>
+              <li><a href="../Login/login.html"><img src="images/sign.png">&nbsp;&nbsp;Login / Register</a></li>
+            </ul>
+
+          </div>
+        </div>
+      </nav>
+
+    </header>
+
+
+    <!-- /Header - part   -->
+
+    <!-- Second Header-->
+
+    <!-- End Second Header-->
+
+    <!-- part1   -->
+
+
+
+    <div class="container">
+      <div class="col-md-12">
+        <div class="col-md-6"></div>
+      </div>
+    </div>
+
+    <!-- /part1   -->
+
+    <div class="container-fulid" style="margin-top:60px;">
+      <!--<h2>Carousel Example</h2>-->
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="images/n/banner12.jpg" alt="Los Angeles" style="width:100%;">
+          </div>
+
+          <div class="item">
+            <img src="images/n/banner10.jpg" alt="Chicago" style="width:100%;">
+          </div>
+
+          <div class="item">
+            <img src="images/n/banner9.jpg" alt="New york" style="width:100%;">
+          </div>
+        </div>
+
+
+        </a>
+      </div>
+    </div>
+
+    <img class="blink-image award-img-new" src="images/n/award-banner.png" />
+
+
+    <div class="container">
+      <!-- Modal -->
+      <div class="modal fade" id="myModal12" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">About TaxManager</h4>
+            </div>
+            <div class="modal-body">
+
+
+              <div>
+                <!-- Image container of the image slider -->
+                <div class="image-container">
+                  <div class="slide1">
+                    <!--<div class="slideNumber"></div>-->
+                    <div class="bottom-left">Reception</div>
+                    <img src="popup1/images/rec2.jpeg" style="height:415px;width:590px;border-radius:4px;"
+                      class="responsive">
+                  </div>
+                  <div class="slide1">
+                    <!-- <div class="slideNumber"></div>-->
+                    <div class="bottom-left">Reception & Entrance Area</div>
+                    <img src="popup1/images/r1.jpeg" style="height:415px;width:590px;border-radius:4px;"
+                      class="responsive">
+                  </div>
+                  <div class="slide1">
+                    <!--<div class="slideNumber"></div>-->
+                    <div class="bottom-left">Entrance </div>
+                    <img src="popup1/images/eg1.jpeg" style="height:415px;width:590px;border-radius:4px;"
+                      class="responsive">
+                  </div>
+                  <div class="slide1">
+                    <!--<div class="slideNumber"></div>-->
+                    <div class="bottom-left">Cabins</div>
+                    <img src="popup1/images/c1.jpeg" style="height:415px;width:590px;border-radius:4px;"
+                      class="responsive">
+                  </div>
+                  <div class="slide1">
+                    <!--<div class="slideNumber"></div>-->
+                    <div class="bottom-left">Floor Area 1</div>
+                    <img src="popup1/images/fa4.jpeg" style="height:415px;width:590px;border-radius:4px;"
+                      class="responsive">
+                  </div>
+
+
+                  <div class="slide1">
+                    <!--<div class="slideNumber"></div>-->
+                    <div class="bottom-left">Floor Area 2</div>
+                    <img src="popup1/images/fa5.jpeg" style="height:415px;width:590px;border-radius:4px;"
+                      class="responsive">
+                  </div>
+                  <div class="slide1">
+                    <!--<div class="slideNumber"></div>-->
+                    <div class="bottom-left">Floor Area 3</div>
+                    <img src="popup1/images/fa3.jpeg" style="height:415px;width:590px;border-radius:4px;"
+                      class="responsive">
+                  </div>
+
+                  <div class="slide1">
+                    <!--<div class="slideNumber"></div>-->
+                    <div class="bottom-left">Conference Room </div>
+                    <img src="popup1/images/cr1.jpeg" style="height:415px;width:590px;border-radius:4px;"
+                      class="responsive">
+                  </div>
+                  <div class="slide1">
+                    <!--<div class="slideNumber"></div>-->
+                    <div class="bottom-left">Conference Room </div>
+                    <img src="popup1/images/cr2.jpeg" style="height:415px;width:590px;border-radius:4px;"
+                      class="responsive">
+                  </div>
+
+                  <div class="slide1">
+                    <!--<div class="slideNumber"></div>-->
+                    <div class="bottom-left">Boards</div>
+                    <img src="popup1/images/address1.jpg" style="height:415px;width:590px;border-radius:4px;"
+                      class="responsive">
+                  </div>
+                  <!-- Next and Previous icon to change images -->
+                  <a class="previous" onclick="moveSlides(-1)"
+                    style="border-radius:50%;border:ridge;border-color:transparent;display: inline-block;">
+                    <!--<i class="fa fa-chevron-circle-left"></i>-->
+                    <i class="arrow left b1"></i>
+                  </a>
+                  <a class="next" onclick="moveSlides(1)"
+                    style="margin-left:555px;position:absolute;border-radius:50%;border:ridge;border-color:transparent;display: inline-block;">
+                    <!--<i class="fa fa-chevron-circle-right"></i>-->
+                    <i class="arrow right"></i>
+                  </a>
+                </div>
+                <br>
+
+                <div style="text-align:center">
+                  <span class="footerdot" onclick="activeSlide(1)">
+                  </span>
+                  <span class="footerdot" onclick="activeSlide(2)">
+                  </span>
+                  <span class="footerdot" onclick="activeSlide(3)">
+                  </span>
+                  <span class="footerdot" onclick="activeSlide(4)">
+                  </span>
+                  <span class="footerdot" onclick="activeSlide(5)">
+                  </span>
+                  <span class="footerdot" onclick="activeSlide(6)">
+                  </span>
+                  <span class="footerdot" onclick="activeSlide(7)">
+                  </span>
+                  <span class="footerdot" onclick="activeSlide(8)">
+                  </span>
+                  <span class="footerdot" onclick="activeSlide(9)">
+                  </span>
+                  <span class="footerdot" onclick="activeSlide(10)">
+                  </span>
+                </div>
+
+
+              </div>
+              <div class="modal-footer">
+                <!--<asp:Button runat="server" ID="btn1" Text="one" OnClick="btn1_Click" />-->
+                <!--<button type="button" class="btn btn-default" data-dismiss="modal" onclick="f1()">Close</button>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var slideIndex = 1;
+      displaySlide(slideIndex);
+
+      function moveSlides(n) {
+        // if (slideIndex == 2 && n < 0)
+        //   slideIndex = 1;
+
+        if (slideIndex == 11 && n > 0) {
+          slideIndex = 1;
+
+        }
+
+        displaySlide(slideIndex += n);
+
+      }
+
+      function activeSlide(n) {
+        displaySlide(slideIndex = n);
+      }
+
+      /* Main function */
+      function displaySlide(n) {
+        var i;
+        var totalslides =
+          document.getElementsByClassName("slide1");
+
+        var totaldots =
+          document.getElementsByClassName("footerdot");
+
+        if (n > totalslides.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = totalslides.length;
+        }
+        for (i = 0; i < totalslides.length; i++) {
+          totalslides[i].style.display = "none";
+        }
+        for (i = 0; i < totaldots.length; i++) {
+          totaldots[i].className =
+            totaldots[i].className.replace(" active", "");
+        }
+        totalslides[slideIndex - 1].style.display = "block";
+        totaldots[slideIndex - 1].className += " active";
+      }
+    </script>
+
+
+    <!-- Btn Section-->
+    <div class="container pd hidden-xs">
+
+      <div class="col-md-6 col-lg-6 col-xs-12">
+        <h4><strong>We Are Hiring - We are Dedicated To Helping You Succeed</strong></h4>
+      </div>
+      <div class="col-md-6 col-lg-6 col-xs-12">
+        <a href=""><button type="button" class="btn btn-primary btn-lg pull-right">Join Your Dream Team</button></a>
+
+
+
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal12"
+          style="display:none">About TaxManager</button>
+      </div>
+
+
+    </div>
+
+    <!-- End Btn Section-->
+    <div class="container pd">
+      <div class="col-md-6 col-lg-6">
+      </div>
+      <div class="col-md-6 col-lg-6">
+        <button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#myModal12">View
+          More About TaxManager</button>
+      </div>
+    </div>
+
+
+    <!--New Area-->
+    <div class="col-md-12 col-sm-12 box-top hidden-xs">
+      <div class="container">
+        <div class="col-md-3" style="margin-top: 50px; margin-bottom: 50px;">
+          <h4 class="txt-clr Brn-txt post-title">Posting Title</h4>
+          <!--Brand Marketing-->
+          <a href="http://www.taxmanager.in/companiesmanager/applynow.html" class="Brn-txt">
+            <p data-toggle="" data-target="">Sales Manager</p>
+          </a>
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"></h4>
+                  <p>&nbsp;</p>
+                  <a class="link-clr" href="http://www.taxmanager.in/companiesmanager/applynow.html"><button
+                      type="button" class="btn btn-primary pull-right "
+                      style="margin-bottom:10px; margin-top:5px;">Apply Now</button></a>
+                </div>
+                <div class="modal-body">
+                  <p>Hi</p>
+                  <p>Greetings of the day!!!</p>
+                  <p>TaxManager.in</p>
+                  <p>TaxManager.in is a top leading e-filing of income tax returns and tax management website for
+                    individuals in India and is also an authorized E Return Intermediary from Department of Income Tax
+                    which provides complete tax and compliance management services to both individuals and corporate
+                    clients.
+
+                    www.TaxManager.in is one of the largest and preferred online e-filers in India having customer base
+                    of more than 2 lakhs as verified online account holder. www.TaxManager.in has partnered with top
+                    companies like HDFC Bank Ltd, DC Bank Ltd, Spicejet, ITC, Zee News etc.
+
+                    TaxManager.in has been awarded as the best financial services company in India by Economic Times ET
+                    Now India Mart Business Leaders of Tomorrow 2013 for its innovative services in E-Filing, Tax and
+                    Compliance Management both for individuals and corporate clients. In 2014 TaxManager.in was
+                    nominated as the upcoming company in Financial Service Space by the same group. The link is <a
+                      href="#">http://www.taxmanager.in/news_awards_may_2014.html</a> Click on the website link to know
+                    more about<a href="#"> www.TaxManager.in</a> and <a href="#"> www.eTaxesIndia.com</a>
+                  </p>
+                  <p>Industry: Financial Services/ Tax/ Compliances</p>
+                  <p>Location: South West Delhi</p>
+                  <p>Brief Role:Brand/ Marketing Manager</p>
+
+                  <ol class="c">
+                    <li>Understanding & defining the brand identity & aligning all the brand plans</li>
+                    <li>Coordinating with advertising agencies and research agencies, to develop suitable brand
+                      initiatives to position the brand in keeping with the above identity</li>
+                    <li>Planning & Execution of Product Marketing and Corporate Branding</li>
+                    <li>Sales Promotion</li>
+                    <li>PR Activities</li>
+                    <li>Conduct end-to-end Retail Promotion Activities - Visual Merchandising, Retail Storming etc.</li>
+                    <li>Brand Promotion - Planning & Organising Consumer Front Brand Activation events</li>
+                    <li>Successful preparation of articles for events</li>
+                    <li>Digital Marketing
+                      <ol class="d">
+                        <li>Plan and execute all web, SEO/SEM, marketing database, email, social media, ORM and display
+                          advertising campaigns</li>
+                        <li>Drive Online Reputation Management along with different functions through social media
+                          listening.</li>
+                        <li>Design, build and maintain our social media presence through various Digital Creative &
+                          Media Agencies</li>
+                        <li>Measure and report performance of all digital marketing campaigns, and assess against goals
+                          (ROI and KPIs)</li>
+                        <li>Identify trends and insights, and optimize spend and performance based on the insights</li>
+                        <li>Build Smartphones Consumer Communities for target marketing & crowd-led campaigns</li>
+                        <li>Plan, execute, and measure experiments and conversion tests.</li>
+                      </ol>
+                    </li>
+                  </ol>
+                  <p>Salary: Higher than the industry standards with incentives</p>
+                  <p>Functional Area:Marketing , Advertising , MR , PR , Media Planning</p>
+                  <p>Role Category:Marketing</p>
+                  <p>Role: Brand and Marketing Manager</p>
+                  <p><b>Desired Candidate Profile</b></p>
+                  <p><b>Experience - 2 to 4 years</b></p>
+                  <p><b>Education-</b></p>
+                  <p>UG: BCom - Any Specialization, B.A - Any Specialization, BCA - Computers</p>
+                  <p>PG:MBA / PGDM / Marketing or Financeor Mass Communications</p>
+                  <p><b>REQUIREMENTS</b></p>
+
+                  <ol class="c">
+                    <li>B.Com/B.Tech./BCA/ MCA/BA Hons along with an MBA degree in marketing related field from a
+                      reputed B School</li>
+                    <li>Proven working experience in PR or Branding or Business Development in a well reputed company
+                    </li>
+                    <li>Proven working experience in Product Marketing, especially on financial services related
+                      brands/concepts</li>
+                    <li>Highly creative with experience in identifying target audiences and devising Print/digital
+                      campaigns that engage, inform and motivate</li>
+                    <li>Working knowledge of ad serving tools</li>
+                    <li>Experience in setting up and optimizing Google Adwords campaigns</li>
+                    <li>Strong analytical skills and data-driven thinking</li>
+                    <li>Up-to-date with the latest trends and best practices in Product Marketing, Mobility Business,
+                      online marketing and measurement</li>
+
+                  </ol>
+                  <a class="link-clr" href="http://www.taxmanager.in/companiesmanager/applynow.html"><button
+                      type="button" class="btn btn-primary pull-left " style="margin-bottom:10px; margin-top:5px;">Apply
+                      Now</button></a>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- End first modal Btn-->
+
+          <a href="http://www.taxmanager.in/companiesmanager/applynow.html" class="Brn-txt">
+            <p class="margin" data-toggle="modal" data-target="#myModal1">HR Recruiter</p>
+          </a>
+          <!-- Modal -->
+          <div class="modal fade" id="myModal1" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"></h4>
+                  <p>&nbsp;</p>
+                  <a class="link-clr" href="http://www.taxmanager.in/companiesmanager/applynow.html"><button
+                      type="button" class="btn btn-primary pull-right "
+                      style="margin-bottom:10px; margin-top:5px;">Apply Now</button></a>
+                </div>
+                <div class="modal-body">
+                  <p>Hi</p>
+                  <p>Greetings of the day!!!</p>
+                  <p>TaxManager.in</p>
+                  <p>TaxManager.in is a top leading e-filing of income tax returns and tax management website for
+                    individuals in India and is also an authorized E Return Intermediary from Department of Income Tax
+                    which provides complete tax and compliance management services to both individuals and corporate
+                    clients.
+
+                    www.TaxManager.in is one of the largest and preferred online e-filers in India having customer base
+                    of more than 2 lakhs as verified online account holder. www.TaxManager.in has partnered with top
+                    companies like HDFC Bank Ltd, DC Bank Ltd, Spicejet, ITC, Zee News etc.
+
+                    TaxManager.in has been awarded as the best financial services company in India by Economic Times ET
+                    Now India Mart Business Leaders of Tomorrow 2013 for its innovative services in E-Filing, Tax and
+                    Compliance Management both for individuals and corporate clients. In 2014 TaxManager.in was
+                    nominated as the upcoming company in Financial Service Space by the same group. The link is <a
+                      href="#">http://www.taxmanager.in/news_awards_may_2014.html</a> Click on the website link to know
+                    more about<a href="#"> www.TaxManager.in</a> and <a href="#"> www.eTaxesIndia.com</a></p>
+                  <p><b>Job Responsibilities for HR Manager:</b></p>
+                  <ol>
+                    <li> Overseeing the recruitment process, designing company policies and setting objectives for the
+                      HR team.</li>
+                    <li> Set objectives for the HR team and track progress.</li>
+                    <li> Design and implement company policies that promote a healthy work environment.</li>
+                    <li> Develop compensation and benefits plans.</li>
+                    <li> Support and suggest improvements to the entire recruitment process</li>
+                    <li> Organize learning and development programs.</li>
+                    <li> Maintain HR procedures that comply with labor regulations, confidentiality.</li>
+                    <li> Employees disputes and discussing with Sr. Management on the decisions to be taken.</li>
+                    <li> Understand the needs and requirements of Training and development of staff.</li>
+                  </ol>
+                  <p><b>Desire Candidate Profile :</b></p>
+                  <ol>
+                    <li> Must have good verbal and written communication skills.</li>
+                    <li> Required Experience : 1-4 yr</li>
+                    <li> Must be MBA(HR)</li>
+                    <li> Only Female Candidates</li>
+                  </ol>
+                  <p>&nbsp;</p>
+                  <p><b>Thanks & Regards,</b></p>
+                  <p><b>Manisha Sharma</b></p>
+                  <p><b>HR and Admin</b></p>
+                  <p><b>Mobile / 8810317068 / 9315787428</b></p>
+                  <a href="">
+                    <p><b>www.TaxManager.in</b></p>
+                  </a>
+                  <p><b>eFile and Manage your Taxes</b></p>
+                  <p><b>Call Center:- +919555331122</b></p>
+                  <p><b>Download our Android App to manage your taxes</b></p>
+                  <a class="link-clr" href="http://www.taxmanager.in/companiesmanager/applynow.html"><button
+                      type="button" class="btn btn-primary pull-left " style="margin-bottom:10px; margin-top:5px;">Apply
+                      Now</button></a>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- End Second Btn-->
+          <a href="http://www.taxmanager.in/companiesmanager/applynow.html" class="Brn-txt">
+            <p class="margin" data-toggle="modal" data-target="#myModal2">Web Designer</p>
+          </a>
+          <!-- Modal -->
+          <div class="modal fade" id="" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"></h4>
+                  <p>&nbsp;</p>
+                  <a class="link-clr" href="http://www.taxmanager.in/companiesmanager/applynow.html"><button
+                      type="button" class="btn btn-primary pull-right "
+                      style="margin-bottom:10px; margin-top:5px;">Apply Now</button></a>
+                </div>
+                <div class="modal-body">
+                  <p>Hi</p>
+                  <p>Greetings of the day!!!</p>
+                  <a href="#">
+                    <p>TaxManager.in</p>
+                  </a>
+                  <p><a href="#">TaxManager.in</a> is a top leading e-filing of income tax returns and tax management
+                    website for individuals in India and is also an authorized E Return Intermediary from Department of
+                    Income Tax which provides complete tax and compliance management services to both individuals and
+                    corporate clients.
+
+                    www.TaxManager.in is one of the largest and preferred online e-filers in India having customer base
+                    of more than 2 lakhs as verified online account holder. www.TaxManager.in has partnered with top
+                    companies like HDFC Bank Ltd, DC Bank Ltd, Spicejet, ITC, Zee News etc.
+
+                    TaxManager.in has been awarded as the best financial services company in India by Economic Times ET
+                    Now India Mart Business Leaders of Tomorrow 2013 for its innovative services in E-Filing, Tax and
+                    Compliance Management both for individuals and corporate clients. In 2014 TaxManager.in was
+                    nominated as the upcoming company in Financial Service Space by the same group. The link is <a
+                      href="#">http://www.taxmanager.in/news_awards_may_2014.html</a> Click on the website link to know
+                    more about<a href="#"> www.TaxManager.in</a> and <a href="#"> www.eTaxesIndia.com</a></p>
+
+                  <p><b>Job Description of Client Relationship Executive:</b></p>
+                  <ol>
+                    <li> Responsible for handling clients accounts.</li>
+                    <li> Handling the HNI clients.</li>
+                    <li> Develop and maintain the relationship with existing clients.</li>
+                    <li> Solve the queries of the clients.</li>
+                    <li> Preferred female candidates.</li>
+                  </ol>
+
+                  <p>&nbsp;</p>
+                  <p><b>Desire candidate Profile :</b></p>
+                  <ol>
+                    <li> Must have good verbal and written communication skills.</li>
+                    <li> Preferred B.com / BBA graduate/MBA</li>
+                    <li> Required Experience : 1-2 yr</li>
+                    <li> Fresher's can also apply</li>
+                  </ol>
+                  <p>&nbsp;</p>
+                  <p><b>Thanks & Regards,</b></p>
+                  <p><b>Manisha Sharma</b></p>
+                  <p><b>HR and Admin</b></p>
+                  <p><b>Mobile - 8810317068 / 9315787428</b></p>
+                  <p><b>www.TaxManager.in</b></p>
+                  <p><b>eFile and Manage your Taxes</b></p>
+                  <p><b>Call Center:- +919555331122</b></p>
+                  <p><b>Download our Android App to manage your taxes</b></p>
+                  <a class="link-clr" href="http://www.taxmanager.in/companiesmanager/applynow.html"><button
+                      type="button" class="btn btn-primary pull-left " style="margin-bottom:10px; margin-top:5px;">Apply
+                      Now</button></a>
+
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- End Second Btn-->
+
+          <!-- End Second Btn-->
+          <a href="http://www.taxmanager.in/companiesmanager/applynow.html" class="Brn-txt">
+            <p class="margin" data-toggle="modal" data-target="#myModal2">Customer Relationship Associate</p>
+          </a>
+          <!-- Modal -->
+          <div class="modal fade" id="myModal2" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"></h4>
+                  <p>&nbsp;</p>
+                  <a class="link-clr" href="http://www.taxmanager.in/companiesmanager/applynow.html"><button
+                      type="button" class="btn btn-primary pull-right "
+                      style="margin-bottom:10px; margin-top:5px;">Apply Now</button></a>
+                </div>
+                <div class="modal-body">
+                  <p>Hi</p>
+                  <p>Greetings of the day!!!</p>
+                  <a href="#">
+                    <p>TaxManager.in</p>
+                  </a>
+                  <p><a href="#">TaxManager.in</a> is a top leading e-filing of income tax returns and tax management
+                    website for individuals in India and is also an authorized E Return Intermediary from Department of
+                    Income Tax which provides complete tax and compliance management services to both individuals and
+                    corporate clients.
+
+                    www.TaxManager.in is one of the largest and preferred online e-filers in India having customer base
+                    of more than 2 lakhs as verified online account holder. www.TaxManager.in has partnered with top
+                    companies like HDFC Bank Ltd, DC Bank Ltd, Spicejet, ITC, Zee News etc.
+
+                    TaxManager.in has been awarded as the best financial services company in India by Economic Times ET
+                    Now India Mart Business Leaders of Tomorrow 2013 for its innovative services in E-Filing, Tax and
+                    Compliance Management both for individuals and corporate clients. In 2014 TaxManager.in was
+                    nominated as the upcoming company in Financial Service Space by the same group. The link is <a
+                      href="#">http://www.taxmanager.in/news_awards_may_2014.html</a> Click on the website link to know
+                    more about<a href="#"> www.TaxManager.in</a> and <a href="#"> www.eTaxesIndia.com</a></p>
+
+                  <p><b>Job Description of Client Relationship Executive:</b></p>
+                  <ol>
+                    <li> Responsible for handling clients accounts.</li>
+                    <li> Handling the HNI clients.</li>
+                    <li> Develop and maintain the relationship with existing clients.</li>
+                    <li> Solve the queries of the clients.</li>
+                    <li> Preferred female candidates.</li>
+                  </ol>
+
+                  <p>&nbsp;</p>
+                  <p><b>Desire candidate Profile :</b></p>
+                  <ol>
+                    <li> Must have good verbal and written communication skills.</li>
+                    <li> Preferred B.com / BBA graduate/MBA</li>
+                    <li> Required Experience : 1-2 yr</li>
+                    <li> Fresher's can also apply</li>
+                  </ol>
+                  <p>&nbsp;</p>
+                  <p><b>Thanks & Regards,</b></p>
+                  <p><b>Manisha Sharma</b></p>
+                  <p><b>HR and Admin</b></p>
+                  <p><b>Mobile - 8810317068 / 9315787428</b></p>
+                  <p><b>www.TaxManager.in</b></p>
+                  <p><b>eFile and Manage your Taxes</b></p>
+                  <p><b>Call Center:- +919555331122</b></p>
+                  <p><b>Download our Android App to manage your taxes</b></p>
+                  <a class="link-clr" href="http://www.taxmanager.in/companiesmanager/applynow.html"><button
+                      type="button" class="btn btn-primary pull-left " style="margin-bottom:10px; margin-top:5px;">Apply
+                      Now</button></a>
+
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- End Second Btn-->
+          <a href="http://www.taxmanager.in/companiesmanager/applynow.html" class="Brn-txt">
+            <p class="margin" data-toggle="modal" data-target="#myModal2">Accounts Executive - CA Fresher/ Finalist</p>
+          </a>
+          <!-- Modal -->
+          <div class="modal fade" id="myModal2" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"></h4>
+                  <p>&nbsp;</p>
+                  <a class="link-clr" href="http://www.taxmanager.in/companiesmanager/applynow.html"><button
+                      type="button" class="btn btn-primary pull-right "
+                      style="margin-bottom:10px; margin-top:5px;">Apply Now</button></a>
+                </div>
+                <div class="modal-body">
+                  <p>Hi</p>
+                  <p>Greetings of the day!!!</p>
+                  <a href="#">
+                    <p>TaxManager.in</p>
+                  </a>
+                  <p><a href="#">TaxManager.in</a> is a top leading e-filing of income tax returns and tax management
+                    website for individuals in India and is also an authorized E Return Intermediary from Department of
+                    Income Tax which provides complete tax and compliance management services to both individuals and
+                    corporate clients.
+
+                    www.TaxManager.in is one of the largest and preferred online e-filers in India having customer base
+                    of more than 2 lakhs as verified online account holder. www.TaxManager.in has partnered with top
+                    companies like HDFC Bank Ltd, DC Bank Ltd, Spicejet, ITC, Zee News etc.
+
+                    TaxManager.in has been awarded as the best financial services company in India by Economic Times ET
+                    Now India Mart Business Leaders of Tomorrow 2013 for its innovative services in E-Filing, Tax and
+                    Compliance Management both for individuals and corporate clients. In 2014 TaxManager.in was
+                    nominated as the upcoming company in Financial Service Space by the same group. The link is <a
+                      href="#">http://www.taxmanager.in/news_awards_may_2014.html</a> Click on the website link to know
+                    more about<a href="#"> www.TaxManager.in</a> and <a href="#"> www.eTaxesIndia.com</a></p>
+
+                  <p><b>Job Description of Client Relationship Executive:</b></p>
+                  <ol>
+                    <li> Responsible for handling clients accounts.</li>
+                    <li> Handling the HNI clients.</li>
+                    <li> Develop and maintain the relationship with existing clients.</li>
+                    <li> Solve the queries of the clients.</li>
+                    <li> Preferred female candidates.</li>
+                  </ol>
+
+                  <p>&nbsp;</p>
+                  <p><b>Desire candidate Profile :</b></p>
+                  <ol>
+                    <li> Must have good verbal and written communication skills.</li>
+                    <li> Preferred B.com / BBA graduate/MBA</li>
+                    <li> Required Experience : 1-2 yr</li>
+                    <li> Fresher's can also apply</li>
+                  </ol>
+                  <p>&nbsp;</p>
+                  <p><b>Thanks & Regards,</b></p>
+                  <p><b>Manisha Sharma</b></p>
+                  <p><b>HR and Admin</b></p>
+                  <p><b>Mobile - 8810317068 / 9315787428</b></p>
+                  <p><b>www.TaxManager.in</b></p>
+                  <p><b>eFile and Manage your Taxes</b></p>
+                  <p><b>Call Center:- +919555331122</b></p>
+                  <p><b>Download our Android App to manage your taxes</b></p>
+                  <a class="link-clr" href="http://www.taxmanager.in/companiesmanager/applynow.html"><button
+                      type="button" class="btn btn-primary pull-left " style="margin-bottom:10px; margin-top:5px;">Apply
+                      Now</button></a>
+
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- End Second Btn-->
+        </div>
+
+        <div class="col-md-3" style="margin-top: 50px; margin-bottom: 50px;">
+          <h4 class="txt-clr Brn-txt post-title">Work Experience</h4>
+          <p class="Brn-txt">4-5 Years</p>
+          <p class="Brn-txt margin">2-4 Years</p>
+          <p class="Brn-txt margin">1-2 Years</p>
+          <p class="Brn-txt margin">1-2 Years</p>
+          <p class="Brn-txt margin">1-2 Years</p>
+        </div>
+
+        <div class="col-md-3" style="margin-top: 50px; margin-bottom: 50px;">
+          <h4 class="txt-clr Brn-txt post-title">City</h4>
+          <p class="Brn-txt">New Delhi Naraina Vihar</p>
+          <p class="Brn-txt margin">New Delhi Naraina Vihar</p>
+          <p class="Brn-txt margin">New Delhi Naraina Vihar</p>
+          <p class="Brn-txt margin">New Delhi Naraina Vihar</p>
+          <p class="Brn-txt margin">New Delhi Naraina Vihar</p>
+        </div>
+
+
+        <div class="col-md-2" style="margin-top: 50px; margin-bottom: 50px;">
+          <h4 class="txt-clr Brn-txt post-title">Job Type</h4>
+          <p class="Brn-txt">Full Time</p>
+          <p class="Brn-txt margin">Full Time</p>
+          <p class="Brn-txt margin">Full Time</p>
+          <p class="Brn-txt margin">Full Time</p>
+          <p class="Brn-txt margin">Full Time</p>
+        </div>
+
+        <div class="col-md-1" style="margin-top: 50px; margin-bottom: 50px;">
+          <a class="link-clr" href="http://www.taxmanager.in/companiesmanager/applynow.html"><button type="button"
+              class="btn btn-primary " style="margin-bottom:10px; margin-top:50px;">Apply Now</button></a></br>
+          <a href="http://www.taxmanager.in/companiesmanager/applynow.html"><button type="button"
+              class="btn btn-primary" style="margin-bottom:10px; margin-top:15px;">Apply Now</button></a></br>
+          <a href="http://www.taxmanager.in/companiesmanager/applynow.html"><button type="button"
+              class="btn btn-primary" style="margin-bottom:10px; margin-top:15px;">Apply Now</button></a>
+          <a href="http://www.taxmanager.in/companiesmanager/applynow.html"><button type="button"
+              class="btn btn-primary" style="margin-bottom:10px; margin-top:15px;">Apply Now</button></a>
+          <a href="http://www.taxmanager.in/companiesmanager/applynow.html"><button type="button"
+              class="btn btn-primary" style="margin-bottom:10px; margin-top:15px;">Apply Now</button></a>
+        </div>
+
+      </div><!-- End Container-->
+
+    </div><!-- End Col-->
+
+    <!-- End New Area-->
+
+
+    <!-- Mobile View-->
+
+    <div class="col-md-12 box-top hidden-lg hidden-md">
+      <div class="container">
+
+        <div class="container pd hidden-xs">
+          <div class="col-md-6 col-lg-6 col-xs-12">
+            <h4><strong>We Are Hiring - We are Dedicated To Helping You Succeed</strong></h4>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xs-12">
+            <a href=""><button type="button" class="btn btn-primary btn-lg pull-right">Join Your Dream
+                Team1</button></a>
+
+          </div>
+
+        </div>
+
+        <br />
+
+        <div class="col-md-3" style="margin-top: 50px; margin-bottom: 50px;">
+          <h4 class="">Posting Title</h4>
+          <!--Brand Marketing-->
+          <a href="http://www.taxmanager.in/companiesmanager/applynow.html">
+            <p">Sales Manager</p>
+          </a>
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"></h4>
+                  <p>&nbsp;</p>
+                  <a class="link-clr" href="http://www.taxmanager.in/companiesmanager/applynow.html"><button
+                      type="button" class="btn btn-primary pull-right "
+                      style="margin-bottom:10px; margin-top:5px;">Apply Now</button></a>
+                </div>
+                <div class="modal-body">
+                  <p>Hi</p>
+                  <p>Greetings of the day!!!</p>
+                  <p>TaxManager.in</p>
+                  <p>TaxManager.in is a top leading e-filing of income tax returns and tax management website for
+                    individuals in India and is also an authorized E Return Intermediary from Department of Income Tax
+                    which provides complete tax and compliance management services to both individuals and corporate
+                    clients.
+
+                    www.TaxManager.in is one of the largest and preferred online e-filers in India having customer base
+                    of more than 2 lakhs as verified online account holder. www.TaxManager.in has partnered with top
+                    companies like HDFC Bank Ltd, DC Bank Ltd, Spicejet, ITC, Zee News etc.
+
+                    TaxManager.in has been awarded as the best financial services company in India by Economic Times ET
+                    Now India Mart Business Leaders of Tomorrow 2013 for its innovative services in E-Filing, Tax and
+                    Compliance Management both for individuals and corporate clients. In 2014 TaxManager.in was
+                    nominated as the upcoming company in Financial Service Space by the same group. The link is <a
+                      href="#">http://www.taxmanager.in/news_awards_may_2014.html</a> Click on the website link to know
+                    more about<a href="#"> www.TaxManager.in</a> and <a href="#"> www.eTaxesIndia.com</a>
+                  </p>
+                  <p>Industry: Financial Services/ Tax/ Compliances</p>
+                  <p>Location: South West Delhi</p>
+                  <p>Brief Role:Brand/ Marketing Manager</p>
+
+                  <ol class="c">
+                    <li>Understanding & defining the brand identity & aligning all the brand plans</li>
+                    <li>Coordinating with advertising agencies and research agencies, to develop suitable brand
+                      initiatives to position the brand in keeping with the above identity</li>
+                    <li>Planning & Execution of Product Marketing and Corporate Branding</li>
+                    <li>Sales Promotion</li>
+                    <li>PR Activities</li>
+                    <li>Conduct end-to-end Retail Promotion Activities - Visual Merchandising, Retail Storming etc.</li>
+                    <li>Brand Promotion - Planning & Organising Consumer Front Brand Activation events</li>
+                    <li>Successful preparation of articles for events</li>
+                    <li>Digital Marketing
+                      <ol class="d">
+                        <li>Plan and execute all web, SEO/SEM, marketing database, email, social media, ORM and display
+                          advertising campaigns</li>
+                        <li>Drive Online Reputation Management along with different functions through social media
+                          listening.</li>
+                        <li>Design, build and maintain our social media presence through various Digital Creative &
+                          Media Agencies</li>
+                        <li>Measure and report performance of all digital marketing campaigns, and assess against goals
+                          (ROI and KPIs)</li>
+                        <li>Identify trends and insights, and optimize spend and performance based on the insights</li>
+                        <li>Build Smartphones Consumer Communities for target marketing & crowd-led campaigns</li>
+                        <li>Plan, execute, and measure experiments and conversion tests.</li>
+                      </ol>
+                    </li>
+                  </ol>
+                  <p>Salary: Higher than the industry standards with incentives</p>
+                  <p>Functional Area:Marketing , Advertising , MR , PR , Media Planning</p>
+                  <p>Role Category:Marketing</p>
+                  <p>Role: Brand and Marketing Manager</p>
+                  <p><b>Desired Candidate Profile</b></p>
+                  <p><b>Experience - 2 to 4 years</b></p>
+                  <p><b>Education-</b></p>
+                  <p>UG: BCom - Any Specialization, B.A - Any Specialization, BCA - Computers</p>
+                  <p>PG:MBA / PGDM / Marketing or Financeor Mass Communications</p>
+                  <p><b>REQUIREMENTS</b></p>
+
+                  <ol class="c">
+                    <li>B.Com/B.Tech./BCA/ MCA/BA Hons along with an MBA degree in marketing related field from a
+                      reputed B School</li>
+                    <li>Proven working experience in PR or Branding or Business Development in a well reputed company
+                    </li>
+                    <li>Proven working experience in Product Marketing, especially on financial services related
+                      brands/concepts</li>
+                    <li>Highly creative with experience in identifying target audiences and devising Print/digital
+                      campaigns that engage, inform and motivate</li>
+                    <li>Working knowledge of ad serving tools</li>
+                    <li>Experience in setting up and optimizing Google Adwords campaigns</li>
+                    <li>Strong analytical skills and data-driven thinking</li>
+                    <li>Up-to-date with the latest trends and best practices in Product Marketing, Mobility Business,
+                      online marketing and measurement</li>
+
+                  </ol>
+                  <a class="link-clr" href="http://www.taxmanager.in/companiesmanager/applynow.html"><button
+                      type="button" class="btn btn-primary pull-left " style="margin-bottom:10px; margin-top:5px;">Apply
+                      Now</button></a>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- End first modal Btn-->
+
+          <a href="http://www.taxmanager.in/companiesmanager/applynow.html">
+            <p">HR Recruiter</p>
+          </a>
+          <!-- Modal -->
+          <div class="modal fade" id="myModal1" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"></h4>
+                  <p>&nbsp;</p>
+                  <a class="link-clr" href="http://www.taxmanager.in/companiesmanager/applynow.html"><button
+                      type="button" class="btn btn-primary pull-right "
+                      style="margin-bottom:10px; margin-top:5px;">Apply Now</button></a>
+                </div>
+                <div class="modal-body">
+                  <p>Hi</p>
+                  <p>Greetings of the day!!!</p>
+                  <p>TaxManager.in</p>
+                  <p>TaxManager.in is a top leading e-filing of income tax returns and tax management website for
+                    individuals in India and is also an authorized E Return Intermediary from Department of Income Tax
+                    which provides complete tax and compliance management services to both individuals and corporate
+                    clients.
+
+                    www.TaxManager.in is one of the largest and preferred online e-filers in India having customer base
+                    of more than 2 lakhs as verified online account holder. www.TaxManager.in has partnered with top
+                    companies like HDFC Bank Ltd, DC Bank Ltd, Spicejet, ITC, Zee News etc.
+
+                    TaxManager.in has been awarded as the best financial services company in India by Economic Times ET
+                    Now India Mart Business Leaders of Tomorrow 2013 for its innovative services in E-Filing, Tax and
+                    Compliance Management both for individuals and corporate clients. In 2014 TaxManager.in was
+                    nominated as the upcoming company in Financial Service Space by the same group. The link is <a
+                      href="#">http://www.taxmanager.in/news_awards_may_2014.html</a> Click on the website link to know
+                    more about<a href="#"> www.TaxManager.in</a> and <a href="#"> www.eTaxesIndia.com</a></p>
+                  <p><b>Job Responsibilities for HR Manager:</b></p>
+                  <ol>
+                    <li> Overseeing the recruitment process, designing company policies and setting objectives for the
+                      HR team.</li>
+                    <li> Set objectives for the HR team and track progress.</li>
+                    <li> Design and implement company policies that promote a healthy work environment.</li>
+                    <li> Develop compensation and benefits plans.</li>
+                    <li> Support and suggest improvements to the entire recruitment process</li>
+                    <li> Organize learning and development programs.</li>
+                    <li> Maintain HR procedures that comply with labor regulations, confidentiality.</li>
+                    <li> Employees disputes and discussing with Sr. Management on the decisions to be taken.</li>
+                    <li> Understand the needs and requirements of Training and development of staff.</li>
+                  </ol>
+                  <p><b>Desire Candidate Profile :</b></p>
+                  <ol>
+                    <li> Must have good verbal and written communication skills.</li>
+                    <li> Required Experience : 1-4 yr</li>
+                    <li> Must be MBA(HR)</li>
+                    <li> Only Female Candidates</li>
+                  </ol>
+                  <p>&nbsp;</p>
+                  <p><b>Thanks & Regards,</b></p>
+                  <p><b>Manisha Sharma</b></p>
+                  <p><b>HR and Admin</b></p>
+                  <p><b>Mobile / 8810317068 / 9315787428</b></p>
+                  <a href="">
+                    <p><b>www.TaxManager.in</b></p>
+                  </a>
+                  <p><b>eFile and Manage your Taxes</b></p>
+                  <p><b>Call Center:- +919555331122</b></p>
+                  <p><b>Download our Android App to manage your taxes</b></p>
+                  <a class="link-clr" href="http://www.taxmanager.in/companiesmanager/applynow.html"><button
+                      type="button" class="btn btn-primary pull-left " style="margin-bottom:10px; margin-top:5px;">Apply
+                      Now</button></a>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- End Second Btn-->
+          <a href="http://www.taxmanager.in/companiesmanager/applynow.html">
+            <p">Customer Relationship Associate</p>
+          </a>
+          <!-- Modal -->
+          <div class="modal fade" id="myModal2" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"></h4>
+                  <p>&nbsp;</p>
+                  <a class="link-clr" href="http://www.taxmanager.in/companiesmanager/applynow.html"><button
+                      type="button" class="btn btn-primary pull-right "
+                      style="margin-bottom:10px; margin-top:5px;">Apply Now</button></a>
+                </div>
+                <div class="modal-body">
+                  <p>Hi</p>
+                  <p>Greetings of the day!!!</p>
+                  <a href="#">
+                    <p>TaxManager.in</p>
+                  </a>
+                  <p><a href="#">TaxManager.in</a> is a top leading e-filing of income tax returns and tax management
+                    website for individuals in India and is also an authorized E Return Intermediary from Department of
+                    Income Tax which provides complete tax and compliance management services to both individuals and
+                    corporate clients.
+
+                    www.TaxManager.in is one of the largest and preferred online e-filers in India having customer base
+                    of more than 2 lakhs as verified online account holder. www.TaxManager.in has partnered with top
+                    companies like HDFC Bank Ltd, DC Bank Ltd, Spicejet, ITC, Zee News etc.
+
+                    TaxManager.in has been awarded as the best financial services company in India by Economic Times ET
+                    Now India Mart Business Leaders of Tomorrow 2013 for its innovative services in E-Filing, Tax and
+                    Compliance Management both for individuals and corporate clients. In 2014 TaxManager.in was
+                    nominated as the upcoming company in Financial Service Space by the same group. The link is <a
+                      href="#">http://www.taxmanager.in/news_awards_may_2014.html</a> Click on the website link to know
+                    more about<a href="#"> www.TaxManager.in</a> and <a href="#"> www.eTaxesIndia.com</a></p>
+
+                  <p><b>Job Description of Client Relationship Executive:</b></p>
+                  <ol>
+                    <li> Responsible for handling clients accounts.</li>
+                    <li> Handling the HNI clients.</li>
+                    <li> Develop and maintain the relationship with existing clients.</li>
+                    <li> Solve the queries of the clients.</li>
+                    <li> Preferred female candidates.</li>
+                  </ol>
+
+                  <p>&nbsp;</p>
+                  <p><b>Desire candidate Profile :</b></p>
+                  <ol>
+                    <li> Must have good verbal and written communication skills.</li>
+                    <li> Preferred B.com / BBA graduate/MBA</li>
+                    <li> Required Experience : 1-2 yr</li>
+                    <li> Fresher's can also apply</li>
+                  </ol>
+                  <p>&nbsp;</p>
+                  <p><b>Thanks & Regards,</b></p>
+                  <p><b>Manisha Sharma</b></p>
+                  <p><b>HR and Admin</b></p>
+                  <p><b>Mobile - 8810317068 / 9315787428</b></p>
+                  <p><b>www.TaxManager.in</b></p>
+                  <p><b>eFile and Manage your Taxes</b></p>
+                  <p><b>Call Center:- +919555331122</b></p>
+                  <p><b>Download our Android App to manage your taxes</b></p>
+                  <a class="link-clr" href="http://www.taxmanager.in/companiesmanager/applynow.html"><button
+                      type="button" class="btn btn-primary pull-left " style="margin-bottom:10px; margin-top:5px;">Apply
+                      Now</button></a>
+
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- End Second Btn-->
+          <!-- End first modal Btn-->
+
+          <a href="http://www.taxmanager.in/companiesmanager/applynow.html">
+            <p">Web Designer</p>
+          </a>
+          <!-- Modal -->
+          <div class="modal fade" id="myModal1" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"></h4>
+                  <p>&nbsp;</p>
+                  <a class="link-clr" href="http://www.taxmanager.in/companiesmanager/applynow.html"><button
+                      type="button" class="btn btn-primary pull-right "
+                      style="margin-bottom:10px; margin-top:5px;">Apply Now</button></a>
+                </div>
+                <div class="modal-body">
+                  <p>Hi</p>
+                  <p>Greetings of the day!!!</p>
+                  <p>TaxManager.in</p>
+                  <p>TaxManager.in is a top leading e-filing of income tax returns and tax management website for
+                    individuals in India and is also an authorized E Return Intermediary from Department of Income Tax
+                    which provides complete tax and compliance management services to both individuals and corporate
+                    clients.
+
+                    www.TaxManager.in is one of the largest and preferred online e-filers in India having customer base
+                    of more than 2 lakhs as verified online account holder. www.TaxManager.in has partnered with top
+                    companies like HDFC Bank Ltd, DC Bank Ltd, Spicejet, ITC, Zee News etc.
+
+                    TaxManager.in has been awarded as the best financial services company in India by Economic Times ET
+                    Now India Mart Business Leaders of Tomorrow 2013 for its innovative services in E-Filing, Tax and
+                    Compliance Management both for individuals and corporate clients. In 2014 TaxManager.in was
+                    nominated as the upcoming company in Financial Service Space by the same group. The link is <a
+                      href="#">http://www.taxmanager.in/news_awards_may_2014.html</a> Click on the website link to know
+                    more about<a href="#"> www.TaxManager.in</a> and <a href="#"> www.eTaxesIndia.com</a></p>
+                  <p><b>Job Responsibilities for HR Manager:</b></p>
+                  <ol>
+                    <li> Overseeing the recruitment process, designing company policies and setting objectives for the
+                      HR team.</li>
+                    <li> Set objectives for the HR team and track progress.</li>
+                    <li> Design and implement company policies that promote a healthy work environment.</li>
+                    <li> Develop compensation and benefits plans.</li>
+                    <li> Support and suggest improvements to the entire recruitment process</li>
+                    <li> Organize learning and development programs.</li>
+                    <li> Maintain HR procedures that comply with labor regulations, confidentiality.</li>
+                    <li> Employees disputes and discussing with Sr. Management on the decisions to be taken.</li>
+                    <li> Understand the needs and requirements of Training and development of staff.</li>
+                  </ol>
+                  <p><b>Desire Candidate Profile :</b></p>
+                  <ol>
+                    <li> Must have good verbal and written communication skills.</li>
+                    <li> Required Experience : 1-4 yr</li>
+                    <li> Must be MBA(HR)</li>
+                    <li> Only Female Candidates</li>
+                  </ol>
+                  <p>&nbsp;</p>
+                  <p><b>Thanks & Regards,</b></p>
+                  <p><b>Manisha Sharma</b></p>
+                  <p><b>HR and Admin</b></p>
+                  <p><b>Mobile / 8810317068 / 9315787428</b></p>
+                  <a href="">
+                    <p><b>www.TaxManager.in</b></p>
+                  </a>
+                  <p><b>eFile and Manage your Taxes</b></p>
+                  <p><b>Call Center:- +919555331122</b></p>
+                  <p><b>Download our Android App to manage your taxes</b></p>
+                  <a class="link-clr" href="http://www.taxmanager.in/companiesmanager/applynow.html"><button
+                      type="button" class="btn btn-primary pull-left " style="margin-bottom:10px; margin-top:5px;">Apply
+                      Now</button></a>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3" style="margin-top: 50px; margin-bottom: 50px;">
+          <h4 class="">Work Experience</h4>
+          <p class="">4-5 Years</p>
+          <p class="">2-4 Years</p>
+          <p class="">1-2 Years</p>
+          <p class="">1-2 Years</p>
+        </div>
+
+        <div class="col-md-3" style="margin-top: 50px; margin-bottom: 50px;">
+          <h4 class="">City</h4>
+          <p class="">New Delhi Naraina Vihar</p>
+          <p class="">New Delhi Naraina Vihar</p>
+          <p class="">New Delhi Naraina Vihar</p>
+          <p class="">New Delhi Naraina Vihar</p>
+        </div>
+
+
+        <div class="col-md-2" style="margin-top: 50px; margin-bottom: 0px;">
+          <h4 class="">Job Type</h4>
+          <p class="">Full Time</p>
+          <p class="">Full Time</p>
+          <p class="">Full Time</p>
+          <p class="">Full Time</p>
+        </div>
+
+        <div class="col-md-1" style="margin-top: 0px; margin-bottom: 10px;">
+          <a class="link-clr" href="http://www.taxmanager.in/companiesmanager/applynow.html"><button type="button"
+              class="btn btn-primary " style="margin-bottom:10px; margin-top:50px;">Apply Now</button></a></br />
+          <a href="http://www.taxmanager.in/companiesmanager/applynow.html"><button type="button"
+              class="btn btn-primary" style="margin-bottom:10px; margin-top:15px;">Apply Now</button></a></br>
+          <a href="http://www.taxmanager.in/companiesmanager/applynow.html"><button type="button"
+              class="btn btn-primary" style="margin-bottom:10px; margin-top:15px;">Apply Now</button></a>
+          <a href="http://www.taxmanager.in/companiesmanager/applynow.html"><button type="button"
+              class="btn btn-primary" style="margin-bottom:10px; margin-top:15px;">Apply Now</button></a>
+        </div>
+
+      </div><!-- End Container-->
+    </div><!-- End Col-->
+    <!--End Mobile View-->
+    <!-- footer  -->
+    <footer>
+
+      <div class="col-md-12 footer-top">
+        <div class="container">
+          <div class="col-md-3" style="margin-top: 50px; margin-bottom: 50px;">
+            <h4>Individuals</h4>
+            <li><a href="TaxFiling/SelfeFiling.html">Tax Returns - Self eFiling</a></li>
+            <li><a href="TaxFiling/CAAssistedeFiling.html">Tax Returns - CA Assisted</a></li>
+            <li><a href="TaxFiling/ITR4.html">Tax Returns - Individual Business/ Professionals</a></li>
+            <li><a href="TaxFiling/NRIReturn.html">Tax Returns - NRI Returns</a></li>
+            <li><a href="TaxFiling/TaxRefund.html">Tax Returns -Tax Refund</a></li>
+            <li><a href="TaxFiling/ITRV.html">Tax Returns - ITR V and 26 AS Tax Credit Check</a></li>
+            <li><a href="TaxManagement/TaxAdvisory.html">Tax Management - Tax Advisory</a></li>
+            <li><a href="TaxManagement/AnnualSubscriptionPackage.html">Tax Management - Annual Subscription Package</a>
+            </li>
+            <li><a href="TaxManagement/CtcOptimizer.html">Tax Management - CTC Optimizer</a></li>
+            <li><a href="TaxManagement/TaxReturnRectification.html">Tax Management - Tax Return Rectification</a></li>
+            <li><a href="TaxManagement/ITNotice.html">Tax Management - IT Notice/ Demandt</a></li>
+            <li><a href="TaxManagement/TaxHistory.html">Tax Management - Know your Tax History</a></li>
+            <li><a href="TaxManagement/PANApplication.html">Tax Management - PAN Application</a></li>
+            <li><a href="TaxManagement/DigitalSignature.html">Tax Management - Digital Signature</a></li>
+          </div>
+
+          <div class="col-md-3" style="margin-top: 50px; margin-bottom: 50px;">
+            <h4>Corporate</h4>
+            <li><a href="Corporate/EmployeeCare.html">Employee Care - Bulk Tax Returns</a></li>
+            <li><a href="Corporate/eForm16.html">E Form 16 Digital Signature/ PayRolls</a></li>
+            <li><a href="Corporate/CorporateTaxManagement.html">Corporate Tax Management</a></li>
+            <li><a href="Corporate/AccountingManagement.html">Accounting Management</a></li>
+            <li><a href="Corporate/TdsManagement.html">TDS Management</a></li>
+            <li><a href="Corporate/ComplianceManagement.html">Compliance Management</a></li>
+            <li><a href="Corporate/CompanyIncorporation.html">Company Incorporation</a></li>
+          </div>
+
+          <div class="col-md-3" style="margin-top: 50px; margin-bottom: 50px;">
+            <h4>Tax Professionals</h4>
+            <li><a href="TaxProfessionals/eFilingGateway.html">E-Filing Gateway </a></li>
+            <li><a href="#">Clients Tax Management Online</a></li>
+          </div>
+
+
+          <div class="col-md-3" style="margin-top: 50px; margin-bottom: 50px;">
+            <h4>Tools</h4>
+            <li><a href="Tools/TaxEstimatorCalculator.html">Tax Estimator Calculator</a></li>
+            <li><a href="Tools/HRACalculator.html">HRA Calculator</a></li>
+            <li><a href="Tools/KnowledgeBank.html">Knowledge Bank</a></li>
+            <li><a href="Tools/ITRVStatus.html">ITR V Status</a></li>
+            <li><a href="Tools/TaxReturnProcess.html">Tax Return Process</a></li>
+            <li><a href="Tools/RefundStatus.html">Refund Status</a></li>
+            <li><a href="Tools/CtcCalculator.html">CTC Calculator</a></li>
+            <li><a href="Tools/FAQs.html">FAQs</a></li>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div class="col-md-12 footer-bottom">
+        <div class="container">
+          <div class="col-md-3" style="margin-top: 20px;">
+            <h4>Follow Us On</h4>
+
+            <i class="fa fa-facebook"></i>
+            &nbsp;
+            <i class="fa fa-twitter"></i>
+            &nbsp;
+            <i class="fa fa-linkedin"></i>
+            &nbsp;
+            <i class="fa fa-youtube"></i>
+          </div>
+          <div class="col-md-3 fb-nav" style="margin-top: 20px;">
+
+
+            <li><a href="http://www.taxmanager.in/home.html">Home</a></li>
+            <li><a href="http://www.taxmanager.in/About_Us.html">About Us</a></li>
+            <li><a href="http://www.taxmanager.in/Privacy-Policy.html">Privacy Policy</a></li>
+
+          </div>
+
+          <div class="col-md-3 fb-nav" style="margin-top: 20px;">
+
+            <li><a href="http://www.taxmanager.in/Inmedia.html">In the Media</a></li>
+            <li><a href="http://www.taxmanager.in/Legal_Disclaimer.html">Legal Disclaimer</a></li>
+            <li><a href="http://www.taxmanager.in/FAQs.html">FAQs</a></li>
+
+          </div>
+          <div class="col-md-3 fb-nav" style="margin-top: 20px;">
+
+
+            <li><a href="http://www.taxmanager.in/Terms_Conditions.html">Terms and Conditions</a></li>
+            <li><a href="AboutUs/SiteMap.html">Site Map</a></li>
+            <li><a href="AboutUs/Security.html">Security</a></li>
+          </div>
+          <br>
+          <div class="col-md-12" style="margin-top: 20px; margin-bottom: 20px; padding-left: 0px !important;">
+            <div class="col-md-12 footer-icons">
+              <p style="margin-top: 20px; font-weight: bold; font-size: 10pt;">Copyrights ? Rising Advisory Services
+                Private Limited.</p>
+
+              <li> <a href="http://www.taxmanager.in/ereturn_letter.pdf" target="_blank"><img
+                    src="images/return.jpg"></a></li>
+              <li> <a href="#"><img src="images/ssllogo.png"></a></li>
+              <li> <a href="#"><img src="images/isologo.png"></a></li>
+            </div>
+
+          </div>
+        </div>
+
+
+    </footer>
+
+
+    <!-- /footer  -->
+
+
+    <!-- Support  -->
+
+    <div class="col-md-12 navbar-fixed-bottom fb">
+      <div class="col-md-6">Call Center Support&nbsp; - <a>+91-9555331122</a></div>
+      <div class="col-md-6">Email HR &nbsp; - <a>hr@eTaxesIndia.com</a></div>
+
+    </div>
+
+
+
+    <div class="container mobilecontact" style="width: 100%; z-index:999">
+
+      <div class="dropup">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Need Help?
+          <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="tel:+919555331122">Call - +91-9555331122</a></li>
+          <li class="divider"></li>
+          <li><a href="mailto:hr@eTaxesIndia.com">eMail - hr@eTaxesIndia.com</a></li>
+
+        </ul>
+      </div>
+    </div>
+
+
+    <!-- /Support  -->
+    <script>
+      $(document).ready(function () {
+        $('[data-toggle="popover"]').popover();
+        $('[data-toggle="popover"]').popover('show');
+      });
+
+      $(document).ready(function () {
+        $('[data-toggle="popover1"]').popover();
+      });
+    </script>
+
+
+
+    <script type="text/javascript">
+      //<![CDATA[
+      WebForm_AutoFocus('txtUserId');//]]>
+    </script>
+
+
+
+  </form>
+
+
+</body>
+
+</html>

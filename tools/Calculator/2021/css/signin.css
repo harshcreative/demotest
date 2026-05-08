@@ -1,0 +1,119 @@
+#signin {
+	width:auto;
+	margin:-1px 0 0 0;
+	position: relative;
+	float:right;
+}
+#topnav {}
+#topnav a.signin {
+	padding:0 0 0 56px;
+	margin:0;
+	width:92px;
+	height:38px;
+	background:url(../images/signin-box.png) no-repeat center;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:14px;
+	font-weight:bold;
+	line-height:38px;
+	color:#FFFFFF;
+	display:block;
+	text-decoration:none;
+}
+#topnav a.signin:hover {
+	background:url(../images/signin-box.png) no-repeat center;
+}
+#topnav a.signin, #topnav a.signin:hover {
+	background:url(../images/signin-box.png) no-repeat center;
+}
+a.signin {
+	position:relative;
+}
+a.signin span {}
+#topnav a.menu-open {
+	background:url(../images/signin-box.png) no-repeat center;
+	padding:0 0 0 56px;
+	margin:0;
+	width:92px;
+	height:38px;
+	display:block;
+}
+#small_signup {}
+a.signin.menu-open span {
+	background:url(../images/signin-box-h.png) no-repeat right;
+	display:block;
+}
+#signin_menu {
+	display:none;
+	background-color:#eeeeee;
+	position:absolute;
+	width:210px;
+	z-index:100;
+	border:solid 1px #aaaaaa;
+	border-width:1px 1px 4px 1px;
+	text-align:left;
+	padding:20px 30px;
+	top: 38px;
+	left:0px;
+}
+#signin_menu input[type=text], #signin_menu input[type=password] {
+	display:block;
+	border:1px solid #aaaaaa;
+	margin:2px 0 0 0;
+	padding:4px;
+	width:200px;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:12px;
+	font-weight:normal;
+	line-height:16px;
+	color:#747272;
+}
+#signin_menu p {
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:12px;
+	font-weight:normal;
+	line-height:16px;
+	color:#747272;
+}
+#signin_menu a {
+	color:#146d28 ;
+}
+#signin_menu label {
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:12px;
+	font-weight:normal;
+	line-height:16px;
+	color:#747272;
+}
+#signin_menu p.remember {
+	padding:10px 0;
+}
+#signin_menu p.forgot, #signin_menu p.complete {
+	clear:both;
+	margin:5px 0;
+}
+#signin_menu p a {
+	color:#146d28 !important;;
+}
+#signin_menu p {padding:5px 0;}
+#signin_submit {
+	background:#1d7e33;
+	border:1px solid #1d7e33;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	padding:5px 10px 5px;
+	margin:0 5px 0 0;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	line-height:18px;
+	color:#FFF;
+}
+#signin_submit::-moz-focus-inner {
+	padding:0;
+	border:0;
+}
+#signin_submit:hover, #signin_submit:focus {
+	background-position:0 -5px;
+	cursor:pointer;
+}

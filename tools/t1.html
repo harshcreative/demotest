@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function ShowValues() {
+            var cdata = JSON.stringify({
+                gst: document.getElementById("gstin").value
+            });
+
+
+            $.ajax({
+                type: "POST",
+                url: "Contact.aspx/f2",
+                data: cdata,
+                contentType: "application/json; charset=utf-8",
+
+                success: OnSuccess,
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        }
+
+        function OnSuccess(response) {
+            document.getElementById("content").innerHTML = response.d;
+
+        }
+    </script>
+
+
+</head>
+
+<body>
+
+    <input type="text" id="gstin" name="gstin" />
+    <input id="btnGetTime" type="button" value="Show Current Time" onclick="ShowValues()" />
+
+    <span id="content">
+
+    </span>
+
+</body>
+
+</html>

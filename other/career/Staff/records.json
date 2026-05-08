@@ -1,0 +1,56 @@
+[
+  {
+    "empid": "TMCRE00548",
+    "pos": "Customer Relationship Executive",
+    "name": "Sanya",
+    "mail": "TaxManager.sanya@gmail.com",
+    "phone": "+91 8448371753",
+    "img1": "sanya1.jpeg"
+  },
+
+  {
+    "empid": "TMCRE00414",
+    "pos": "Sr. Customer Relationship Executive",
+    "name": "Bhawna",
+    "mail": "TaxManager.bhawna@gmail.com",
+    "phone": "+91 8368353454",
+    "img1": "bhawna.jpeg"
+
+  },
+  {
+    "empid": "TMTL00434",
+    "pos": "Team Leader",
+    "name": "Pooja Bhatiya",
+    "mail": "TaxManagerpooja94@gmail.com",
+    "phone": "+91 9773887715",
+    "img1": "pooja.jpeg"
+
+  },
+  {
+    "empid": "TMCRE0523",
+    "pos": "Customer Relationship Executive",
+    "name": "Khushboo Singh",
+    "mail": "TaxManager.khushboo@gmail.com",
+    "phone": "+91 7042795845",
+    "img1": "khushboo.jpeg"
+
+  },
+  {
+    "empid": "TMSALES00124",
+    "pos": "Sales & Accounts Manager",
+    "name": "Sachin Jha",
+    "mail": "TaxManager.sachin@gmail.com",
+    "phone": "+91 8130682152",
+    "img1": "sachin.jpeg"
+
+  },
+  {    
+      "empid": "TMOP00426",
+      "pos": "Operations Administrator",
+      "name": "Nitesh Sharma",
+      "mail": "taxmanager.nitesh@gmail.com",
+      "phone": "+91 9399483933",
+      "img1": "nitesh.jpeg"   
+}
+
+]

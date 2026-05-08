@@ -1,0 +1,2356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>TaxManager | CA Assisted Tax Filing – Professional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+         *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      a{
+        text-decoration: none;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+
+        /* ── Top brand bar ── */
+        .brand-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1.25rem 2rem;
+            border-bottom: 1px solid #edf2f7;
+            background: #fff;
+        }
+
+        .brand-bar-icon {
+            width: 36px;
+            height: 36px;
+            background: #15803d;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .brand-bar-name {
+            font-size: 25px;
+            font-weight: 800;
+            color: #15803d;
+            letter-spacing: -0.3px;
+        }
+
+        .brand-bar-name span {
+            color: #072CAA;
+        
+        }
+
+        .brand-bar-tagline {
+            margin-left: auto;
+            font-size: 0.72rem;
+            /* color: #64748b; */
+            color: #000;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .brand-bar-tagline i {
+            color: #15803d;
+        }
+
+        /* ── Card ── */
+        .form-card {
+            width: 100%;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+            border: 1px solid rgba(226, 232, 240, 0.6);
+        }
+
+        /* ── Step indicator ── */
+        .step-bar {
+            background: #f8faf9;
+            border-bottom: 1px solid #edf2f7;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .step-num {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #15803d;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .step-num.inactive {
+            background: #e2e8f0;
+            color: #94a3b8;
+        }
+
+        .step-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .step-label.inactive {
+            color: #94a3b8;
+        }
+
+        .step-connector {
+            flex: 1;
+            height: 1px;
+            background: #e2e8f0;
+            margin: 0 0.75rem;
+        }
+
+        /* ── Panels ── */
+        .income-panel-modern {
+            padding: 2rem 1.5rem;
+            background: #ffffff;
+            border-right: 1px solid #edf2f7;
+            height: 100%;
+        }
+
+        .form-panel-modern {
+            padding: 2rem 1.5rem;
+            background: #fefefe;
+            height: 100%;
+        }
+
+        /* ── Section titles ── */
+        .section-title-modern {
+            font-size: 1.09rem;
+            font-weight: 700;
+            letter-spacing: -0.2px;
+            margin-bottom: 1.4rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title-icon {
+            width: 34px;
+            height: 34px;
+            background: #f0fdf4;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #15803d;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .section-subtitle {
+            font-size: 0.72rem;
+            color: #64748b;
+            font-weight: 400;
+            margin-top: 0.1rem;
+        }
+
+        /* ── Toggle list ── */
+        .toggle-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toggle-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.85rem 1rem;
+            border-radius: 12px;
+            gap: 1rem;
+            margin-bottom: 0.4rem;
+            border: 1px solid transparent;
+            transition: background 0.15s, border-color 0.15s;
+            cursor: pointer;
+        }
+
+        .toggle-item:hover {
+            background: #f8fffe;
+            border-color: #d1fae5;
+        }
+
+        .toggle-item.active-toggle {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+        }
+
+        .toggle-icon {
+            width: 36px;
+            height: 36px;
+            background: #f0fdf4;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #15803d;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .toggle-text {
+            flex: 1;
+            font-weight: 500;
+            color: #1e293b;
+            font-size: 0.89rem;
+            line-height: 1.4;
+        }
+
+        /* ── Toggle switch ── */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 23px;
+            flex-shrink: 0;
+        }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #cbd5e1;
+            transition: 0.2s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 17px;
+            width: 17px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.2s;
+            border-radius: 50%;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+        }
+        input:checked + .slider { background: #15803d; }
+        input:checked + .slider:before { transform: translateX(21px); }
+
+        /* ── Form labels & inputs ── */
+        .form-label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+            color: #000;
+            letter-spacing: 0.2px;
+            display: block;
+        }
+
+        .form-control-custom {
+            border-radius: 13px !important;
+            border: 1.5px solid #e2e8f0;
+            padding: 0.68rem 1rem 0.68rem 2.7rem;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            background: white;
+            width: 100%;
+            font-family: 'Inter', sans-serif;
+            color: #0f172a;
+        }
+
+        .form-control-custom:focus {
+            border-color: #15803d;
+            box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.1);
+            outline: none;
+        }
+
+        .form-control-custom::placeholder { color: #b0bac7; }
+
+        .input-icon {
+            position: relative;
+            width: 100%;
+        }
+
+        .input-icon i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 0.9rem;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* ── Phone group ── */
+        .phone-group {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+        .phone-group select {
+            width: 80px;
+            border-radius: 10px 0 0 10px;
+            border: 1.5px solid #e2e8f0;
+            border-right: none;
+            padding: 0.58rem 0.5rem;
+            font-family: 'Inter', sans-serif;
+            background: white;
+            cursor: pointer;
+            outline: none;
+            font-weight: 500;
+            color: #0f172a;
+            font-size: 0.85rem;
+        }
+        .phone-group select:focus { border-color: #15803d; }
+        .phone-group input {
+            flex: 1;
+            border-radius: 0 10px 10px 0;
+            border: 1.5px solid #e2e8f0;
+            padding: 0.48rem 0.75rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: #0f172a;
+            outline: none;
+        }
+        .phone-group input:focus {
+            border-color: #15803d;
+            box-shadow: 0 0 0 3px rgba(21,128,61,0.1);
+            z-index: 1;
+        }
+        .phone-group input::placeholder { color: #b0bac7; }
+
+        /* ── Submit button ── */
+        .btn-submit {
+            background: #072CAA;
+            border: none;
+            border-radius: 10px;
+            padding: 0.62rem 1.1rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: white;
+            width: 100%;
+            transition: all 0.2s;
+            cursor: pointer;
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+        }
+        .btn-submit:hover {
+            background: #072CAA;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px -8px rgba(21, 128, 61, 0.3);
+        }
+
+        /* ── Trust row ── */
+        .trust-row {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 0.6rem;
+        }
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.63rem;
+            color: #64748b;
+            font-weight: 500;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 50px;
+            padding: 3px 9px;
+        }
+        .trust-badge i { color: #15803d; font-size: 0.63rem; }
+
+        /* ── Validation errors ── */
+        .validation-error {
+            color: #dc2626;
+            font-size: 0.68rem;
+            display: none;
+            margin-top: 0.3rem;
+            margin-left: 0.75rem;
+        }
+
+        /* ── Divider ── */
+        .panel-divider {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin: 1rem 0 0.75rem;
+        }
+        .panel-divider-line { flex: 1; height: 1px; background: #edf2f7; }
+        .panel-divider-text { font-size: 0.65rem; color: #94a3b8; font-weight: 600; letter-spacing: 0.4px; }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .income-panel-modern { border-right: none; border-bottom: 1px solid #edf2f7; }
+            .income-panel-modern, .form-panel-modern { padding: 1.5rem 0.6rem; }
+            .step-bar { padding: 0.75rem 1rem; gap: 0; }
+            .step-label { display: none; }
+            .brand-bar-tagline { display: none; }
+            .toggle-item { 
+    padding: 0.85rem 0.4rem;
+
+            }
+        }
+
+
+
+
+
+
+
+        /* navbar css section */ 
+        .container-modern { 
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---------- HEADER (MODERN, NO BOOTSTRAP) ---------- */
+        .site-header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px); 
+            z-index: 1000; 
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
+            /* padding: 16px 0;  */
+        }
+
+        /* logo */
+        .brand-logo {
+            flex-shrink: 0;
+            line-height: 0;
+        }
+        .brand-logo img { 
+            width: 200px; 
+            transition: transform 0.2s ease;
+        }
+       
+
+        /* desktop navigation */
+        .nav-desktop {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+        .nav-list {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            padding: 13px 0px 0px 0px;
+        }
+        .nav-item {
+            position: relative;
+            list-style: none;
+        }
+        .nav-link {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: #000;
+            padding: 8px 0;
+            transition: color 0.2s, border-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            letter-spacing: -0.2px;
+        }
+        .nav-link i {
+            font-size: 0.8rem;
+            transition: transform 0.2s;
+        }
+        .nav-item:hover .nav-link {
+            color: #1f4f9e;
+        }
+        .nav-item:hover .nav-link i {
+            transform: rotate(180deg);
+        }
+
+        /* dropdown menu (desktop) */
+        .dropdown-menu {
+            position: absolute;
+            top: 42px;
+            left: 0;
+            display: block;
+            background: #ffffff;
+            min-width: 320px;
+            border-radius: 20px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.05);
+            padding: 12px 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            z-index: 110;
+            border: 1px solid #eef2f8;
+        }
+         
+        .nav-item.dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(4px);
+        }
+        .dropdown-menu li {
+            width: 100%;
+        }
+        .dropdown-menu .dropdown-link {
+            display: block;
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #000;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .dropdown-menu .dropdown-link:hover {
+            background: #f1f5f9;
+            color: #1f4f9e;
+            padding-left: 26px;
+        }
+
+        /* login / register button */
+        .login-register-btn {
+            background: #0f3b5f;
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.25s;
+            box-shadow: 0 2px 6px rgba(15, 59, 95, 0.15);
+        }
+        .login-register-btn:hover {
+            background: #0b2e48;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(15, 59, 95, 0.2);
+        }
+
+        /* support link */
+        .support-link {
+            font-weight: 500;
+        }
+        .support-link i {
+            font-size: 0.8rem;
+            margin-left: 4px;
+        }
+
+        /* mobile menu toggle (hidden on desktop) */
+        .mobile-menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            border-radius: 40px;
+            transition: background 0.2s;
+        }
+        .mobile-menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background-color: #0f172a;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        /* ----- MOBILE SIDEBAR (offcanvas style) ----- */
+        .mobile-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(3px);
+            z-index: 1100;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .mobile-panel {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: min(85%, 320px);
+            height: 100vh;
+            background: #ffffff;
+            z-index: 1200;
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+            transition: right 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            display: flex;
+            flex-direction: column;
+            padding: 28px 20px 32px;
+            overflow-y: auto;
+        }
+        .mobile-panel.active {
+            right: 0;
+        }
+        .mobile-panel-header {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 32px;
+        }
+        .close-mobile-btn {
+            background: #f1f5f9;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .close-mobile-btn:hover {
+            background: #e2e8f0;
+        }
+        .mobile-nav-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .mobile-nav-item {
+            border-bottom: 1px solid #edf2f7;
+            padding-bottom: 12px;
+        }
+        .mobile-nav-link {
+            font-weight: 600;
+            font-size: 1.05rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #0f172a;
+        }
+        .mobile-dropdown-icon {
+            cursor: pointer;
+            background: #f8fafc;
+            width: 32px;
+            height: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 40px;
+            transition: 0.2s;
+        }
+        .mobile-submenu {
+            display: none;
+            margin-top: 14px;
+            margin-left: 12px;
+            padding-left: 12px;
+            border-left: 2px solid #cbd5e1;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .mobile-submenu a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #334155;
+            padding: 6px 0;
+            display: block;
+        }
+        .mobile-submenu a:hover {
+            color: #1f4f9e;
+        }
+        .mobile-contact {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .mobile-contact a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+            color: #2c3e66;
+        }
+        .mobile-login-btn {
+            background: #0f3b5f;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 60px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        /* ---------- HERO SECTION (redesigned) ---------- */
+        /* .hero-section {
+            background: linear-gradient(135deg, #f1f9ff 0%, #ffffff 100%);
+            padding: 60px 0 80px;
+            border-bottom: 1px solid #e6edf4;
+        } */
+       
+
+          @media (max-width:767px) {
+        .hero-section{
+            display: none !important;
+        }
+        .mobile-hero-section{
+            display: block !important;
+        }
+    }
+
+
+     .mobile-hero-section{
+            display: none;
+        }
+
+         .hero-section{
+            display: block;
+        }
+
+
+
+
+        
+        @media (max-width: 768px) {
+            .nav-desktop {
+                display: none;
+            }
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            .header-inner {
+                padding: 12px 0;
+            }
+          
+        }
+
+        /* small extra tweaks */
+        @media (max-width: 480px) {
+            .container-modern {
+                padding: 0 20px;
+            }
+           
+        }
+
+        /* additional styling */
+        .pill-badge {
+            display: inline-block;
+            background: #eef2ff;
+            border-radius: 40px;
+            padding: 4px 14px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #1f4f9e;
+            margin-bottom: 16px;
+        }
+        .btn-outline-light {
+            background: transparent;
+            border: 1px solid #cbd5e1;
+        }
+
+
+            .userco img{
+                width: 40px;
+                height: 40px;
+            }
+         
+        /* navbar css section */
+
+
+
+
+
+        /* LIST OF DOCUMENT SECTION */
+      .document-request-module {
+    display: flex;
+    justify-content: center;
+    padding: 30px 15px !important; 
+}
+
+.request-card { 
+    border-radius: 18px;
+    background: linear-gradient(135deg, #ffffff, #f8faff);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    padding: 25px 11px !important;
+    transition: 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+    width: calc(100% - 35%);
+}
+
+.request-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+}
+
+.title-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.doc-badge-icon {
+    width: 50px;
+    height: 50px;
+    background: #293595;
+    color: #fff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 6px 15px rgba(41, 53, 149, 0.3);
+}
+
+.main-headline {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1c1c1c;
+}
+
+.doc-highlight {
+    color: #293595;
+    font-weight: 700;
+}
+
+.cta-link-modern {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #293595;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.cta-link-modern:hover {
+    background: #1f2a7a;
+    color: white;
+    transform: translateX(4px);
+}
+
+.cta-link-modern i {
+    transition: 0.3s;
+}
+
+.cta-link-modern:hover i {
+    transform: translateX(5px);
+}
+
+        /* LIST OF DOCUMENT SECTION */
+
+
+
+
+/* how it work second  */
+ .how-it-works-section { 
+    padding: 70px 0;
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #0d1b3d;
+}
+
+.section-subtitle {
+    color: #6c757d;
+    margin-top: 8px;
+    font-size: 15px;
+}
+
+/* CARD */
+.step-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 20px 15px;
+    text-align: left;
+    height: 100%;
+    transition: 0.3s;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border: 1px solid #eee;
+}
+
+.step-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* ICON BOX */
+.icon-box {
+    background: #e8f0ea;
+    border-radius: 12px;
+    padding: 30px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+  
+    width: 100%;
+    text-align: center;
+    color: #2e7d32;
+}
+
+
+.icon-box i{
+    font-size: 29px;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #F5FCF5;
+}
+
+/* TEXT */
+.step-card h5 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #111;
+}
+
+.step-card p {
+   font-size: 14px;
+    line-height: 25px;
+    color: #000;
+    font-weight: 400;
+}
+
+/* BUTTON */
+.apply-btn {
+    background: #1e7e34;
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.apply-btn:hover {
+    background: #166628;
+}
+/* how it work second  */
+
+
+
+
+
+        /* how it work  */
+        
+        /* main container */
+        .enhanced-steps-wrapper { 
+            margin: 0 auto;
+        }
+
+        /* glassmorphic card container */
+        .glass-workflow {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 2.5rem;
+            box-shadow: 0 25px 45px -18px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.02);
+            padding: 2.5rem 2rem;
+            transition: all 0.3s;
+            border: 1px solid gainsboro;
+        }
+
+        /* header area with decorative elements */
+        .enhanced-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .pill-badge-new {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(95deg, #e0f0ec, #cbe5e0);
+            color: #136054;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.4rem 1.2rem;
+            border-radius: 100px;
+            letter-spacing: 0.3px;
+            margin-bottom: 1rem;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .main-heading-glow {
+            font-size: 2.5rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #000, #000);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+
+        .main-heading-glow span {
+            background: linear-gradient(135deg, #000, #000);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            position: relative;
+        }
+
+        .sub-headline-modern {
+            color: #526e82;
+            max-width: 600px;
+            margin: 1rem auto 0;
+            font-size: 1rem;
+            font-weight: 500;
+            background: rgba(255,255,240,0.5);
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Enhanced row layout — no scroll, flexible wrap */
+        .steps-row-luxury {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.8rem;
+            position: relative;
+            margin-top: 1rem;
+        }
+
+        /* step card — luxurious design */
+        .step-card-premium {
+            flex: 1 1 200px;
+            min-width: 190px;
+            max-width: 245px;
+            background: #ffffff;
+            border-radius: 1.8rem;
+            padding: 1.6rem 0.9rem;
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(31, 110, 98, 0.12);
+            box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.05);
+            position: relative;
+            backdrop-filter: blur(2px);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        /* elegant hover */
+        .step-card-premium:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #cde9e2;
+            box-shadow: 0 28px 40px -18px rgba(31, 110, 98, 0.25);
+            background: #ffffff;
+        }
+
+        /* connector line between cards (desktop only) */
+        @media (min-width: 900px) {
+            .steps-row-luxury {
+                position: relative;
+            }
+            .step-card-premium:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                right: -1.9rem;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 32px;
+                height: 2px;
+                background: linear-gradient(90deg, #9bc2b5, #c2ded5);
+                border-radius: 4px;
+                pointer-events: none;
+            }
+            .step-card-premium {
+                position: relative;
+            }
+        }
+
+        /* marker: number + icon premium */
+        .marker-premium {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.9rem;
+            margin-bottom: 1.2rem;
+            width: 100%;
+        }
+
+        .step-number-glow {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(145deg, #eef6f3, #e2f0eb);
+            border-radius: 28px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #072CAA;
+            transition: all 0.3s;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.02), 0 4px 8px rgba(0,0,0,0.02);
+        }
+
+        .step-card-premium:hover .step-number-glow {
+            background: linear-gradient(135deg, #072CAA, #0b2e48);
+            color: white;
+            box-shadow: 0 8px 14px -8px rgba(31, 110, 98, 0.4);
+            transform: scale(0.98);
+        }
+
+        .step-icon-premium {
+            font-size: 22px;
+            color: #072CAA;
+            background: rgba(39, 131, 113, 0.08);
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 30px;
+            transition: 0.2s;
+        }
+
+        .step-card-premium:hover .step-icon-premium {
+            background: #072CAA;
+            color: white;
+            transform: rotateY(0deg) scale(1.02);
+        }
+
+        /* text content - exact original wording */
+        .step-text-premium {
+            font-weight: 600;
+            font-size: 0.92rem;
+            line-height: 1.45;
+            color: #153e4b;
+            margin-bottom: 0.9rem;
+            flex: 1;
+            letter-spacing: -0.2px;
+        }
+
+        .step-hint-premium {
+            font-size: 0.7rem;
+            color: #6f8aa3;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-top: 1px solid #e9f0f5;
+            padding-top: 0.7rem;
+            width: 100%;
+            font-weight: 500;
+        }
+
+        .step-hint-premium i {
+            font-size: 0.7rem;
+            color: #278371;
+        }
+
+        /* elegant footer note */
+        .footer-support {
+            text-align: center;
+            margin-top: 2.5rem;
+            font-size: 0.75rem;
+            color: #6f8ba3;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            border-top: 1px solid rgba(100, 130, 120, 0.15);
+            padding-top: 1.5rem;
+        }
+        .support-badge {
+            background: #eff6f3;
+            padding: 0.3rem 1rem;
+            border-radius: 60px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+
+        /* responsive adjustments */
+        @media (max-width: 1050px) {
+            .glass-workflow {
+                padding: 2rem 1.5rem;
+            }
+            .step-card-premium {
+                min-width: 175px;
+                padding: 1.2rem 1rem;
+            }
+            .main-heading-glow {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 750px) {
+            .steps-row-luxury {
+                gap: 1.2rem;
+            }
+            .step-card-premium {
+                max-width: 280px;
+                flex: 1 1 45%;
+            }
+            .step-card-premium:not(:last-child)::after {
+                display: none;
+            }
+            .request-card {
+                width: calc(100% - 0px);
+            }
+        }
+
+        @media (max-width: 580px) {
+            .steps-row-luxury {
+                flex-direction: column;
+                align-items: center;
+            }
+            .step-card-premium {
+                max-width: 340px;
+                width: 100%;
+            }
+            .main-heading-glow {
+                font-size: 2rem;
+            }
+        }
+
+        /* entrance animation */
+        .step-card-premium {
+            opacity: 0;
+            animation: elegantRise 0.5s forwards;
+        }
+        .step-card-premium:nth-child(1) { animation-delay: 0.05s; }
+        .step-card-premium:nth-child(2) { animation-delay: 0.1s; }
+        .step-card-premium:nth-child(3) { animation-delay: 0.15s; }
+        .step-card-premium:nth-child(4) { animation-delay: 0.2s; }
+        .step-card-premium:nth-child(5) { animation-delay: 0.25s; }
+
+        @keyframes elegantRise {
+            0% {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* small tweak for connector visibility */
+        @media (min-width: 901px) and (max-width: 1150px) {
+            .step-card-premium:not(:last-child)::after {
+                right: -1rem;
+                width: 18px;
+            }
+        }
+        /* how it work  */
+
+
+
+
+
+
+        /* footer section css  */
+        
+
+/* footer start now */
+
+.footer-end li a {
+    color: black;
+    font-family: 'Vazirmatn', sans-serif !important;
+}
+
+footer ul li a {
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+
+
+
+/* footer css */
+
+
+footer {
+    background-color: rgb(32, 31, 31);
+    position: relative;
+    padding: 50px 0px 0px;
+}
+
+footer h4,
+.sitemapganerated .footer_menu_Sec h4 {
+    color: white;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+    border-bottom: 2px solid rgb(255, 193, 7);
+    width: max-content;
+    padding-bottom: 5px;
+    margin-top: 30px;
+    font-size: 16px;
+}
+
+footer h5,
+.sitemapganerated .footer_menu_Sec h5 {
+    color: rgb(255, 193, 7);
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+
+footer ul,
+.sitemapganerated .footer_menu_Sec ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    position: relative;
+}
+
+footer ul li,
+.sitemapganerated .footer_menu_Sec ul li {
+    margin: 0px 0px 5px;
+    display: inline-block;
+    width: 100%;
+    transition: 0.5s linear;
+    padding-left: 5px;
+}
+
+footer ul li a,
+.sitemapganerated .footer_menu_Sec ul li a {
+    color: white;
+    font-weight: 400;
+    font-size: 12px;
+    width: 100%;
+    display: inline-block;
+    padding: 5px 0px;
+    border-radius: 4px;
+    transition: 0.5s linear;
+}
+
+footer .footer_menu_Sec,
+.sitemapganerated .footer_menu_Sec {
+    width: 100%;
+    height: unset;
+    overflow: hidden auto;
+}
+
+footer .footer_menu_Sec:first-child h5,
+footer .footer_menu_Sec:first-child h4 {
+    margin-top: 0px;
+}
+
+ul.social-mediased li,
+.secondfooter li {
+    display: inline-block;
+    width: auto;
+    margin: 0px 5px 0px 0px;
+    padding: 0px 5px 0px 0px;
+    border-right: 2px solid white;
+    line-height: 10px;
+    background: unset;
+}
+
+footer h2 {
+    color: white;
+    font-size: 14px;
+    margin: 0px;
+    position: relative;
+    display: inline-block;
+    line-height: unset;
+}
+
+footer .row:first-child {
+    margin-bottom: 0px;
+}
+
+.copyright {
+    position: relative;
+    margin: 0px;
+    padding: 5px 0px;
+    background: rgb(51, 51, 51);
+}
+
+.copyright p {
+    padding: 0px;
+    text-align: center;
+    font-size: 13px;
+    color: rgb(255, 255, 255);
+    margin: 0px;
+    line-height: unset;
+}
+
+.second-footer {
+    border-top: unset;
+    padding-top: 15px;
+    margin-top: 0px;
+    padding-bottom: 15px;
+}
+
+ul.social-mediased li:last-child,
+.secondfooter li:last-child {
+    border-right: unset;
+}
+
+.secondfooter .col-md-3 {
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: start;
+    align-items: flex-start;
+}
+
+ul.social-mediased li span {
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+footer .footer_menu_Sec:last-child {
+    height: unset;
+}
+
+footer ul li:hover a {
+    transition: 0.5s linear;
+    color: green;
+    font-weight: 600;
+}
+
+footer ul li a span {
+    margin-right: 5px;
+}
+
+.secondfooter li a {
+    padding: 0px;
+}
+
+span#siteseal {
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 26px;
+    display: block;
+    text-align: left;
+}
+
+span#siteseal img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin: 0px;
+    text-align: left;
+    object-position: left center;
+}
+
+.support_sec_are a {
+    background: rgb(255, 193, 7);
+    border-radius: 4px;
+    padding: 5px 10px;
+    color: rgb(32, 31, 31);
+    font-weight: bold;
+    font-size: 11px;
+    width: 190px;
+}
+
+footer .catifications li,
+.sitemapganerated .catifications li {
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
+    position: relative;
+    width: max-content;
+}
+
+footer .catifications li a,
+.sitemapganerated .catifications li a {
+    width: 55px;
+    height: 55px;
+    margin: 0px;
+    padding: 0px;
+    background: rgb(0, 60, 169);
+    border-radius: 50%;
+    position: relative;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+footer .catifications li a img,
+.sitemapganerated .catifications li a umg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    filter: drop-shadow(black 2px 2px 4px);
+}
+
+
+/*-- Group branding --*/
+
+.groupbrand {
+    position: relative;
+    margin: 30px 0px 0px;
+    padding: 10px 0px;
+    display: inline-block;
+    width: 100%;
+    background: #18171736;
+    border: 1px solid white;
+    border-right: unset;
+    border-left: unset;
+}
+
+.groupbrand p {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: 100%;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 600;
+    align-items: center;
+    justify-content: space-between;
+    letter-spacing: 0.5px;
+}
+
+.groupbrand p a {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    border-left: 2px solid #fff;
+    padding-left: 20px;
+    text-align: center;
+    width: 100%;
+    line-height: 15px;
+}
+
+.groupbrand p span {
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+ 
+        /* footer section css  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+    
+
+
+
+<header class="site-header">
+    <div class="container  container-modern">
+        <div class="header-inner">
+            <!-- brand logo (new class) -->
+            <div class="brand-logo">
+                <a href="#" aria-label="TaxManager home">
+                    <img src="https://www.TaxManager.in/newsite/images/logo.png" alt="TaxManager modern logo">
+                </a>
+            </div>
+
+            <!-- desktop navigation (redesigned classes) -->
+            <div class="nav-desktop">
+                <ul class="nav-list">
+                    <!-- CA Assisted Packages dropdown -->
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">
+                            CA Assisted Packages <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-link">CA Assisted e-Filing - Salaried</a></li>
+                            <li><a href="#" class="dropdown-link">CA Assisted e-Filing - Salar over Rs 50 Lakhs</a></li>
+                            <li><a href="#" class="dropdown-link">CA Assisted e-Filing - Capital Gains (Equity & MF Sale)</a></li>
+                            <li><a href="#" class="dropdown-link">CA Assisted e-Filing - Capital Gains (Property Sale)</a></li>
+                            <li><a href="#" class="dropdown-link">Professional/ Self Employed</a></li>
+                            <li><a href="#" class="dropdown-link">Foreign Income</a></li>
+                            <li><a href="#" class="dropdown-link">NRI Tax Returns - Other Income – FD Interest etc</a></li>
+                            <li><a href="#" class="dropdown-link">NRI Tax Returns - Capital Gains (Equity & MF Sale)</a></li>
+                            <li><a href="#" class="dropdown-link">NRI Tax Returns - Capital Gains (Property Sale)</a></li>
+                            <li><a href="#" class="dropdown-link">Annual Subscription Package</a></li>
+                        </ul>
+                    </li>
+                    <!-- Support Link (simple) -->
+                    <li class="nav-item">
+                        <a href="#" class="nav-link support-link">Support <i class="fas fa-headset"></i></a>
+                    </li>
+                    <li class="nav-item">
+                       <div class="userco">
+                    <a href="/login/login.aspx">
+                        <span><img src="Images/user.webp" alt="user-icon"></span>
+                    </a>
+                </div>
+                    </li>
+                   
+                </ul>
+                  
+            </div>
+
+            <!-- mobile hamburger (new class) -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- mobile panel (full offcanvas style) -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-panel" id="mobilePanel">
+    <div class="mobile-panel-header">
+        <button class="close-mobile-btn" id="closeMobilePanel"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="mobile-nav-list">
+        <!-- CA Assisted Packages with dropdown toggle -->
+        <div class="mobile-nav-item">
+            <div class="mobile-nav-link">
+                <span>CA Assisted Packages</span>
+                <span class="mobile-dropdown-icon" data-dropdown="mobDropdown1"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="mobile-submenu" id="mobDropdown1">
+                <a href="#">CA Assisted e-Filing - Salaried</a>
+                <a href="#">CA Assisted e-Filing - Salar over Rs 50 Lakhs</a>
+                <a href="#">CA Assisted e-Filing - Capital Gains (Equity & MF Sale)</a>
+                <a href="#">CA Assisted e-Filing - Capital Gains (Property Sale)</a>
+                <a href="#">Professional/ Self Employed</a>
+                <a href="#">Foreign Income</a>
+                <a href="#">NRI Tax Returns - Other Income – FD Interest etc</a>
+                <a href="#">NRI Tax Returns - Capital Gains (Equity & MF Sale)</a>
+                <a href="#">NRI Tax Returns - Capital Gains (Property Sale)</a>
+                <a href="#">Annual Subscription Package</a>
+            </div>
+        </div>
+        <div class="mobile-nav-item">
+            <div class="mobile-nav-link">
+                <a href="#" style="flex:1">Support</a>
+            </div>
+        </div>
+        <div class="mobile-login-btn">
+            <i class="fas fa-lock"></i> Login / Register
+        </div>
+        <!-- contact info same as original redesign -->
+        <div class="mobile-contact">
+            <a href="tel:+919555331122"><i class="fas fa-mobile-alt"></i> +91 95553 31122</a>
+            <a href="mailto:Support@Taxmanager.in"><i class="fas fa-envelope"></i> Support@TaxManager.in</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- hero section  -->
+ <section class="hero-section ">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <img src="/images/2026-update-image/efile-banner.png" class="img-fluid ps-3" alt="">
+            </div>
+        </div>
+    </div>
+ </section>
+ <section class="mobile-hero-section ">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <img src="/images/2026-update-image/mobile-banner.png" class="img-fluid " alt="">
+            </div>
+        </div>
+    </div>
+ </section>
+<!-- hero section  -->
+
+
+<style>
+  
+    
+</style>
+
+
+
+
+
+
+
+<!-- form-card section start here -->
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-11 col-xl-8">
+                <div class="form-card">
+                    <form name="form1" method="post" action="CAAssistedSalary.aspx" onsubmit="javascript:return WebForm_OnSubmit();" id="form1">
+
+                        <!-- ASP.NET hidden fields (exact copy - DO NOT REMOVE) -->
+                        <div><input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" /><input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" /><input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" /><input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTAyNjIyMDU3MmQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgYFDFNhbGFyeUluY29tZQUOU2FsYXJ5SW5jb21lNTAFCEhQSW5jb21lBQpTaGFyZVRyYW5zBQpQcm9mSW5jb21lBQhEaXJlY3Rvcis2sntWYXuM3oCscu+lkPk3EbgB" /></div>
+                        <script type="text/javascript">//<![CDATA[ var theForm = document.forms['form1']; if (!theForm) { theForm = document.form1; } function __doPostBack(eventTarget, eventArgument) { if (!theForm.onsubmit || (theForm.onsubmit() != false)) { theForm.__EVENTTARGET.value = eventTarget; theForm.__EVENTARGUMENT.value = eventArgument; theForm.submit(); } } //]]></script>
+                        <script src="/WebResource.axd?d=8VMvl2wvO2lEyDFQfHj-o3HtlXbA313R-cz8tBqsUMIIbAVUl4YVJQl2YAEhpyNEvbqzzjR0N1c34EXaThC9ysaOby01&amp;t=638314100908353130" type="text/javascript"></script>
+                        <script src="/WebResource.axd?d=vZr9f2I-3Otc3ArbGrGsi95VzcnOdyZmklP6fduBdubj_02WKmekFr1gstU6bMn07z48k8BSkhwXfI6C0LC3Ck-ls5M1&amp;t=638314100908353130" type="text/javascript"></script>
+                        <script src="/WebResource.axd?d=1VLr0WZ0cIYXoHFJGfMKE_dSC-fEDDAXjraC_kSurNNZEoxpMaPfWjsgbXnfQ-zP2jJ35TXafq9798Bh9nsV273IJ6U1&amp;t=638314100908353130" type="text/javascript"></script>
+                        <div><input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="D9A8684C" /><input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWDQKoytC5DgK+qd3gBgKy+5j/DALzifn7BAKY9semDAKwg/PBBgLun5vbBAKHh6WhBALyvoPgAgKzmcmVDAKVkdXcDgLh1JPwAwKM54rGBoz5YDh3XBNMSt+jyl6771xIMMAG" /></div>
+
+                        <!-- Brand bar -->
+                        <!-- <div class="brand-bar">
+                            <div class="brand-logo" style="display:flex;align-items:center;gap:10px;">
+                                <div class="brand-bar-icon"><i class="fa-solid fa-calculator"></i></div>
+                                <div class="brand-bar-name">Tax<span>Manager</span></div>
+                            </div>
+                            <div class="brand-bar-tagline">
+                                <i class="fa-solid fa-shield-halved"></i> CA-Assisted &amp; Secure Filing
+                            </div>
+                        </div> -->
+
+                        <!-- Step indicator -->
+                 
+
+                        <div class="row g-0">
+
+                            <!-- ── Income Information Panel ── -->
+                            <div class="col-md-6">
+                                <div class="income-panel-modern">
+                                    <div class="section-title-modern">
+                                        <div class="section-title-icon"><i class="fa-solid fa-calculator"></i></div>
+                                        <div>
+                                            Income Information
+                                            <div class="section-subtitle">Select all that apply to you</div>
+                                        </div>
+                                    </div>
+
+                                    <ul class="toggle-list">
+                                        <li class="toggle-item active-toggle" onclick="toggleActive(this)">
+                                            <span class="toggle-icon"><i class="fa-solid fa-indian-rupee-sign"></i></span>
+                                            <span class="toggle-text">Do you have Income from Salary</span>
+                                            <label class="switch" onclick="event.stopPropagation()">
+                                                <input name="SalaryIncome" type="checkbox" id="SalaryIncome" checked="checked" onchange="syncActive(this)" />
+                                                <span class="slider"></span>
+                                            </label>
+                                        </li>
+                                        <li class="toggle-item" onclick="toggleActive(this)">
+                                            <span class="toggle-icon"><i class="fa-solid fa-coins"></i></span>
+                                            <span class="toggle-text">Do you have Salary Income more than Rs 50 Lacs annually</span>
+                                            <label class="switch" onclick="event.stopPropagation()">
+                                                <input name="SalaryIncome50" type="checkbox" id="SalaryIncome50" onchange="syncActive(this)" />
+                                                <span class="slider"></span>
+                                            </label>
+                                        </li>
+                                        <li class="toggle-item" onclick="toggleActive(this)">
+                                            <span class="toggle-icon"><i class="fa-solid fa-building"></i></span>
+                                            <span class="toggle-text">Do you have Rental Income or need to take Housing Loan Interest benefit.</span>
+                                            <label class="switch" onclick="event.stopPropagation()">
+                                                <input name="HPIncome" type="checkbox" id="HPIncome" onchange="syncActive(this)" />
+                                                <span class="slider"></span>
+                                            </label>
+                                        </li>
+                                        <li class="toggle-item" onclick="toggleActive(this)">
+                                            <span class="toggle-icon"><i class="fa-solid fa-arrow-trend-up"></i></span>
+                                            <span class="toggle-text">Do you have Capital Gains or Losses from Sale of Asset or Sell of Equity during the year.</span>
+                                            <label class="switch" onclick="event.stopPropagation()">
+                                                <input name="ShareTrans" type="checkbox" id="ShareTrans" onchange="syncActive(this)" />
+                                                <span class="slider"></span>
+                                            </label>
+                                        </li>
+                                        <li class="toggle-item" onclick="toggleActive(this)">
+                                            <span class="toggle-icon"><i class="fa-solid fa-briefcase"></i></span>
+                                            <span class="toggle-text">Do you have Income from Consultancy or Profession.</span>
+                                            <label class="switch" onclick="event.stopPropagation()">
+                                                <input name="ProfIncome" type="checkbox" id="ProfIncome" onchange="syncActive(this)" />
+                                                <span class="slider"></span>
+                                            </label>
+                                        </li>
+                                        <li class="toggle-item" onclick="toggleActive(this)">
+                                            <span class="toggle-icon"><i class="fa-solid fa-user-tie"></i></span>
+                                            <span class="toggle-text">Were you a Director in a company during the previous year.</span>
+                                            <label class="switch" onclick="event.stopPropagation()">
+                                                <input name="Director" type="checkbox" id="Director" onchange="syncActive(this)" />
+                                                <span class="slider"></span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- ── Personal Information Panel ── -->
+                            <div class="col-md-6">
+                                <div class="form-panel-modern">
+                                    <div class="section-title-modern">
+                                        <div class="section-title-icon"><i class="fa-solid fa-user-pen"></i></div>
+                                        <div>
+                                            Personal Information
+                                            <div class="section-subtitle">Fill in your contact details</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-lg-4 g-3">
+
+                                        <!-- First Name -->
+                                        <div class="col-md-6">
+                                            <label class="form-label" for="FirstName">First Name *</label>
+                                            <div class="input-icon">
+                                                <i class="fa fa-user"></i>
+                                                <input name="FirstName" type="text" id="FirstName" class="form-control form-control-custom" placeholder="First Name" />
+                                            </div>
+                                            <span id="RequiredFieldValidator1a" class="validation-error">First Name is required</span>
+                                            <span id="RequiredFieldValidator1b" class="validation-error">Alphabets only</span>
+                                        </div>
+
+                                        <!-- Last Name -->
+                                        <div class="col-md-6">
+                                            <label class="form-label" for="LastName">Last Name</label>
+                                            <div class="input-icon">
+                                                <i class="fa fa-user"></i>
+                                                <input name="LastName" type="text" id="LastName" class="form-control form-control-custom" placeholder="Last Name" />
+                                            </div>
+                                            <span id="RequiredFieldValidator2a" class="validation-error">Last Name is required.</span>
+                                            <span id="RequiredFieldValidator2b" class="validation-error">Alphabets only</span>
+                                        </div>
+
+                                        <!-- Mobile -->
+                                        <div class="col-12">
+                                            <label class="form-label" for="MobileNo">Contact Number *</label>
+                                            <div class="phone-group">
+                                                <select name="cid" id="cid">
+                                                    <option value="+91" selected>🇮🇳 +91</option>
+                                                </select>
+                                                <input name="MobileNo" type="text" maxlength="10" id="MobileNo" placeholder="Mobile Number" />
+                                            </div>
+                                            <span id="RequiredFieldValidator3a" class="validation-error">Mobile Number is required.</span>
+                                            <span id="RegularExpressionValidator3b" class="validation-error">10 Digit Number Only</span>
+                                        </div>
+
+                                        <!-- Email -->
+                                        <div class="col-12">
+                                            <label class="form-label" for="EmailAddress">E-mail Address *</label>
+                                            <div class="input-icon">
+                                                <i class="fa fa-envelope"></i>
+                                                <input name="EmailAddress" type="text" id="EmailAddress" class="form-control form-control-custom" placeholder="Email Address" />
+                                            </div>
+                                            <span id="RequiredFieldValidator4a" class="validation-error">Email is required.</span>
+                                            <span id="RegularExpressionValidator4b" class="validation-error">Enter Valid Email format.</span>
+                                        </div>
+
+                                        <!-- Divider -->
+                                        <div class="col-12" style="padding-top:0;padding-bottom:0;">
+                                            <div class="panel-divider">
+                                                <div class="panel-divider-line"></div>
+                                                <span class="panel-divider-text">SUBMIT</span>
+                                                <div class="panel-divider-line"></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Submit -->
+                                        <div class="col-12">
+                                            <button type="submit" name="Button1" id="Button1" class="btn-submit">
+                                                <i class="fa-solid fa-paper-plane"></i> Subscribe Now
+                                            </button>
+                                        </div>
+
+                                    
+
+                                        <!-- Terms -->
+                                        <div class="col-12">
+                                            <p style="font-size:0.88rem;color:#000;text-align:center;line-height:1.6;">
+                                                By clicking on Subscribe Now - you agree to our
+                                                <a href="https://www.taxmanager.in/Terms_Conditions" style="color:#15803d;text-decoration:none;font-weight:600;">Terms &amp; Conditions</a>
+                                                and
+                                                <a href="https://www.TaxManager.in/Privacy-Policy.html" style="color:#15803d;text-decoration:none;font-weight:600;">Privacy Policy</a>
+                                            </p>
+                                        </div>
+
+                                    </div><!-- /row -->
+                                </div>
+                            </div>
+
+                        </div><!-- /row g-0 -->
+
+                        <!-- ASP.NET validation scripts (original - DO NOT REMOVE) -->
+                        <script type="text/javascript">//<![CDATA[ var Page_Validators = new Array(document.getElementById("RequiredFieldValidator1a"), document.getElementById("RequiredFieldValidator1b"), document.getElementById("RequiredFieldValidator2a"), document.getElementById("RequiredFieldValidator2b"), document.getElementById("RequiredFieldValidator3a"), document.getElementById("RegularExpressionValidator3b"), document.getElementById("RequiredFieldValidator4a"), document.getElementById("RegularExpressionValidator4b")); //]]></script>
+                        <script type="text/javascript">//<![CDATA[ var RequiredFieldValidator1a = document.all ? document.all["RequiredFieldValidator1a"] : document.getElementById("RequiredFieldValidator1a"); RequiredFieldValidator1a.controltovalidate = "FirstName"; RequiredFieldValidator1a.errormessage = "First Name is required"; RequiredFieldValidator1a.display = "Dynamic"; RequiredFieldValidator1a.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid"; RequiredFieldValidator1a.initialvalue = ""; var RequiredFieldValidator1b = document.all ? document.all["RequiredFieldValidator1b"] : document.getElementById("RequiredFieldValidator1b"); RequiredFieldValidator1b.controltovalidate = "FirstName"; RequiredFieldValidator1b.errormessage = "Alphabets only"; RequiredFieldValidator1b.display = "Dynamic"; RequiredFieldValidator1b.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid"; RequiredFieldValidator1b.validationexpression = "[a-zA-Z ]*$"; var RequiredFieldValidator2a = document.all ? document.all["RequiredFieldValidator2a"] : document.getElementById("RequiredFieldValidator2a"); RequiredFieldValidator2a.controltovalidate = "LastName"; RequiredFieldValidator2a.errormessage = "Last Name is required."; RequiredFieldValidator2a.display = "Dynamic"; RequiredFieldValidator2a.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid"; RequiredFieldValidator2a.initialvalue = ""; var RequiredFieldValidator2b = document.all ? document.all["RequiredFieldValidator2b"] : document.getElementById("RequiredFieldValidator2b"); RequiredFieldValidator2b.controltovalidate = "LastName"; RequiredFieldValidator2b.errormessage = "Alphabets only"; RequiredFieldValidator2b.display = "Dynamic"; RequiredFieldValidator2b.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid"; RequiredFieldValidator2b.validationexpression = "[a-zA-Z ]*$"; var RequiredFieldValidator3a = document.all ? document.all["RequiredFieldValidator3a"] : document.getElementById("RequiredFieldValidator3a"); RequiredFieldValidator3a.controltovalidate = "MobileNo"; RequiredFieldValidator3a.errormessage = "Mobile Number is required."; RequiredFieldValidator3a.display = "Dynamic"; RequiredFieldValidator3a.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid"; RequiredFieldValidator3a.initialvalue = ""; var RegularExpressionValidator3b = document.all ? document.all["RegularExpressionValidator3b"] : document.getElementById("RegularExpressionValidator3b"); RegularExpressionValidator3b.controltovalidate = "MobileNo"; RegularExpressionValidator3b.errormessage = "10 Digit Number Only"; RegularExpressionValidator3b.display = "Dynamic"; RegularExpressionValidator3b.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid"; RegularExpressionValidator3b.validationexpression = "^[6789]\\d{9}$"; var RequiredFieldValidator4a = document.all ? document.all["RequiredFieldValidator4a"] : document.getElementById("RequiredFieldValidator4a"); RequiredFieldValidator4a.controltovalidate = "EmailAddress"; RequiredFieldValidator4a.errormessage = "Email is required."; RequiredFieldValidator4a.display = "Dynamic"; RequiredFieldValidator4a.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid"; RequiredFieldValidator4a.initialvalue = ""; var RegularExpressionValidator4b = document.all ? document.all["RegularExpressionValidator4b"] : document.getElementById("RegularExpressionValidator4b"); RegularExpressionValidator4b.controltovalidate = "EmailAddress"; RegularExpressionValidator4b.errormessage = "Enter Valid Email format."; RegularExpressionValidator4b.display = "Dynamic"; RegularExpressionValidator4b.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid"; RegularExpressionValidator4b.validationexpression = "^([\\w-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([\\w-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$"; //]]></script>
+                        <script type="text/javascript">//<![CDATA[ var Page_ValidationActive = false; if (typeof(ValidatorOnLoad) == "function") { ValidatorOnLoad(); } function ValidatorOnSubmit() { if (Page_ValidationActive) { return ValidatorCommonOnSubmit(); } else { return true; } } WebForm_AutoFocus('FirstName');//]]></script>
+
+                        <!-- Toggle row active state helper (non-breaking) -->
+                        <script>
+                            function toggleActive(li) {
+                                var cb = li.querySelector('input[type=checkbox]');
+                                cb.checked = !cb.checked;
+                                li.classList.toggle('active-toggle', cb.checked);
+                            }
+                            function syncActive(cb) {
+                                cb.closest('.toggle-item').classList.toggle('active-toggle', cb.checked);
+                            }
+                            // Set initial active state on page load
+                            document.querySelectorAll('.toggle-item input[type=checkbox]').forEach(function(cb){
+                                cb.closest('.toggle-item').classList.toggle('active-toggle', cb.checked);
+                            });
+                        </script>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- form-card section end here -->
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<!-- doucment request section -->
+<div class="document-request-module">
+    <div class=" container request-card">
+        <div class="request-content">
+
+            <div class="row align-items-center">
+
+                <!-- LEFT: ICON + TEXT -->
+                <div class="col-md-8 col-12">
+                    <div class="title-row">
+                        <div class="doc-badge-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+
+                        <div class="title-wrapper">
+                            <h4 class="main-headline">
+                                <span class="headline-prefix">List of </span>
+                                <span class="doc-highlight">documents </span>
+                                <span class="headline-suffix">required</span>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: CTA -->
+                <div class="col-md-4 col-12 text-md-end text-start mt-3 mt-md-0">
+                    <a href="https://www.taxmanager.in/listofdocs" 
+                       class="cta-link-modern" target="_blank">
+                        <span class="link-text-only">Click Here..</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- doucment request section -->
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+<section class="how-it-works-section">
+  <div class="container text-center">
+
+    <!-- Heading -->
+    <h2 class="section-title">What all it Includes?</h2>
+ 
+
+    <!-- Cards -->
+    <div class="row g-4 mt-4">
+
+      <!-- Card 1 -->
+      <div class="col">
+        <div class="step-card">
+          <div class="icon-box">
+            <i class="fas fa-money-bill-wave"></i>
+          </div> 
+          <p>Tax Return Prepared and Filed by Tax Expert</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col">
+        <div class="step-card">
+          <div class="icon-box">
+            <i class="fas fa-user-tie"></i>
+          </div> 
+          <p>Salary Income, Single House Property and Other Income</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col">
+        <div class="step-card">
+          <div class="icon-box">
+            <i class="fas fa-file-upload"></i>
+          </div> 
+          <p>Claim of missed allowances and deductions declaration</p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col">
+        <div class="step-card">
+          <div class="icon-box">
+            <i class="fas fa-percentage"></i>
+          </div> 
+          <p>Claim of Tax Refund as per the tax filing status</p>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="col">
+        <div class="step-card">
+          <div class="icon-box">
+            <i class="fas fa-file-alt"></i>
+          </div> 
+          <p>100% customer support post tax filing</p>
+        </div>
+      </div>
+      <!-- Card 6 -->
+      <div class="col">
+        <div class="step-card">
+          <div class="icon-box">
+            <i class="fas fa-file-alt"></i>
+          </div> 
+          <p>Guidance in e verification of IT Return</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <!-- <div class="mt-5">
+      <a href="#" class="apply-btn">Apply Now</a>
+    </div> -->
+
+  </div>
+</section>
+
+<style>
+    .how-it-works-section { 
+    padding: 70px 0;
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #0d1b3d;
+}
+
+.section-subtitle {
+    color: #6c757d;
+    margin-top: 8px;
+    font-size: 15px;
+}
+
+/* CARD */
+.step-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 20px 15px;
+    text-align: left;
+    height: 100%;
+    transition: 0.3s;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border: 1px solid #eee;
+}
+
+.step-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* ICON BOX */
+.icon-box {
+    background: #e8f0ea;
+    border-radius: 12px;
+    padding: 30px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+  
+    width: 100%;
+    text-align: center;
+    color: #2e7d32;
+}
+
+
+.icon-box i{
+    font-size: 29px;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #F5FCF5;
+}
+
+/* TEXT */
+.step-card h5 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #111;
+}
+
+.step-card p {
+   font-size: 14px;
+    line-height: 25px;
+    color: #000;
+    font-weight: 400;
+}
+
+/* BUTTON */
+.apply-btn {
+    background: #1e7e34;
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.apply-btn:hover {
+    background: #166628;
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- navbar script -->
+ <script>
+    // Mobile panel toggle & dropdown logic (clean, modern JS)
+    const mobileToggle = document.getElementById('mobileMenuToggle');
+    const mobilePanel = document.getElementById('mobilePanel');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const closePanelBtn = document.getElementById('closeMobilePanel');
+
+    function openMobileMenu() {
+        mobilePanel.classList.add('active');
+        mobileOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMobileMenu() {
+        mobilePanel.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    if(mobileToggle) {
+        mobileToggle.addEventListener('click', openMobileMenu);
+    }
+    if(closePanelBtn) {
+        closePanelBtn.addEventListener('click', closeMobileMenu);
+    }
+    if(mobileOverlay) {
+        mobileOverlay.addEventListener('click', closeMobileMenu);
+    }
+
+    // mobile dropdown toggles (plus/minus effect, expand/collapse submenu)
+    const dropdownIcons = document.querySelectorAll('.mobile-dropdown-icon');
+    dropdownIcons.forEach(icon => {
+        icon.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const targetId = this.getAttribute('data-dropdown');
+            const submenu = document.getElementById(targetId);
+            if(submenu) {
+                const isVisible = submenu.style.display === 'flex';
+                submenu.style.display = isVisible ? 'none' : 'flex';
+                // change icon plus/minus
+                const iconElem = this.querySelector('i');
+                if(iconElem) {
+                    if(!isVisible) {
+                        iconElem.classList.remove('fa-plus');
+                        iconElem.classList.add('fa-minus');
+                    } else {
+                        iconElem.classList.remove('fa-minus');
+                        iconElem.classList.add('fa-plus');
+                    }
+                } else {
+                    // fallback innerHTML change
+                    if(!isVisible) {
+                        this.innerHTML = '<i class="fas fa-minus"></i>';
+                    } else {
+                        this.innerHTML = '<i class="fas fa-plus"></i>';
+                    }
+                }
+            }
+        });
+    });
+
+    // ensure submenus are hidden by default on mobile
+    document.querySelectorAll('.mobile-submenu').forEach(sub => {
+        sub.style.display = 'none';
+    });
+
+    // additional touch: close mobile panel when any login/register or contact link clicked (optional)
+    const mobileLoginBtn = document.querySelector('.mobile-login-btn');
+    const mobileContactLinks = document.querySelectorAll('.mobile-contact a');
+    const closeAfterClick = (e) => {
+        closeMobileMenu();
+    };
+    if(mobileLoginBtn) mobileLoginBtn.addEventListener('click', closeAfterClick);
+    mobileContactLinks.forEach(link => link.addEventListener('click', closeAfterClick));
+    const allMobileDropdownLinks = document.querySelectorAll('.mobile-submenu a');
+    allMobileDropdownLinks.forEach(link => link.addEventListener('click', closeAfterClick));
+
+    // Prevent desktop dropdown conflicts: ensure on window resize, if any mobile menu open it's reset for ux
+    window.addEventListener('resize', function() {
+        if(window.innerWidth > 768 && mobilePanel.classList.contains('active')) {
+            closeMobileMenu();
+        }
+    });
+
+    // small note: lazy load image no extra needed, but we keep design
+    // all links use '#', demo prevention
+    document.querySelectorAll('a[href="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+            e.preventDefault();
+        });
+    });
+    // any dropdown hover remains pure CSS, we add fine touch for mobile
+    // Also ensure that image animation works perfectly
+</script>
+<!-- navbar script -->
+
+
+
+
+
+
+
+</body>
+
+</html>

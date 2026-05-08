@@ -1,0 +1,268 @@
+.link {
+	FONT-WEIGHT: bold; 
+	FONT-SIZE: 8pt;
+	 COLOR: #ffffff;
+	  FONT-STYLE: normal; 
+	FONT-FAMILY: Verdana;
+}
+.link4 {
+	FONT-SIZE: 10px;
+	COLOR: #3C9BC9;
+	FONT-FAMILY: Arial;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.text {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #77281d; FONT-STYLE: normal;
+	FONT-FAMILY: Verdana;
+	}
+.btlink {
+	FONT-SIZE: 12px; COLOR: #000099; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.heading {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 8pt;
+	COLOR: #07519a;
+	FONT-FAMILY: Verdana;
+	font-style: normal;
+}
+.heading6 {
+
+	FONT-WEIGHT: 400;
+	FONT-SIZE: 8pt;
+	COLOR: #000080;
+	font-family: Verdana;
+}
+.link3 {
+	FONT-SIZE: 12px;
+	COLOR: #FFFFFF;
+	FONT-FAMILY: Verdana;
+	font-weight: normal;
+}
+.footer {
+	FONT-SIZE: 12px; COLOR: #333333; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.text_md {
+	FONT-SIZE: 8pt;
+	COLOR: #4F4F4F;
+	LINE-HEIGHT: 1.4;
+	FONT-FAMILY: Verdana;
+	left: 2px;
+	top: 2px;
+	right: 2px;
+	bottom: 2px;
+	text-align: justify;
+
+	clip: rect(1px,1px,1px,1px);
+	margin-top: 2px;
+	margin-right: 2px;
+	margin-bottom: 2px;
+	margin-left: 2px;
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+}
+.link33 {
+	FONT-SIZE: 8pt; COLOR: #B79300; FONT-FAMILY: Verdana
+	
+}
+.Text_Small {
+	font-family: Verdana;
+	font-size: 8pt;
+	font-style: normal;
+	color: #000000;
+	text-align: justify;
+}
+.leftbluehead {
+	font-family: Verdana;
+	font-size: 9pt;
+	font-weight: bold;
+	color: #003399;
+}
+.brownhead {
+	font-family: Arial;
+	font-size: 11pt;
+	font-weight: bold;
+	color: #683c00;
+}
+.style9 {
+font-family: Verdana;
+	font-size: 8pt;
+	font-style: normal;
+color: #0059DF}
+.note
+{
+FONT-WEIGHT: bold;
+	FONT-SIZE: 8pt;
+	COLOR: #FF0000;
+	FONT-FAMILY: Verdana;
+	font-style: normal;
+}
+.style10 {
+FONT-WEIGHT: bold;
+	FONT-SIZE: 8pt;
+	COLOR:  #E5E5E5;
+	FONT-FAMILY: Verdana;
+	font-style: normal;
+
+}
+
+.TABLETEXT {
+
+	FONT-WEIGHT: 400;
+	FONT-SIZE: 8pt;
+	COLOR:#2a71a5;
+	font-family: Verdana;
+	clip: rect(1px,1px,1px,1px);
+	margin-top: 2px;
+	margin-right: 2px;
+	margin-bottom: 2px;
+	margin-left: 2px;
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+}
+.content_Text {
+	font-family: Verdana;
+	font-size: 8pt;
+	font-style: normal;
+	font-weight: normal;
+	color: #333333;
+
+	line-height: 0.6cm;
+}
+.contact_text {
+	font-family: Verdana;
+	font-size: 8pt;
+	font-style: normal;
+	font-weight: normal;
+	color: #464646;
+}
+
+.sub_heading {
+	font-family: Arial;
+	font-size: 9pt;
+	font-style: normal;
+
+	color:#ff6600;
+}
+
+.Blue_button {
+	BORDER-RIGHT: #d1cfcf 1px solid; PADDING-RIGHT: 1px; BACKGROUND-POSITION: left top; BORDER-TOP: #d1cfcf 1px solid; PADDING-LEFT: 1px; FONT-WEIGHT: bold; FONT-SIZE: 8pt; BACKGROUND-IMAGE: url(http://www.etaxesindia.com/itrimages/Link_Bg_Active.jpg); PADDING-BOTTOM: 1px; MARGIN: 0px; BORDER-LEFT: #d1cfcf 1px solid; CURSOR: hand; COLOR: #232323; PADDING-TOP: 0px; BORDER-BOTTOM: #d1cfcf 1px solid; BACKGROUND-REPEAT: repeat-x; FONT-FAMILY: Arial, Helvetica, sans-serif; HEIGHT: 20px
+}
+
+
+#path {
+	PADDING-RIGHT: 2px; MARGIN: 1px; PADDING-LEFT: 3px; FONT-WEIGHT: bold; BACKGROUND:#F8F8F8; PADDING-BOTTOM: 1px; ; PADDING-TOP: 1px
+	
+}
+
+.link_top 
+{
+	font-family:verdana;
+	font-size: 9pt;
+	font-weight: bold;
+	color: #2A2A2A;
+}
+
+
+.link_top_right 
+{
+	font-family:verdana;
+	font-size: 9pt;
+	
+	color: #6B6B6B;
+}
+.Seprator_top_right 
+{
+	font-family:verdana;
+	font-size: 8pt;
+	
+	color: #6B6B6B;
+}
+
+.Red_Text 
+{
+	font-family:verdana;
+	font-size: 8pt;
+	
+	color: #CC0000;
+}
+.Orange_Text 
+{
+	font-family:verdana;
+	font-size: 13pt;
+	color: #ec921a;
+	font-weight: bold;
+}
+
+.white_head
+{
+
+
+	font-family:verdana;
+	font-size: 9pt;
+	color: #FFffff;
+	font-weight: bold;
+
+}
+
+.Mehrun_Text 
+{
+	font-family:verdana;
+	font-size: 8pt;
+	color: #77281d;
+	}
+
+
+.left_link
+{
+	font-family:verdana;
+	font-size: 8pt;
+	color: #333333;
+
+	}
+	#reetu {
+	
+	font-family:verdana;
+	font-size: 8pt;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+#reetu a 
+{
+	
+	font-family:verdana;
+	font-size: 8pt;
+		font-weight: bold;
+	color: #ffffff;
+}
+#reetu a:hover 
+{
+	font-family:verdana;
+	font-size: 8pt;
+	font-weight: bold;
+	color: #ffffff;
+	background-image: url(Images/Gray-bg.gif);
+	background-repeat: repeat;
+	background-position: left top;
+	
+}
+#reetu a:active {
+	font-family:verdana;
+	font-size: 8pt;
+	font-weight: bold;
+	color: #ffffff;
+	background-image: url(Images/Gray-bg.gif);
+	background-repeat: repeat;
+	background-position: left top;
+	
+}
+
+
+.box{ BORDER-TOP: #EAEAEA 2px solid; border-right: #EAEAEA 2px solid; border-bottom: #EAEAEA 2px solid; border-left: #EAEAEA 2px solid; width:440px
+}

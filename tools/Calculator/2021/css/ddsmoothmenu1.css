@@ -1,0 +1,77 @@
+.ddsmoothmenu1 UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; Z-INDEX: 100; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+.ddsmoothmenu1 UL LI {
+	DISPLAY: inline; FLOAT: left; POSITION: relative; TEXT-ALIGN: left;  
+}
+.ddsmoothmenu1 UL LI A {
+	BORDER-RIGHT: #ffffff 1px solid;
+	PADDING-RIGHT: 5px;
+	DISPLAY: block;
+	PADDING-LEFT: 5px;
+	BACKGROUND-IMAGE: url(http://localhost:50343/Images/Link-bg2.jpg);
+	PADDING-BOTTOM: 8px;
+	COLOR: #333333;
+	PADDING-TOP: 8px;
+	BACKGROUND-REPEAT: repeat-x;
+	BACKGROUND-COLOR: #f7c6b3;
+	TEXT-DECORATION: none;
+	font-size: 8pt;
+	font-weight: bold
+	
+	
+	
+}
+* HTML .ddsmoothmenu1 UL LI A {
+	COLOR: #ffffff
+}
+.ddsmoothmenu1 UL LI A:link {
+	COLOR: #ffffff
+}
+.ddsmoothmenu1 UL LI A:visited {
+	COLOR: #ffffff
+}
+.ddsmoothmenu1 UL LI A.selected {
+	COLOR: #ffffff; BACKGROUND-COLOR: #f7c6b3
+}
+.ddsmoothmenu1 UL LI A:hover {
+	BACKGROUND: #f4e3a6; COLOR: #8e3203
+}
+.ddsmoothmenu1 UL LI UL {
+	DISPLAY: none; LEFT: 0px; VISIBILITY: hidden; POSITION: absolute
+}
+.ddsmoothmenu1 UL LI UL LI {
+	DISPLAY: list-item; FLOAT: none
+}
+.ddsmoothmenu1 UL LI UL LI UL {
+	TOP: 0px
+}
+.ddsmoothmenu1 UL LI UL LI A {
+	BORDER-TOP-WIDTH: 0px;
+	PADDING-RIGHT: 5px;
+	PADDING-LEFT: 5px;
+	PADDING-BOTTOM: 5px;
+	MARGIN: 0px;
+	WIDTH: 172px;
+	PADDING-TOP: 5px;
+	BORDER-BOTTOM: #ffffff 1px solid;
+	BACKGROUND-COLOR: #d28217;
+	font-family: Verdana;
+	font-size: 8pt;
+	font-weight: bold;
+}
+* HTML .ddsmoothmenu1 {
+	HEIGHT: 25px
+}
+.downarrowclass {
+	RIGHT: 7px; POSITION: absolute; TOP: 12px
+}
+.rightarrowclass {
+	RIGHT: 5px; POSITION: absolute; TOP: 6px
+}
+.ddshadow {
+	BACKGROUND: silver; LEFT: 0px; WIDTH: 0px; POSITION: absolute; TOP: 0px; HEIGHT: 0px
+}
+.toplevelshadow {
+	opacity: 0.8
+}

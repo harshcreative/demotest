@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Company Details</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const apiUrl = 'http://taxmanagercoin1-env.eba-yhppuvfm.ap-south-1.elasticbeanstalk.com/getcompanydetailsbygstn?gstin=07AADCR6832P2ZS';
+
+            fetch(apiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data); // Log the data to the console
+                    // Display the data in the webpage
+                    document.getElementById('companyDetails').textContent = JSON.stringify(data, null, 2);
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Company Details</h1>
+    <pre id="companyDetails">Fetching data...</pre>
+</body>
+
+</html>

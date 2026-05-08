@@ -1,0 +1,220 @@
+/*--master css--*/
+body {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    font-family: 'Poppins';
+}
+
+img {
+    margin: 0px auto;
+    width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+li {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+p {
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+    line-height: 30px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+/*--opt-in--*/
+.singup {
+    margin: 0px auto;
+    padding: 120px 0px 50px;
+    position: relative;
+}
+
+.singupimg {
+    padding: 10px 0px !important;
+    background: rgb(249, 249, 249);
+}
+
+.shomabodi,
+.singupimg img {
+    background: rgb(249, 249, 249);
+    border-radius: 10px;
+}
+
+.singupimg img {
+    width: 100%;
+    margin: 0px auto;
+    padding: 0px;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+}
+
+.singupform,
+.singupimg {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 10px 0px 30px;
+}
+
+.singupform form {
+    margin: 0px;
+    padding: 0px;
+}
+
+.singupform form h4 {
+    font-size: 18px;
+    font-weight: 800;
+    color: rgb(0, 0, 0);
+    padding-bottom: 10px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.singupform form .form-group {
+    margin: 0px 0px 10px;
+    padding: 0px;
+}
+
+
+.singup .singtexare {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    background: rgb(244, 244, 244);
+    margin: 10px 0px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.singup .singtexare h4 {
+    font-size: 18px;
+    margin: 0px 0px 10px;
+    padding: 0;
+    text-align: left;
+    font-weight: 700;
+    font-family: 'Poppins';
+}
+
+.singup .singtexare p {
+    font-size: 13px;
+    margin: 0px 0px 30px;
+    padding: 0;
+    line-height: 22px;
+}
+
+.singup .form-group {
+    margin: 0px 0px 15px;
+    padding: 0px;
+}
+
+.singup .form-group .form-control {
+    font-weight: 500;
+    color: rgb(34, 34, 34);
+    border: unset;
+    padding: 6px 10px;
+    height: 45px;
+    border-radius: 4px;
+    font-size: 13px;
+    border: 1px solid rgb(183, 180, 180);
+}
+
+.form-group label {
+    padding: 0;
+    margin: 0px 0px 5px;
+    color: rgb(49, 66, 89);
+    text-transform: none;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.singup .form-check {
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 1.5em;
+    margin: 30px 0px 10px;
+}
+
+.singup .form-check label {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.singup .btn {
+    background: #1b1dc7;
+    color: rgb(255, 255, 255);
+    border: unset;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    margin: 10px 0px 10px;
+    padding: 12px;
+}
+
+
+.singup .container {
+    width: calc(70%);
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: rgb(233, 233, 233) 2px 5px 20px;
+    overflow: hidden;
+    border: 1px solid rgba(9, 33, 19, 0.4);
+}
+
+.optinsectio.singup .singupimg {
+    background: rgb(220 242 255);
+}
+
+.singupimg {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 10px 0px 30px;
+}
+
+.optinsectio.singup .singupimg img {
+    background: rgb(235 238 255);
+    width: 100%;
+}
+
+.optousectio.singup .singupimg {
+    background: rgb(32 114 233);
+    padding: 0 !important;
+}
+
+.optousectio.singup .singupimg img {
+    background: rgb(50 146 247);
+}
+
+/*--opt-out--*/

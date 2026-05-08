@@ -1,0 +1,1290 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Facebook Meta Tags -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<base href="https://taxmanager.in/">
+        <!-- Facebook Meta Tags -->
+
+        <meta name="twitter:title"
+            content="Income Tax Calculator - Calculate your taxes for FY 2026-27 | Use Tax Calculator Online" />
+        <meta property="og:title"
+            content="Income Tax Calculator - Calculate your taxes for FY 2026-27 | Use Tax Calculator Online" />
+        <meta itemprop="name"
+            content="Income Tax Calculator - Calculate your taxes for FY 2026-27 | Use Tax Calculator Online" />
+        <meta name="twitter:description"
+            content="Income Tax Calculator - How to calculate Income taxes online? for FY 2026-27 (AY 2026-27), 2021-2022  2020-21 with Taxmanager Income Tax Calculator. Refer examples tax slabs for easy calculation." />
+        <meta name="twitter:image:src"
+            content="https://www.taxmanager.in/public/images/Calculate-Your-Tax-Return-FY-25-26-Under-New-Regime-and-Old-Regime.png" />
+        <meta name="twitter:domain" content="https://www.Taxmanager.in" />
+        <meta property="og:url" content="https://www.Taxmanager.in" />
+        <meta property="og:image"
+            content="https://www.taxmanager.in/public/images/Calculate-Your-Tax-Return-FY-25-26-Under-New-Regime-and-Old-Regime.png" />
+        <meta property="og:image:secure_url"
+            content="https://www.taxmanager.in/public/images/Calculate-Your-Tax-Return-FY-25-26-Under-New-Regime-and-Old-Regime.png" />
+        <meta name="og:description"
+            content="Income Tax Calculator - How to calculate Income taxes online? for FY 2026-27 (AY 2026-27), 2021-2022  2020-21 with Taxmanager Income Tax Calculator. Refer examples  tax slabs for easy calculation." />
+        <meta itemprop="description"
+            content="Income Tax Calculator - How to calculate Income taxes online? for FY 2026-27 (AY 2026-27), 2021-2022  2020-21 with Taxmanager Income Tax Calculator. Refer examples  tax slabs for easy calculation." />
+        <meta itemprop="image"
+            content="https://www.taxmanager.in/public/images/Calculate-Your-Tax-Return-FY-25-26-Under-New-Regime-and-Old-Regime.png" />
+
+        <title>Income Tax Calculator - Calculate your taxes for FY 2026-27 | Use Tax Calculator Online</title>
+        <meta name="keywords" content="income tax calculator, tax calculator, tax calculator india" />
+        <meta name="description"
+            content="Income Tax Calculator - How to calculate Income taxes online? for FY 2026-27 (AY 2025-26), 2025-26  2022-23 with TaxManager Income Tax Calculator. Refer examples  tax slabs for easy calculation." />
+
+        <!-- end keywords and og tags -->
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="/public/css/styles.css" />
+            <link rel="stylesheet" href="/tm360/css/sylesheet.css">
+    <link rel="stylesheet" href="/tm360/css/responsive.css"> 
+        
+
+
+ 
+
+
+    <!--  -->
+    <link rel="stylesheet" href="http://127.0.0.1:5502/css/sylesheet.css">
+    <link rel="stylesheet" href="http://127.0.0.1:5502/css/responsive.css"> 
+    
+
+        <!-- <link rel="stylesheet" href="/public/css/example.css" /> -->
+        <link rel="icon" type="image/png" href="https://www.TaxManager.in/newsite/images/favicon.ico">
+        <!-- my links -->
+        <link rel="stylesheet" href="https://www.TaxManager.in/newsite/font/css/font-awesome.min.css">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Vazirmatn:wght@300&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+            integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MS8CR876YK"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'G-MS8CR876YK');
+        </script>
+        <script type="text/javascript">
+            var AgeId = 0;
+            var AnuSal = 0;
+            var OldSal = 0;
+            var NewSal = 0;
+
+            function calculate() {
+                var ageElement = document.getElementById("age");
+                var salaryElement = document.getElementById("AnSalary");
+                var deductionElement = document.getElementById("AnSalaryAfterDeduc");
+
+                if (!ageElement || ageElement.selectedIndex === 0) {
+                    alert('Please Select Age');
+                    return false;
+                }
+                AgeId = ageElement.selectedIndex;
+
+                if (!salaryElement || parseFloat(salaryElement.value) <= 0) {
+                    alert('Please Enter Estimated Annual Income');
+                    return false;
+                }
+                AnuSal = parseFloat(salaryElement.value);
+
+                if (!deductionElement || isNaN(parseFloat(deductionElement.value))) {
+                    deductionElement.value = 0;
+                }
+
+                IncomeNew();
+                CalTaxNew();
+                CalTaxOld();
+            }
+
+            function CalTaxNew() {
+                var NetSal = NewSal;
+                var Tax = 0;
+
+                // Section 87A rebate condition
+                if (NetSal <= 1200000) {
+                    Tax = 0;
+                } else {
+
+                    if (NetSal <= 400000) {
+                        Tax = 0;
+                    } else if (NetSal <= 800000) {
+                        Tax = (NetSal - 400000) * 0.05;
+                    } else if (NetSal <= 1200000) {
+                        Tax = (400000 * 0.05) + ((NetSal - 800000) * 0.10);
+                    } else if (NetSal <= 1600000) {
+                        Tax = (400000 * 0.05) + (400000 * 0.10) + ((NetSal - 1200000) * 0.15);
+                    } else if (NetSal <= 2000000) {
+                        Tax = (400000 * 0.05) + (400000 * 0.10) + (400000 * 0.15) + ((NetSal - 1600000) * 0.20);
+                    } else if (NetSal <= 2400000) {
+                        Tax = (400000 * 0.05) + (400000 * 0.10) + (400000 * 0.15) + (400000 * 0.20) + ((NetSal - 2000000) * 0.25);
+                    } else {
+                        Tax = (400000 * 0.05) + (400000 * 0.10) + (400000 * 0.15) + (400000 * 0.20) + (400000 * 0.25) + ((NetSal - 2400000) * 0.30);
+                    }
+                }
+
+                var cess = Tax * 0.04;
+                document.getElementById("NewTax").value = Math.round(Tax + cess);
+            }
+
+            function CalTaxOld() {
+                var NetSal = OldSal;
+                var Tax = 0;
+                var Limit = 250000;
+
+                if (AgeId === 2) {
+                    Limit = 300000;
+                } else if (AgeId === 3) {
+                    Limit = 500000;
+                }
+
+                if (NetSal > Limit) {
+                    if (NetSal <= 500000) {
+                        Tax = (NetSal - Limit) * 0.05;
+                    } else if (NetSal <= 1000000) {
+                        Tax = (500000 - Limit) * 0.05 + ((NetSal - 500000) * 0.20);
+                    } else {
+                        Tax = (500000 - Limit) * 0.05 + (500000 * 0.20) + ((NetSal - 1000000) * 0.30);
+                    }
+                }
+
+                var cess = Tax * 0.04;
+                document.getElementById("OldTax").value = Math.round(Tax + cess);
+
+                var oldTax = parseFloat(document.getElementById("OldTax").value) || 0;
+                var newTax = parseFloat(document.getElementById("NewTax").value) || 0;
+
+                if (oldTax > newTax) {
+                    document.getElementById("Old_New").value = oldTax - newTax;
+                    document.getElementById('TaxMsg').innerHTML = "Your Tax Benefit as per New Regime is";
+                } else {
+                    document.getElementById("Old_New").value = newTax - oldTax;
+                    document.getElementById('TaxMsg').innerHTML = "Your Tax Benefit as per Old Regime is";
+                }
+            }
+
+            function IncomeNew() {
+                var salaryElement = document.getElementById("AnSalary");
+
+                var deductionElement = document.getElementById("AnSalaryAfterDeduc");
+                let salary = parseFloat(salaryElement.value) || 0;
+                let deductions = parseFloat(deductionElement.value) || 0;
+
+                if (deductions > 75000) {
+                    deductions = 75000; // Cap deductions at 75,000
+                }
+
+                NewSal = salary - deductions;
+                document.getElementById("IncomeNew").value = NewSal
+                IncomeOld();
+            }
+
+            function IncomeOld() {
+                var salaryElement = document.getElementById("AnSalary");
+                var deductionElement = document.getElementById("AnSalaryAfterDeduc");
+                let salary = parseFloat(salaryElement.value) || 0;
+                let deductions = parseFloat(deductionElement.value) || 0;
+
+                if (deductions > 50000) {
+                    deductions = 50000; // Cap deductions at 50,000
+                }
+
+                OldSal = salary - deductions;
+                document.getElementById("IncomeOld").value = OldSal
+            }
+        </script>
+
+
+
+
+    </head>
+
+    <body>
+
+       
+
+
+
+            <!-- header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="">
+                        <img src="tm360/Images/logo.webp" alt="">
+                        <img src="/Images/logo.webp" alt="">
+                    </a>
+                </div>
+                <!-- Nav Section -->
+                <nav>
+                    <div class="menusectare">
+                        <ul>
+                            <li class="dropnav">
+                                <a href="#">
+                                    Individual
+                                    <span><i class="fas fa-angle-down"></i></span>
+                                </a>
+                                <div class="megaropdown max-width">
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="divider-box">
+                                                <h4>Tax Expert Assisted Tax Filing </h4>
+                                                <h5>Resident</h5>
+                                                <ul>
+                                                    <li>
+                                                        <a href="/efile/CAAssistedSalary.aspx">
+                                                            <span>
+                                                                <img alt="#"
+                                                                    src="Images/icon/individual/salary.webp">
+                                                            </span>Salary
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/efile/CAAssistedSalary50Lakhs.aspx">
+                                                            <span>
+                                                                <img alt="#"
+                                                                    src="Images/icon/individual/salary_over.webp">
+                                                            </span> Salary over Rs 50 Lakhs
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/efile/CAAssistedCG.aspx">
+                                                            <span>
+                                                                <img alt="#"
+                                                                    src="Images/icon/individual/capital_Equity.webp">
+                                                            </span>Capital Gains (Equity &amp; MF Sale)
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/efile/CAAssistedCG_PS.aspx">
+                                                            <span>
+                                                                <img alt="#"
+                                                                    src="Images/icon/individual/capital_sale.webp">
+                                                            </span>Capital Gains (Property Sale)
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/efile/itr4.aspx">
+                                                            <span>
+                                                                <img alt="#"
+                                                                    src="Images/icon/individual/self_employed.webp">
+                                                            </span>Professional/Self Employed
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <span>
+                                                                <img alt="#"
+                                                                    src="Images/icon/individual/presumptive_income.webp">
+                                                            </span>Presumptive Income
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/efile/ResidentwithForeignIncome.aspx">
+                                                            <span>
+                                                                <img alt="#"
+                                                                    src="Images/icon/individual/foreign_income.webp">
+                                                            </span>Foreign Income
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <h5>NRI</h5>
+                                                <ul>
+                                                    <li>
+                                                        <a href="/efile/NRI_FD.aspx">
+                                                            <span>
+                                                                <img alt="#"
+                                                                    src="Images/icon/individual/other_income_fd.webp">
+                                                            </span> Other Income – FD Interest etc
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/efile/NRI_Equity.aspx">
+                                                            <span>
+                                                                <img alt="#"
+                                                                    src="Images/icon/individual/capital_Equity.webp">
+                                                            </span>Capital Gains (Equity &amp; MF Sale)
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/efile/NRI_PS.aspx">
+                                                            <span>
+                                                                <img alt="#"
+                                                                    src="Images/icon/individual/capital_sale.webp">
+                                                            </span>Capital Gains (Property Sale)
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="divider-box">
+                                                <h4>Tax Management</h4>
+                                                <ul>
+                                                    <li>
+                                                        <a href="/efile/aspsubscribe.aspx">
+                                                            <span><img alt="Tax Advisory | TaxManager.in"
+                                                                    src="Images/icon/individual/tax_Advisory.webp"></span>Tax Advisory
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <span>
+                                                                <img alt="Tax Treatment on Property Sale | TaxManager.in"
+                                                                    src="Images/icon/individual/tax_Treatment.webp">
+                                                            </span>Tax Treatment on Property Sale
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/efile/aspsubscribe.aspx">
+                                                            <span>
+                                                                <img alt="Advance Tax Calculation | TaxManager.in"
+                                                                    src="Images/icon/individual/advance_tax_calculation.webp">
+                                                            </span>Advance Tax Calculation
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/efile/aspsubscribe.aspx">
+                                                            <span>
+                                                                <img alt="Annual Subscription Package | TaxManager.in"
+                                                                    src="Images/icon/individual/annual_subscribtion_package.webp">
+                                                            </span>Annual Subscription Package
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/efile/ctcoptimizer.aspx">
+                                                            <span>
+                                                                <img alt="CTC Optimizer | TaxManager.in" width="auto"
+                                                                    height="auto"
+                                                                    src="Images/icon/individual/ctc_optimizer.webp">
+                                                            </span>CTC Optimizer
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/efile/taxquery.aspx">
+                                                            <span>
+                                                                <img alt="Tax Query | TaxManager.in" width="auto"
+                                                                    height="auto"
+                                                                    src="Images/icon/individual/tax_query.webp">
+                                                            </span> Tax Query
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/efile/taxnoticeservice.aspx">
+                                                            <span>
+                                                                <img alt="Tax Return Rectification | Tax Notice – Demand/ Notice Reply | TaxManager.in"
+                                                                    src="Images/icon/individual/Tax_notice.webp">
+                                                            </span>Tax Notice – Demand/ Notice Reply
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/efile/taxnoticeservice.aspx">
+                                                            <span>
+                                                                <img alt="Tax Return Rectification | TaxManager.in"
+                                                                    src="Images/icon/individual/tax_return.webp">
+                                                            </span>Tax Return Rectification
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/efile/taxhistoryservice.aspx">
+                                                            <span>
+                                                                <img alt="Tax Health Check-up | TaxManager.in"
+                                                                    src="Images/icon/individual/taxx_checkUp.webp">
+                                                            </span>Tax Health Check-up
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="styled-rich-text">
+                                                    <img class="lazyload" alt="Not sure which is right for you? | TaxManager.in" src="Images/icon/ideoa.svg">
+                                                    <p>Not sure which is right for you?<br></p>
+                                                    <p><a href="Contact.html">Help Me</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="dropnav">
+                                <a href="#">
+                                    Business
+                                    <span><i class="fas fa-angle-down"></i></span>
+                                </a>
+                                <div class="megaropdown max-width">
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="divider-box">
+                                                <h4>Tax Expert Assisted Tax Filing </h4>
+                                                <ul>
+                                                    <li>
+                                                        <a href="#">
+                                                            <span>
+                                                                <img class="lazyload" alt="Proprietor | TaxManager.in"
+                                                                    src="Images/icon/business/proprietor.webp">
+                                                            </span> Proprietor
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <span>
+                                                                <img alt="Presumptive Income | TaxManager.in"
+                                                                    src="Images/icon/business/presumptive-income.webp">
+                                                            </span>Presumptive Income
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#"><span><img
+                                                                    alt="Pvt Ltd – Less than 200 transactions annually | TaxManager.in"
+                                                                    src="Images/icon/business/pvt-ltd-less-than-200-transactions-annually.webp"></span>Pvt
+                                                            Ltd – Less than 200 transactions annually.
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="styled-rich-text">
+                                                    <img class="lazyload" alt="Not sure which is right for you? | TaxManager.in" src="Images/icon/ideoa.svg">
+                                                    <p>Not sure which is right for you?<br></p>
+                                                    <p><a href="Contact.html">Help Me</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="divider-box">
+                                                <h4>Other Solutions </h4>
+                                                <ul>
+                                                    <li>
+                                                        <a href="business/gst-services.html">
+                                                            <span>
+                                                                <img alt="GST Services | TaxManager.in" width="auto"
+                                                                    height="auto"
+                                                                    src="Images/icon/business/gst-services.webp">
+                                                            </span>GST Services
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="business/accounting-management.html">
+                                                            <span>
+                                                                <img alt="Accounting Retainership | TaxManager.in"
+                                                                    src="Images/icon/business/accounting-retainership.webp">
+                                                            </span>Accounting Retainership
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="business/tds-taxmanagement.html">
+                                                            <span>
+                                                                <img alt="TDS &amp; Tax Management | TaxManager.in"
+                                                                    src="Images/icon/business/tds-tax-management.webp">
+                                                            </span>TDS &amp; Tax Management
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="business/compliancemgmt.html">
+                                                            <span>
+                                                                <img alt="Compliance Management | TaxManager.in"
+                                                                    src="Images/icon/business/compliance-management.webp">
+                                                            </span>Compliance Management
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="business/companyregistration.html">
+                                                            <span>
+                                                                <img alt="Company Registration | TaxManager.in"
+                                                                    src="Images/icon/business/company-registration.webp">
+                                                            </span>Company Registration
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="business/rbicompliances.html">
+                                                            <span>
+                                                                <img alt="RBI Compliances | TaxManager.in" width="auto"
+                                                                    height="auto"
+                                                                    src="Images/icon/business/rbi-compliances.webp">
+                                                            </span>RBI Compliances
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="business/trademarkregistrations.html">
+                                                            <span>
+                                                                <img alt="Trademark Registration | TaxManager.in"
+                                                                    src="Images/icon/business/trademark-registration.webp">
+                                                            </span>Trademark Registration
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="business/legalcompliances.html">
+                                                            <span>
+                                                                <img alt="Legal Compliance | TaxManager.in" width="auto"
+                                                                    height="auto"
+                                                                    src="Images/icon/business/legal-compliances.webp">
+                                                            </span>Legal Compliances
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="business/governmentregistrations.html">
+                                                            <span>
+                                                                <img alt="Government Registrations | TaxManager.in"
+                                                                    src="Images/icon/business/government-registrations.webp">
+                                                            </span>Government Registrations
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="business/msmeservices.html">
+                                                            <span>
+                                                                <img alt="MSME Program | TaxManager.in" width="auto"
+                                                                    height="auto"
+                                                                    src="Images/icon/business/msme-program.webp">
+                                                            </span>MSME Program
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="business/corporate-plan.html">
+                                                            <span>
+                                                                <img alt="Employee Care – eForm 16/ Payrolls | TaxManager.in"
+                                                                    src="Images/icon/business/employee-care-e-form-16-payrolls.webp">
+                                                            </span>Employee Care – eForm 16/ Payrolls
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="dropnav dropdown">
+                                <a href="/">Startup
+                                    <span><i class="fas fa-angle-down"></i></span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="startup/LaunchYourStartup.html">
+                                            <span>
+                                                <img alt="#" src="Images/icon/startup/launch_you_startup.webp">
+                                            </span> Launch your Startup
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="startup/ManageYourStartup.html">
+                                            <span>
+                                                <img alt="#" src="Images/icon/startup/manage_startup.webp">
+                                            </span> Manage your Startup
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="startup/GrowYourStartup.html">
+                                            <span>
+                                                <img alt="#" src="Images/icon/startup/Grow_startup.webp">
+                                            </span> Grow your Startup
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropnav dropdown subdelis">
+                                <a href="/">Add on's
+                                    <span><i class="fas fa-angle-down"></i></span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="add-ons/banking.html">
+                                            <span>
+                                                <img alt="#" src="Images/icon/addon/banking.webp">
+                                            </span> Banking
+                                        </a>
+                                    </li>
+                                    <li class="dropnav dropdown sub-dropdown">
+                                        <a href="add-ons/loans.html">
+                                            <span>
+                                                <img alt="#" src="Images/icon/addon/loan.webp">
+                                            </span> Loans
+                                            <span><i class="fas fa-angle-down"></i></span>
+                                        </a>
+                                        <ul>
+                                            <li><a href="add-ons/loans/personal-loan.html"><span> <img alt="#"
+                                                            src="Images/icon/addon/personal-loan.png"></span>
+                                                    Personal Loan</a></li>
+                                            <li><a href="add-ons/loans/car-loan.html"><span> <img alt="#"
+                                                            src="Images/icon/addon/car-loan.png"></span> Car
+                                                    Loan</a></li>
+                                            <li><a href="add-ons/loans/home-loan.html"><span> <img alt="#"
+                                                            src="Images/icon/addon/home-loan.png"></span>
+                                                    Home Loan</a></li>
+                                            <li><a href="add-ons/loans/education.html"><span> <img alt="#"
+                                                            src="Images/icon/addon/educational-loan.png"></span>
+                                                    Education</a></li>
+                                            <li><a href="add-ons/loans/business-loan.html"><span> <img alt="#"
+                                                            src="Images/icon/addon/business-loan.png"></span>
+                                                    Business Loan</a></li>
+                                            <li><a href="add-ons/loans/loan-against-property.html"><span> <img
+                                                            alt="#"
+                                                            src="Images/icon/addon/loan-against-property.png"></span>
+                                                    Loan Against Property</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="add-ons/tally.html">
+                                            <span>
+                                                <img alt="#" src="Images/icon/addon/tally_solutions.webp">
+                                            </span> Tally Solutions
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="add-ons/zoho.html">
+                                            <span>
+                                                <img alt="#" src="Images/icon/addon/zoho_services.webp">
+                                            </span> Zoho Services
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="add-ons/greytHR.html">
+                                            <span>
+                                                <img alt="#" src="Images/icon/addon/greytHr.webp">
+                                            </span> greytHR Management
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="add-ons/partnersprogram.html">
+                                            <span>
+                                                <img alt="#" src="Images/icon/addon/partner_program.webp">
+                                            </span> Partner's Program
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            <li class="dropnav dropdown">
+                                <a href="/">Us
+                                    <span><i class="fas fa-angle-down"></i></span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="About_Us.html">
+                                            <span>
+                                                <img class="lazyload" alt="About Us | TaxManager.in"
+                                                    src="Images/icon/us/about-us.webp">
+                                            </span>About Us
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="Contact.html">
+                                            <span>
+                                                <img class="lazyload" alt="Contact Us | TaxManager.in"
+                                                    src="Images/icon/us/contact-us.webp">
+                                            </span> Contact Us
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="career.html">
+                                            <span>
+                                                <img class="lazyload" alt="Careers | TaxManager.in"
+                                                    src="Images/icon/us/career.webp">
+                                            </span>Careers
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="Contact.html">
+                                            <span>
+                                                <img class="lazyload" alt="Support | TaxManager.in"
+                                                    src="Images/icon/us/support.webp">
+                                            </span>Support
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="blogs.html">
+                                            <span>
+                                                <img class="lazyload" alt="Blogs | TaxManager.in"
+                                                    src="Images/icon/us/blogs.webp">
+                                            </span> Blogs
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="Inmedia.html">
+                                            <span>
+                                                <img class="lazyload" alt="Media | TaxManager.in"
+                                                    src="Images/icon/us/media.webp">
+                                            </span>Media
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="leadership.html">
+                                            <span>
+                                                <img class="lazyload" alt="Leadership | TaxManager.in"
+                                                    src="Images/icon/us/leaderhsip.webp">
+                                            </span>Leadership
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="knowledgebank.html">
+                                            <span>
+                                                <img class="lazyload" alt="Knowledge Bank | TaxManager.in"
+                                                    src="Images/icon/us/knowledge-bank.webp">
+                                            </span>Knowledge Bank
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="faqs.html">
+                                            <span>
+                                                <img class="lazyload" alt="FAQs &amp; Glossary | TaxManager.in"
+                                                    src="Images/icon/us/faqs.webp">
+                                            </span> FAQs &amp; Glossary
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropnav dropdown">
+                                <a href="#">Tools <span><i class="fas fa-angle-down"></i></span></a>
+                                <ul>
+                                    <li>
+                                        <a href="pay-now.html">
+                                            <span>
+                                                 <img class="lazyload" alt="Pay Now | TaxManager.in"
+                                                    src="Images/icon/tools/emi.png">
+                                            </span> Pay Now
+                                        </a>
+                                    </li>
+<li>
+                                        <a href="tools/calculator/23-24/">
+                                            <span>
+                                                <img class="lazyload" alt="Tax Calculator | TaxManager.in"
+                                                    src="Images/icon/tools/tax-calculator.webp">
+                                            </span> Tax Calculator
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="tools/calculator/Hra/Hra.aspx">
+                                            <span>
+                                                <img class="lazyload" alt="HRA Calculator | TaxManager.in"
+                                                    src="Images/icon/tools/hra-calculator.webp">
+                                            </span> HRA Calculator
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="tools/Calculator/emi-calculator.html">
+                                            <span>
+                                                <img class="lazyload" alt="Tax Calculator | TaxManager.in"
+                                                    src="Images/icon/tools/emi.png">
+                                            </span> EMI Calculator
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="tools/calendar.html">
+                                            <span>
+                                                <img class="lazyload" alt="HRA Calculator | TaxManager.in"
+                                                    src="Images/icon/tools/compliances.png">
+                                            </span> Compliance Calendar
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://gst.taxmanager.in/">
+                                            <span>
+                                                <img class="lazyload" alt="Tax Calculator | TaxManager.in"
+                                                    src="Images/icon/tools/gst.png">
+                                            </span> GST Search Tool
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="tools/calculator/hsn-code/">
+                                            <span>
+                                                <img class="lazyload" alt="Tax Calculator | TaxManager.in"
+                                                    src="Images/icon/tools/gst-hsn.png">
+                                            </span> GST HSN Code
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="tools/tax-calculator.html">
+                                            <span>
+                                                <img class="lazyload" alt="Tax Calculator | TaxManager.in"
+                                                    src="Images/icon/tools/old-vs-new.png">
+                                            </span> Old vs New Tax Regime
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="supnabar">
+                            <h4>Support </h4>
+                            <ul>
+                                <li>
+                                    <a href="mailto:support@TaxManager.in">
+                                        <span><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                                        <div class="texspan">
+                                            <h5>eMail </h5>
+                                            <p>support@TaxManager.in </p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="tel:+91-9555331122">
+                                        <span><i class="fas fa-phone-alt" aria-hidden="true"></i></span>
+                                        <div class="texspan">
+                                            <h5>Call Us</h5>
+                                            <p>+91-9555331122</p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://api.whatsapp.com/send?phone=919625445516&amp;text=Hi!%20I%20am%20looking%20for%20assistance%20in%20Tax%20Filing"><span><i
+                                                class="fa fa-whatsapp" aria-hidden="true"></i></span>
+                                        <div class="texspan">
+                                            <h5>Chat With Us</h5>
+                                            <p>+91-9625445516</p>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- User Icone -->
+                <div class="userco">
+                    <a href="/login/login.aspx">
+                        <span><img src="tm360/Images/user.webp" alt=""></span>
+                    </a>
+                </div>
+                <!-- Taggle -->
+                <div class="nav-toggle">
+                    <div class="one"></div>
+                    <div class="two"></div>
+                    <div class="three"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+        <!-- End of head -->
+
+ 
+<div class="container pt-5">
+            <img src="http://127.0.0.1:5502/blogs/public/images/Untitled (1440 x 350 px) (1440 x 420 px) (56).png" class="img-fluid pt-5" alt="">
+
+</div>        
+
+        <!-- start of body  -->
+       <section id="" style="width:100%;margin-bottom: 0px;">
+                        <div class="container shadow-lg p-3 mb-5 bg-white rounded">
+                            <div class="container-row">
+                                <div class="col-md-12 text-center">
+                                    <h4 class="text-center" style="padding-bottom: 45px;color:#0d30a9; font-weight:bold;">Comparison IT
+                                        Calculator Financial Year 2026 - 27</h4>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-2 ">
+                                </div>
+                                <div class="col-md-8 col-12 shadow-lg p-3 mb-5 bg-white rounded">
+                                    <form>
+
+                                        <div class="form-group row">
+                                            <label for="age" class="col-sm-7 col-form-label fw-bold">Age</label>
+                                            <div class="col-sm-5">
+                                                <select class="form-select" id="age" aria-label="Select Age">
+                                                    <option selected="">Select Age</option>
+                                                    <option value="1">Below 60 Years (Normal Citizen)</option>
+                                                    <option value="2">Between 60 Years to 79 Years (Senior Citizen)
+                                                    </option>
+                                                    <option value="3">Above 79 Years (Super Senior Citizen)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group row">
+                                            <label for="AnSalary" class="col-sm-7 col-form-label fw-bold">Estimated
+                                                Annual Income #</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control text-end" id="AnSalary">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group row">
+                                            <label for="AnSalaryAfterDeduc" class="col-sm-7 col-form-label fw-bold">Less:- Exemptions /
+                                                Deductions*</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control text-end" onfocusout="IncomeNew()" id="AnSalaryAfterDeduc">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group row">
+                                            <label for="IncomeOld" class="col-sm-7 col-form-label fw-bold">Net Taxable
+                                                Income as per Old Regime</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control text-end" id="IncomeOld">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group row">
+                                            <label for="IncomeNew" class="col-sm-7 col-form-label fw-bold">Net Taxable
+                                                Income as per New Regime</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control text-end" id="IncomeNew">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12 text-center">
+                                                <button type="button" class="btn btn-primary btn-md btn-block" onclick="calculate()">Compare Tax Under Old &amp; New Regime</button>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group row">
+                                            <label for="OldTax" class="col-sm-7 col-form-label fw-bold">Tax Payble as
+                                                per Old Regime</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control text-end" id="OldTax">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group row">
+                                            <label for="NewTax" class="col-sm-7 col-form-label fw-bold">Tax Payble as
+                                                per New Regime</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control text-end" id="NewTax">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group row">
+                                            <label for="Old_New" class="col-sm-7 col-form-label fw-bold" id="TaxMsg">Your Tax Benefit as per</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control text-end fw-bold" id="Old_New" disabled="">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group row text-center">
+                                            <label class="col-sm-12 col-form-label fw-bold text-start" style="font-size: xx-small;">***No Surcharge is considered for Tax
+                                                Calculation</label>
+
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                                <div class="annual-btn1">
+                                    <div class="button1">
+                                        <a href="https://www.taxmanager.in/efile/aspsubscribe.aspx" style="color: white !important;" target="_blank">Annual Subscription FY
+                                            26-27
+                                        </a>
+                                    </div>
+                                    <div class="button1">
+                                        <a href="https://www.taxmanager.in/efile/ctcoptimizer.aspx " style="color: white !important;" target="_blank">CTC Optimizer FY 26-27
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                </section>
+
+        </section>
+        </div>
+        </main>
+        </div>
+        <!-- end of body -->
+
+
+
+        
+ 
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row firstsection">
+                <div class="col-md-12 col-lg-1"></div>
+                <div class="col-md-4 col-lg-2">
+                    <div class="footer_menu_Sec">
+                        <h4>Assisted Tax Filing</h4>
+                        <h5>Resident</h5>
+                        <ul>
+                            <li><a href="/efile/CAAssistedSalary.aspx">Salaried</a></li>
+                            <li><a href="/efile/CAAssistedSalary50Lakhs.aspx">Salaried over Rs 50 Lakhs</a></li>
+                            <li><a href="/efile/CAAssistedCG.aspx">Capital Gains (Equity &amp; MF Sale)</a></li>
+                            <li><a href="/efile/CAAssistedCG_PS.aspx">Capital Gains (Property Sale)</a></li>
+                            <li><a href="/efile/itr4.aspx">Professional/ Self Employed</a></li>
+                            <li><a href="#">Presumptive Income</a></li>
+                            <li><a href="/efile/ResidentwithForeignIncome.aspx">Foreign Income</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer_menu_Sec">
+                        <h5 class="last">NRI</h5>
+                        <ul>
+                            <li><a href="/efile/NRI_FD.aspx">Other Income</a></li>
+                            <li><a href="/efile/NRI_Equity.aspx">Capital Gains (Equity & MF Sale)</a></li>
+                            <li><a href="/efile/NRI_PS.aspx">Capital Gains (Property Sale)</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-2">
+                    <div class="footer_menu_Sec">
+                        <h4>Tax Management</h4>
+                        <h5>Resident</h5>
+                        <ul>
+                            <li><a href="/efile/aspsubscribe.aspx">Tax Advisory</a></li>
+                            <li><a href="#">Tax Treatment on Property Sale</a></li>
+                            <li><a href="/efile/aspsubscribe.aspx">Advance Tax Calculation</a></li>
+                            <li><a href="/efile/aspsubscribe.aspx">Annual Subscription Package</a> </li>
+                            <li><a href="/efile/ctcoptimizer.aspx">CTC Optimizer</a></li>
+                            <li><a href="/efile/taxquery.aspx">Tax Query</a></li>
+                            <li><a href="/efile/taxnoticeservice.aspx">Tax Notice – Demand/ Notice Reply</a></li>
+                            <li><a href="/efile/taxnoticeservice.aspx">Tax Rectification</a></li>
+                            <li><a href="/efile/taxhistoryservice.aspx">Tax Health Check-up</a></li>
+                            <li><a href="individuals/index.html">PAN Application</a></li>
+                            <li><a href="individuals/index.html">Digital Signature</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer_menu_Sec">
+                        <h5 class="last">NRI</h5>
+                        <ul>
+                            <li><a href="#">Tax Treatment on Property Sale</a></li>
+                            <li><a href="/efile/aspsubscribe.aspx">Advance Tax Calculation</a></li>
+                            <li><a href="#">CA Certification on Foreign Remittance</a></li>
+                            <li><a href="/efile/taxquery.aspx">Tax Query</a></li>
+                            <li><a href="/efile/aspsubscribe.aspx">Annual Subscription Package</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-2">
+                    <div class="footer_menu_Sec">
+                        <h4>Investments</h4>
+                        <ul>
+                            <li><a href="/efile/aspsubscribe.aspx">Plan your Tax Savings</a></li>
+                            <li><a href="#">Start Investing</a></li>
+                            <li><a href="#">Mutual Funds</a></li>
+                            <li><a href="#">Life Insurance</a></li>
+                            <li><a href="#">Health Insurance</a></li>
+                            <li><a href="#">Public Provident Fund</a></li>
+                            <li><a href="#">National Saving Certificates</a></li>
+                            <li><a href="#">NPS</a></li>
+                            <li><a href="#">Others</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer_menu_Sec">
+                        <h4>Startups</h4>
+                        <ul>
+                            <li><a href="startup/LaunchYourStartup.html">Launch your Startup</a></li>
+                            <li><a href="startup/ManageYourStartup.html">Manage your Startup</a></li>
+                            <li><a href="startup/GrowYourStartup.html">Grow your Startup</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <div class="footer_menu_Sec">
+                        <h4>Business</h4>
+                        <h5>Assisted Tax Filing </h5>
+                        <ul>
+                            <li><a href="#">Proprietor</a></li>
+                            <li><a href="#">Presumptive Income</a></li>
+                            <li><a href="#">LLP</a></li>
+                            <li><a href="#">Pvt Ltd Company</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer_menu_Sec">
+                        <h5 class="last">Others</h5>
+                        <ul>
+                            <li><a href="business/gst-services.html">GST Services</a></li>
+                            <li><a href="business/accounting-management.html">Accounting Retainership</a></li>
+                            <li><a href="business/tds-taxmanagement.html"> TDS &amp; Tax Management </a> </li>
+                            <li><a href="business/compliancemgmt.html">Compliance Management</a></li>
+                            <li><a href="business/companyregistration.html">Company Registration </a></li>
+                            <li><a href="business/rbicompliances.html">RBI Compliances</a></li>
+                            <li><a href="business/trademarkregistrations.html">Trademark Registration</a></li>
+                            <li><a href="business/legalcompliances.html">Legal Compliances</a></li>
+                            <li><a href="business/governmentregistrations.html">Government Registrations</a></li>
+                            <li><a href="business/msmeservices.html">MSME Program</a></li>
+                            <li><a href="business/corporate-plan.html">Employee Care – eForm 16/ Payrolls </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="footer_menu_Sec">
+                        <h4>Us</h4>
+                        <ul>
+                            <li><a href="About_Us.html">About Us</a></li>
+                            <li><a href="Contact.html">Contact Us</a></li>
+                            <li><a href="Contact.html">Support</a></li>
+                            <li><a href="career.html">Careers</a></li>
+                            <li><a href="blogs.html">Blogs</a></li>
+                            <li><a href="Inmedia.html">Media</a></li>
+                            <li><a href="/leadership.html">Leadership</a></li>
+                            <li><a href="knowledgebank.html">Knowledge Bank</a></li>
+                            <li><a href="faqs.html">FAQ’s</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer_menu_Sec">
+                        <h4>Tools</h4>
+                        <ul>
+                            <li><a href="/calculator/23-24">Tax Calculator</a></li>
+                            <li><a href="tools/Calculator/Hra/Hra.aspx">HRA Calculator</a></li>
+                            <li><a href="#">Other Calculators</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer_menu_Sec">
+                        <h4>Support</h4>
+                        <ul class="support_sec_are">
+                            <li><a href="Contact.html"><span><i class="fa fa-life-ring"></i></span> Need CA
+                                    Help?</a>
+                            </li>
+                            <li><a href="tel:+91-9555331122"><span><i class="fa fa-phone"></i></span>
+                                    +91-9555331122</a>
+                            </li>
+                            <li><a href="mailto:Support@TaxManager.in"><span><i class="fa fa-envelope"></i></span>
+                                    Support@TaxManager.in</a></li>
+                        </ul>
+                        <ul class="catifications">
+                            <li>
+                                <a href="certified.html"><img src="Images/RISING-ADVISORY-SERVICES-PRIVATE-LIMITED-ISO-9001.webp" alt="RISING ADVISORY SERVICES PRIVATE LIMITED ISO 9001"></a>
+                            </li>
+                            <li>
+                                <a href="https://www.ssl.com/faqs/faq-what-is-ssl/" target="_blank"><img src="Images/ssl-1.webp" alt="RISING ADVISORY SERVICES PRIVATE LIMITED ISO 27001"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Branding -->
+        <div class="groupbrand">
+            <div class="container">
+                <div class="row">
+                    <p><span>Group Brands</span> <a href="https://taxmanager.in">TaxManager</a>
+                        <a href="https://credmanager.co/">CredManager</a>
+                        <a href="https://edumanager.in/">EduManager</a>
+                        <a href="https://www.taxmanager.instartup/index">StartupManager</a>
+                        <a href="https://www.cfoserve.in/">CFOServe</a>
+                        <a href="https://riseit360.com/">RiseIT360</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="second-footer">
+            <div class="container">
+                <div class="row secondfooter">
+                    <div class="col-md-6 col-lg-3">
+                        <ul>
+                            <li><a href="/Privacy-Policy">Privacy Policy</a></li>
+                            <li><a href="/Terms_Conditions">Terms & Conditions</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <ul>
+                            <li><a href="/Legal_Disclaimer">Legal Disclaimer</a></li>
+                            <li><a href="">Security</a></li>
+                            <li><a href="">Refund Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-2">
+                        <span id="siteseal">
+                            <script async type="text/javascript"
+                                src="https://seal.godaddy.com/getSeal?sealID=hfWt4Lbyg7Aq8Lv9qJbo518SKoqGu9oKaGpc35I4EQx12oaanVgRzZPAljsR">
+                                </script>
+                        </span>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <ul class="social-mediased">
+                            <li>
+                                <h2>Follow us on</h2>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://www.facebook.com/efileitr" aria-label="Facebook taxmanager">
+                                    <span><i class="fab fa-facebook-f"></i></span>
+                                </a>
+                            </li>
+                            <li><a target="_blank" href="https://www.instagram.com/taxmanagerofficial/" aria-label="Instagram taxmanager"><span><i
+                                            class="fa-brands fa-instagram"></i></span></a>
+                            </li>
+                            <li><a target="_blank" href="https://twitter.com/taxmanagerindia" aria-label="Twitter taxmanager"><span><i
+                                            class="fa-brands fa-x-twitter"></i></span></a>
+                            </li>
+                            <li><a target="_blank" href="https://in.linkedin.com/company/taxmanager-in" aria-label="Linkedin Taxmanager"><span><i class="fab fa-linkedin-in"></i></span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <!-- Copyright -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <p><span>@Rising Advisory Services Private Limited.</span> All rights reserved</p>
+            </div>
+        </div>
+    </div>
+
+    <!--fixed-->
+    <!-- <div class="fixed">
+        <ul>
+            <li>
+                <a target="_blank" href="https://api.whatsapp.com/send?phone=919625445516&amp;text=Hi I am Looking for Tax Expert Assistance"><i
+                        class="fa-brands fa-whatsapp"></i></a>
+            </li>
+            <li>
+                <a href="Contact.html"><img src="Images/icon/support-icon.webp" alt=""></a>
+            </li>
+            <li id="clickshowpopup"><i class="fa-solid fa-envelope"></i></li>
+        </ul>
+    </div> -->
+<!--fixed--> <div class="fixed"> <ul> <li> <a target="_blank" href="http://ai.taxm.co.in/"><img src="Images/icon/TaxM_GPT_icon.png" alt=""></a> </li> </ul> </div>  
+     <!-- Individual Services Btn  -->
+    <div class="texbtnseaare">
+        <button type="button" class="submit" id="IndividualServices">Let's Start</button>
+
+    </div>
+
+
+
+      
+        <!-- end of footer -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js "
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM "
+            crossorigin="anonymous "></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://kit.fontawesome.com/cc33d9671e.js " crossorigin="anonymous "></script>
+        <script src="/public/js/script.js "></script>
+        <!-- <script src="/public/js/example.js "></script> -->
+        <!-- end of footer -->
+
+         
+        <script async src="//static.getclicky.com/101385870.js"></script>
+        <noscript>
+            <p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101385870ns.gif" /></p>
+        </noscript>
+    </body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

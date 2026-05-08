@@ -1,0 +1,75 @@
+@media only screen and (min-width:760px) and (max-width:1000px) {
+img {max-width:100%; height:auto;}
+
+
+/* 	-----------------------------------------------------
+	------------------- Header Styles -------------------
+	----------------------------------------------------- */
+	#header_section header {width:100%;}
+	#header_section header .section01 {width:100%;}
+			
+	#header_section header .section02 {width:100%;}
+		
+	#header_section header .section03 {width:96%; padding:30px 2%;}
+	
+		#header_section header .section03 hgroup {width:100%; padding-bottom:20px;}
+		
+	
+	.tinynav {display: block;}
+ 	#nav {display: none;}
+
+
+/* 	-----------------------------------------------------
+	------------------- Banner Styles -------------------
+	----------------------------------------------------- */
+	#banner_section section {width:100%;}	
+	
+		.tryforfree, .tryforfree1, .read_more, .read_more1, .subscribe_now, .read_more2, .tryforfree2, .read_more3, .check_prices, .read_more4, .contact_team, .read_more5 {display:none !important;}
+		
+	
+/* 	-----------------------------------------------------
+	------------------ Content Styles -------------------
+	----------------------------------------------------- */
+	#main_section {width:100%;}
+	
+		#main_section .section01 {width:100%; padding:0;}
+		#main_section .section02 {width:100%;}
+			#main_section .section02 ul {margin:0;}
+			#main_section .section02 ul li {margin:0 50px;}
+		
+		#main_section .section03 {width:100%;}
+		
+			#main_section .section03 .left_panel {width:92%; padding:4%;}
+			#main_section .section03 .right_panel {width:92%; padding:4%;}
+			
+			
+			
+/* 	-----------------------------------------------------
+	------------------ Content Styles -------------------
+	----------------------------------------------------- */
+	#inner_section {width:96%; padding:30px 2%;}
+	
+		#left_section {width:25%;}
+		#right_section {width:73%;}
+	
+	
+		
+	
+/* 	-----------------------------------------------------
+	------------------- Footer Styles -------------------
+	----------------------------------------------------- */
+	#footer_section footer {width:100%;}
+		
+		#footer_section footer .section01 {width:96%; padding:2%;}
+			#footer_section footer .section01 .content_box01 {width:50%; padding:0; min-height:280px;}
+			#footer_section footer .section01 .content_box02 {width:50%; padding:0; min-height:280px;}
+			#footer_section footer .section01 .content_box03 {width:40%; padding:0 10% 0 0; min-height:280px;}
+			#footer_section footer .section01 .content_box04 {width:50%; padding:0; min-height:280px;}
+		
+		#footer_section footer .section02 {width:96%; padding:2%;}
+		
+			#footer_section footer .section02 .left {width:60%;} 
+			
+		
+
+}

@@ -1,0 +1,10 @@
+CREATE TABLE [dbo].[tbl_msg_box](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[uname] [nvarchar](30) NULL,
+	[umail] [nvarchar](50) NULL,
+	[umob] [nvarchar](20) NULL,
+	[ddl_option] [nvarchar](150) NULL,
+	[umsg] [nvarchar](250) NULL,
+	[add_date1] [datetime] NULL default getdate(),
+	[pagename] [nvarchar](50) NULL
+)

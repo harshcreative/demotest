@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <!-- HTML Meta Tags -->
+    <title>TaxManager.in | E-filing Income Tax: Income Tax Return (ITR) Filing Online | GST |</title>
+    <link rel="icon" type="image/png" href="/tm360/images/favicon.webp" />
+    <!-- Style File -->
+    <link rel="stylesheet" href="/tm360/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/tm360/css/sylesheet.css" />
+    <link rel="stylesheet" href="/tm360/css/responsive.css" />
+    <!-- google Font -->
+    <link rel="stylesheet" href="/tm360/font/google.font.css" />
+    <!-- Icone Font -->
+    <link rel="stylesheet" href="/tm360/icon/icon.css" />
+    <!-- Font Awesome icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- Owl Carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <!-- Light Box -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup/magnific-popup.css" />
+    <!-- Cuntry Code With Flage -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
+    <!-- Swiper Slider -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.css" />
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "qyale549lw");
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MS8CR876YK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MS8CR876YK");
+    </script>
+    <script type="text/javascript">
+      var AgeId = 0;
+      var AnuSal = 0;
+      var OldSal = 0;
+      var NewSal = 0;
+
+      function calculate() {
+        if (document.getElementById("age").selectedIndex == 0) {
+          alert("Please Select Age");
+          return false;
+        } else {
+          AgeId = document.getElementById("age").selectedIndex;
+        }
+        if (document.getElementById("AnSalary").value == 0) {
+          alert("Please Enter Estimated Annual Income ");
+          return false;
+        } else {
+          AnuSal = document.getElementById("AnSalary").value;
+        }
+        if (document.getElementById("AnSalaryAfterDeduc").value == 0) {
+          document.getElementById("AnSalaryAfterDeduc").value = 0;
+        }
+        IncomeNew();
+        CalTaxNew();
+        CalTaxOld();
+        document.getElementById("Old_new").selecte();
+      }
+
+      function CalTaxNew() {
+        var NetSal = NewSal;
+        var Tax = 0;
+        var Cess = 0;
+        var Surcharge = 0;
+        var A = 0;
+        var B = 0;
+        var C = 0;
+        var D = 0;
+        var Limit = 50000;
+        if (this.AgeId == 1 || this.AgeId == 2 || this.AgeId == 3) {
+          Limit = 50000;
+          NetSal = NetSal - Limit;
+          if (NetSal > Limit) {
+            if (NetSal <= 300000) {
+              Tax = 0;
+              {
+                if (Tax <= 0) Tax = 0;
+              }
+            } else if (NetSal <= 600000) {
+              Tax = ((NetSal - 300000) / 100) * 5;
+              {
+                if (Tax <= 0) Tax = 0;
+              }
+            } else if (NetSal <= 900000) {
+              Tax = (300000 / 100) * 5 + ((NetSal - 600000) / 100) * 10;
+              {
+                if (Tax <= 0) Tax = 0;
+              }
+            } else if (NetSal <= 1200000) {
+              Tax = (300000 / 100) * 5 + (300000 / 100) * 10 + ((NetSal - 900000) / 100) * 15;
+              {
+                if (Tax <= 0) Tax = 0;
+              }
+            } else if (NetSal <= 1500000) {
+              Tax = (300000 / 100) * 5 + (300000 / 100) * 10 + (300000 / 100) * 15 + ((NetSal - 1200000) / 100) * 20;
+              {
+                if (Tax <= 0) Tax = 0;
+              }
+            } else if (NetSal >= 1500001) {
+              Tax = (300000 / 100) * 5 + (300000 / 100) * 10 + (300000 / 100) * 15 + (300000 / 100) * 20 + ((NetSal - 1500000) / 100) * 30;
+              {
+                if (Tax <= 0) Tax = 0;
+              }
+            }
+          }
+        }
+        var perc = (Tax / 100) * 4;
+        document.getElementById("NewTax").value = Math.round(perc - 0 + (Tax - 0));
+      }
+
+      function CalTaxOld() {
+        var functionReturnValue = 0;
+        var NetSal = this.OldSal;
+        var Tax = 0;
+        var Cess = 0;
+        var Surcharge = 0;
+        var A = 0;
+        var B = 0;
+        var C = 0;
+        var D = 0;
+        var Limit = 250000;
+        //var age = 0;
+
+        if (this.AgeId == 1) {
+          Limit = 250000;
+        }
+
+        if (this.AgeId == 2) {
+          Limit = 300000;
+        }
+        if (this.AgeId == 3) {
+          Limit = 500000;
+        }
+        if (NetSal > 0) {
+          if (NetSal > Limit) {
+            if (NetSal <= 300000) {
+              Tax = 0;
+              {
+                if (Tax <= 0) Tax = 0;
+              }
+            } else if (NetSal >= 300000 && NetSal <= 350000) {
+              Tax = ((NetSal - Limit) / 100) * 0;
+              Tax = Tax - 2500;
+              {
+                if (Tax <= 0) Tax = 0;
+              }
+            } else if (NetSal >= 350000 && NetSal <= 700000) {
+              Tax = ((NetSal - Limit) / 100) * 0;
+
+              {
+                if (Tax <= 0) Tax = 0;
+              }
+            } else if (NetSal > 500000) {
+              if (NetSal <= 1000000) {
+                A = Limit;
+                B = 500000;
+                C = NetSal - B;
+                Tax = Tax + ((B - A) / 100) * 5;
+                Tax = Tax + (C / 100) * 20;
+              } else if (NetSal > 1000000) {
+                A = Limit;
+                B = 500000;
+                C = 1000000 - B;
+                D = NetSal - (B + C);
+                Tax = Tax + ((B - A) / 100) * 5;
+                Tax = Tax + (C / 100) * 20;
+                Tax = Tax + (D / 100) * 30;
+              }
+            }
+          }
+        }
+
+        var perc = (Tax / 100) * 4;
+
+        document.getElementById("OldTax").value = Math.round(perc - 0 + (Tax - 0));
+
+        if (Math.round(document.getElementById("OldTax").value) > Math.round(document.getElementById("NewTax").value)) {
+          document.getElementById("Old_New").value = document.getElementById("OldTax").value - document.getElementById("NewTax").value;
+          document.getElementById("TaxMsg").innerHTML = "Your Tax Benefit as per New Regime is";
+        } else {
+          document.getElementById("Old_New").value = document.getElementById("NewTax").value - document.getElementById("OldTax").value;
+          document.getElementById("TaxMsg").innerHTML = "Your Tax Benefit as per Old Regime is";
+        }
+      }
+
+      function IncomeNew() {
+        document.getElementById("IncomeNew").value = document.getElementById("AnSalary").value;
+        NewSal = document.getElementById("IncomeNew").value;
+        IncomeOld();
+      }
+
+      function IncomeOld() {
+        document.getElementById("IncomeOld").value = document.getElementById("AnSalary").value - document.getElementById("AnSalaryAfterDeduc").value;
+        OldSal = document.getElementById("IncomeOld").value;
+      }
+    </script>
+  </head>
+
+  <body>
+    <!-- header -->
+    <header>
+      <div class="container">
+        <div class="row">
+          <!-- Logo -->
+          <div class="logo">
+            <a href="/tm360/">
+              <img src="/tm360/Images/logo.webp" alt="" />
+            </a>
+          </div>
+          <!-- Nav Section -->
+          <nav>
+            <div class="menusectare">
+              <ul>
+                <li class="dropnav">
+                  <a href="#">
+                    Individual
+                    <span><i class="fas fa-angle-down"></i></span>
+                  </a>
+                  <div class="megaropdown max-width">
+                    <div class="row">
+                      <div class="col-md-6 col-lg-6">
+                        <div class="divider-box">
+                          <h4>Tax Expert Assisted Tax Filing</h4>
+                          <h5>Resident</h5>
+                          <ul>
+                            <li>
+                              <a href="/efile/CAAssistedSalary.aspx">
+                                <span>
+                                  <img alt="#" src="/tm360/Images/icon/individual/salary.webp" /> </span
+                                >Salary
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/efile/CAAssistedSalary50Lakhs.aspx">
+                                <span>
+                                  <img alt="#" src="/tm360/Images/icon/individual/salary_over.webp" />
+                                </span>
+                                Salary over Rs 50 Lakhs
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/efile/CAAssistedCG.aspx">
+                                <span>
+                                  <img alt="#" src="/tm360/Images/icon/individual/capital_Equity.webp" /> </span
+                                >Capital Gains (Equity &amp; MF Sale)
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/efile/CAAssistedCG_PS.aspx">
+                                <span>
+                                  <img alt="#" src="/tm360/Images/icon/individual/capital_sale.webp" /> </span
+                                >Capital Gains (Property Sale)
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/efile/itr4.aspx">
+                                <span>
+                                  <img alt="#" src="/tm360/Images/icon/individual/self_employed.webp" /> </span
+                                >Professional/Self Employed
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <span>
+                                  <img alt="#" src="/tm360/Images/icon/individual/presumptive_income.webp" /> </span
+                                >Presumptive Income
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/efile/ResidentwithForeignIncome.aspx">
+                                <span>
+                                  <img alt="#" src="/tm360/Images/icon/individual/foreign_income.webp" /> </span
+                                >Foreign Income
+                              </a>
+                            </li>
+                          </ul>
+                          <h5>NRI</h5>
+                          <ul>
+                            <li>
+                              <a href="/efile/NRI_FD.aspx">
+                                <span>
+                                  <img alt="#" src="/tm360/Images/icon/individual/other_income_fd.webp" />
+                                </span>
+                                Other Income – FD Interest etc
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/efile/NRI_Equity.aspx">
+                                <span>
+                                  <img alt="#" src="/tm360/Images/icon/individual/capital_Equity.webp" /> </span
+                                >Capital Gains (Equity &amp; MF Sale)
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/efile/NRI_PS.aspx">
+                                <span>
+                                  <img alt="#" src="/tm360/Images/icon/individual/capital_sale.webp" /> </span
+                                >Capital Gains (Property Sale)
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-lg-6">
+                        <div class="divider-box">
+                          <h4>Tax Management</h4>
+                          <ul>
+                            <li>
+                              <a href="/efile/aspsubscribe.aspx">
+                                <span><img alt="Tax Advisory | TaxManager.in" src="/tm360/Images/icon/individual/tax_Advisory.webp" /></span>Tax Advisory
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <span>
+                                  <img alt="Tax Treatment on Property Sale | TaxManager.in" src="/tm360/Images/icon/individual/tax_Treatment.webp" /> </span
+                                >Tax Treatment on Property Sale
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/efile/aspsubscribe.aspx">
+                                <span>
+                                  <img alt="Advance Tax Calculation | TaxManager.in" src="/tm360/Images/icon/individual/advance_tax_calculation.webp" /> </span
+                                >Advance Tax Calculation
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/efile/aspsubscribe.aspx">
+                                <span>
+                                  <img alt="Annual Subscription Package | TaxManager.in" src="/tm360/Images/icon/individual/annual_subscribtion_package.webp" /> </span
+                                >Annual Subscription Package
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/efile/ctcoptimizer.aspx">
+                                <span>
+                                  <img alt="CTC Optimizer | TaxManager.in" width="auto" height="auto" src="/tm360/Images/icon/individual/ctc_optimizer.webp" /> </span
+                                >CTC Optimizer
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/efile/taxquery.aspx">
+                                <span>
+                                  <img alt="Tax Query | TaxManager.in" width="auto" height="auto" src="/tm360/Images/icon/individual/tax_query.webp" />
+                                </span>
+                                Tax Query
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/efile/taxnoticeservice.aspx">
+                                <span>
+                                  <img alt="Tax Return Rectification | Tax Notice – Demand/ Notice Reply | TaxManager.in" src="/tm360/Images/icon/individual/Tax_notice.webp" /> </span
+                                >Tax Notice – Demand/ Notice Reply
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/efile/taxnoticeservice.aspx">
+                                <span>
+                                  <img alt="Tax Return Rectification | TaxManager.in" src="/tm360/Images/icon/individual/tax_return.webp" /> </span
+                                >Tax Return Rectification
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/efile/taxhistoryservice.aspx">
+                                <span>
+                                  <img alt="Tax Health Check-up | TaxManager.in" src="/tm360/Images/icon/individual/taxx_checkUp.webp" /> </span
+                                >Tax Health Check-up
+                              </a>
+                            </li>
+                          </ul>
+                          <div class="styled-rich-text">
+                            <img class="lazyload" alt="Not sure which is right for you? | TaxManager.in" src="/tm360/Images/icon/ideoa.svg" />
+                            <p>Not sure which is right for you?<br /></p>
+                            <p><a href="/tm360/Contact.html">Help Me</a></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="dropnav">
+                  <a href="#">
+                    Business
+                    <span><i class="fas fa-angle-down"></i></span>
+                  </a>
+                  <div class="megaropdown max-width">
+                    <div class="row">
+                      <div class="col-md-6 col-lg-6">
+                        <div class="divider-box">
+                          <h4>Tax Expert Assisted Tax Filing</h4>
+                          <ul>
+                            <li>
+                              <a href="#">
+                                <span>
+                                  <img class="lazyload" alt="Proprietor | TaxManager.in" src="/tm360/Images/icon/business/proprietor.webp" />
+                                </span>
+                                Proprietor
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#">
+                                <span>
+                                  <img alt="Presumptive Income | TaxManager.in" src="/tm360/Images/icon/business/presumptive-income.webp" /> </span
+                                >Presumptive Income
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#"
+                                ><span><img alt="Pvt Ltd – Less than 200 transactions annually | TaxManager.in" src="/tm360/Images/icon/business/pvt-ltd-less-than-200-transactions-annually.webp" /></span>Pvt Ltd – Less than 200 transactions annually.
+                              </a>
+                            </li>
+                          </ul>
+                          <div class="styled-rich-text">
+                            <img class="lazyload" alt="Not sure which is right for you? | TaxManager.in" src="/tm360/Images/icon/ideoa.svg" />
+                            <p>Not sure which is right for you?<br /></p>
+                            <p><a href="/tm360/Contact.html">Help Me</a></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-lg-6">
+                        <div class="divider-box">
+                          <h4>Other Solutions</h4>
+                          <ul>
+                            <li>
+                              <a href="/tm360/business/gst-services.html">
+                                <span>
+                                  <img alt="GST Services | TaxManager.in" width="auto" height="auto" src="/tm360/Images/icon/business/gst-services.webp" /> </span
+                                >GST Services
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/tm360/business/accounting-management.html">
+                                <span>
+                                  <img alt="Accounting Retainership | TaxManager.in" src="/tm360/Images/icon/business/accounting-retainership.webp" /> </span
+                                >Accounting Retainership
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/tm360/business/tds-taxmanagement.html">
+                                <span>
+                                  <img alt="TDS &amp; Tax Management | TaxManager.in" src="/tm360/Images/icon/business/tds-tax-management.webp" /> </span
+                                >TDS &amp; Tax Management
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/tm360/business/compliancemgmt.html">
+                                <span>
+                                  <img alt="Compliance Management | TaxManager.in" src="/tm360/Images/icon/business/compliance-management.webp" /> </span
+                                >Compliance Management
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/tm360/business/companyregistration.html">
+                                <span>
+                                  <img alt="Company Registration | TaxManager.in" src="/tm360/Images/icon/business/company-registration.webp" /> </span
+                                >Company Registration
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/tm360/business/rbicompliances.html">
+                                <span>
+                                  <img alt="RBI Compliances | TaxManager.in" width="auto" height="auto" src="/tm360/Images/icon/business/rbi-compliances.webp" /> </span
+                                >RBI Compliances
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/tm360/business/trademarkregistrations.html">
+                                <span>
+                                  <img alt="Trademark Registration | TaxManager.in" src="/tm360/Images/icon/business/trademark-registration.webp" /> </span
+                                >Trademark Registration
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/tm360/business/legalcompliances.html">
+                                <span>
+                                  <img alt="Legal Compliance | TaxManager.in" width="auto" height="auto" src="/tm360/Images/icon/business/legal-compliances.webp" /> </span
+                                >Legal Compliances
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/tm360/business/governmentregistrations.html">
+                                <span>
+                                  <img alt="Government Registrations | TaxManager.in" src="/tm360/Images/icon/business/government-registrations.webp" /> </span
+                                >Government Registrations
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/tm360/business/msmeservices.html">
+                                <span>
+                                  <img alt="MSME Program | TaxManager.in" width="auto" height="auto" src="/tm360/Images/icon/business/msme-program.webp" /> </span
+                                >MSME Program
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/tm360/business/corporate-plan.html">
+                                <span>
+                                  <img alt="Employee Care – eForm 16/ Payrolls | TaxManager.in" src="/tm360/Images/icon/business/employee-care-e-form-16-payrolls.webp" /> </span
+                                >Employee Care – eForm 16/ Payrolls
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="dropnav dropdown">
+                  <a href="/"
+                    >Startup
+                    <span><i class="fas fa-angle-down"></i></span>
+                  </a>
+                  <ul>
+                    <li>
+                      <a href="/tm360/startup/LaunchYourStartup.html">
+                        <span>
+                          <img alt="#" src="/tm360/Images/icon/startup/launch_you_startup.webp" />
+                        </span>
+                        Launch your Startup
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/tm360/startup/ManageYourStartup.html">
+                        <span>
+                          <img alt="#" src="/tm360/Images/icon/startup/manage_startup.webp" />
+                        </span>
+                        Manage your Startup
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/tm360/startup/GrowYourStartup.html">
+                        <span>
+                          <img alt="#" src="/tm360/Images/icon/startup/Grow_startup.webp" />
+                        </span>
+                        Grow your Startup
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="dropnav dropdown subdelis">
+                  <a href="/"
+                    >Add on's
+                    <span><i class="fas fa-angle-down"></i></span>
+                  </a>
+                  <ul>
+                    <li>
+                      <a href="/tm360/add-ons/banking.html">
+                        <span>
+                          <img alt="#" src="/tm360/Images/icon/addon/banking.webp" />
+                        </span>
+                        Banking
+                      </a>
+                    </li>
+                    <li class="dropnav dropdown sub-dropdown">
+                      <a href="/tm360/add-ons/loans.html">
+                        <span>
+                          <img alt="#" src="/tm360/Images/icon/addon/loan.webp" />
+                        </span>
+                        Loans
+                        <span><i class="fas fa-angle-down"></i></span>
+                      </a>
+                      <ul>
+                        <li>
+                          <a href="/tm360/add-ons/loans/personal-loan.html"
+                            ><span> <img alt="#" src="/tm360/Images/icon/addon/personal-loan.png" /></span> Personal Loan</a
+                          >
+                        </li>
+                        <li>
+                          <a href="/tm360/add-ons/loans/car-loan.html"
+                            ><span> <img alt="#" src="/tm360/Images/icon/addon/car-loan.png" /></span> Car Loan</a
+                          >
+                        </li>
+                        <li>
+                          <a href="/tm360/add-ons/loans/home-loan.html"
+                            ><span> <img alt="#" src="/tm360/Images/icon/addon/home-loan.png" /></span> Home Loan</a
+                          >
+                        </li>
+                        <li>
+                          <a href="/tm360/add-ons/loans/education.html"
+                            ><span> <img alt="#" src="/tm360/Images/icon/addon/educational-loan.png" /></span> Education</a
+                          >
+                        </li>
+                        <li>
+                          <a href="/tm360/add-ons/loans/business-loan.html"
+                            ><span> <img alt="#" src="/tm360/Images/icon/addon/business-loan.png" /></span> Business Loan</a
+                          >
+                        </li>
+                        <li>
+                          <a href="/tm360/add-ons/loans/loan-against-property.html"
+                            ><span> <img alt="#" src="/tm360/Images/icon/addon/loan-against-property.png" /></span> Loan Against Property</a
+                          >
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="/tm360/add-ons/tally.html">
+                        <span>
+                          <img alt="#" src="/tm360/Images/icon/addon/tally_solutions.webp" />
+                        </span>
+                        Tally Solutions
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/tm360/add-ons/zoho.html">
+                        <span>
+                          <img alt="#" src="/tm360/Images/icon/addon/zoho_services.webp" />
+                        </span>
+                        Zoho Services
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/tm360/add-ons/greytHR.html">
+                        <span>
+                          <img alt="#" src="/tm360/Images/icon/addon/greytHr.webp" />
+                        </span>
+                        greytHR Management
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/tm360/add-ons/partnersprogram.html">
+                        <span>
+                          <img alt="#" src="/tm360/Images/icon/addon/partner_program.webp" />
+                        </span>
+                        Partner's Program
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="dropnav dropdown">
+                  <a href="/"
+                    >Us
+                    <span><i class="fas fa-angle-down"></i></span>
+                  </a>
+                  <ul>
+                    <li>
+                      <a href="/tm360/About_Us.html">
+                        <span>
+                          <img class="lazyload" alt="About Us | TaxManager.in" src="/tm360/Images/icon/us/about-us.webp" /> </span
+                        >About Us
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/tm360/Contact.html">
+                        <span>
+                          <img class="lazyload" alt="Contact Us | TaxManager.in" src="/tm360/Images/icon/us/contact-us.webp" />
+                        </span>
+                        Contact Us
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/tm360/career.html">
+                        <span>
+                          <img class="lazyload" alt="Careers | TaxManager.in" src="/tm360/Images/icon/us/career.webp" /> </span
+                        >Careers
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/tm360/Contact.html">
+                        <span>
+                          <img class="lazyload" alt="Support | TaxManager.in" src="/tm360/Images/icon/us/support.webp" /> </span
+                        >Support
+                      </a>
+                    </li>
+                    <li class="">
+                      <a href="/tm360/blogs.html">
+                        <span>
+                          <img class="lazyload" alt="Blogs | TaxManager.in" src="/tm360/Images/icon/us/blogs.webp" />
+                        </span>
+                        Blogs
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/tm360/Inmedia.html">
+                        <span>
+                          <img class="lazyload" alt="Media | TaxManager.in" src="/tm360/Images/icon/us/media.webp" /> </span
+                        >Media
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/tm360/leadership.html">
+                        <span>
+                          <img class="lazyload" alt="Leadership | TaxManager.in" src="/tm360/Images/icon/us/leaderhsip.webp" /> </span
+                        >Leadership
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/tm360/knowledgebank.html">
+                        <span>
+                          <img class="lazyload" alt="Knowledge Bank | TaxManager.in" src="/tm360/Images/icon/us/knowledge-bank.webp" /> </span
+                        >Knowledge Bank
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/tm360/faqs.html">
+                        <span>
+                          <img class="lazyload" alt="FAQs &amp; Glossary | TaxManager.in" src="/tm360/Images/icon/us/faqs.webp" />
+                        </span>
+                        FAQs &amp; Glossary
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="dropnav dropdown">
+                  <a href="#"
+                    >Tools <span><i class="fas fa-angle-down"></i></span
+                  ></a>
+                  <ul>
+                    <li>
+                      <a href="/tm360/tools/calculator/23-24/">
+                        <span>
+                          <img class="lazyload" alt="Tax Calculator | TaxManager.in" src="/tm360/Images/icon/tools/tax-calculator.webp" />
+                        </span>
+                        Tax Calculator
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/tm360/tools/calculator/Hra/Hra.aspx">
+                        <span>
+                          <img class="lazyload" alt="HRA Calculator | TaxManager.in" src="/tm360/Images/icon/tools/hra-calculator.webp" />
+                        </span>
+                        HRA Calculator
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/tm360/tools/Calculator/emi-calculator.html">
+                        <span>
+                          <img class="lazyload" alt="Tax Calculator | TaxManager.in" src="/tm360/Images/icon/tools/emi.png" />
+                        </span>
+                        EMI Calculator
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/tm360/tools/calendar.html">
+                        <span>
+                          <img class="lazyload" alt="HRA Calculator | TaxManager.in" src="/tm360/Images/icon/tools/compliances.png" />
+                        </span>
+                        Compliance Calendar
+                      </a>
+                    </li>
+                    <li>
+                      <a href="http://gst.taxmanager.in/">
+                        <span>
+                          <img class="lazyload" alt="Tax Calculator | TaxManager.in" src="/tm360/Images/icon/tools/gst.png" />
+                        </span>
+                        GST Search Tool
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/tm360/tools/calculator/hsn-code/">
+                        <span>
+                          <img class="lazyload" alt="Tax Calculator | TaxManager.in" src="/tm360/Images/icon/tools/gst-hsn.png" />
+                        </span>
+                        GST HSN Code
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/tm360/tools/tax-calculator.html">
+                        <span>
+                          <img class="lazyload" alt="Tax Calculator | TaxManager.in" src="/tm360/Images/icon/tools/old-vs-new.png" />
+                        </span>
+                        Old vs New Tax Regime
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <div class="supnabar">
+                <h4>Support</h4>
+                <ul>
+                  <li>
+                    <a href="mailto:support@TaxManager.in">
+                      <span><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                      <div class="texspan">
+                        <h5>eMail</h5>
+                        <p>support@TaxManager.in</p>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="tel:+91-9555331122">
+                      <span><i class="fas fa-phone-alt" aria-hidden="true"></i></span>
+                      <div class="texspan">
+                        <h5>Call Us</h5>
+                        <p>+91-9555331122</p>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://api.whatsapp.com/send?phone=919625445516&amp;text=Hi!%20I%20am%20looking%20for%20assistance%20in%20Tax%20Filing"
+                      ><span><i class="fa fa-whatsapp" aria-hidden="true"></i></span>
+                      <div class="texspan">
+                        <h5>Chat With Us</h5>
+                        <p>+91-9625445516</p>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+          <!-- User Icone -->
+          <div class="userco">
+            <a href="/login/login.aspx">
+              <span><img src="/tm360/Images/user.webp" alt="" /></span>
+            </a>
+          </div>
+          <!-- Taggle -->
+          <div class="nav-toggle">
+            <div class="one"></div>
+            <div class="two"></div>
+            <div class="three"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Slider -->
+    <div class="ganelidseare">
+      <div class="container">
+        <div class="row">
+          <div class="owl-carousel owl-theme slibanesecare">
+            <!-- slider part -->
+            <div class="item">
+              <div class="sliboxi">
+                <img src="https://www.taxmanager.in/public/images/Calculate-Your-Tax-Return-FY-23-24-Under-New-Regime-and-Old-Regime.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- breadcrumbs -->
+    <div class="breadcrumbs comonmarpad">
+      <div class="container breat">
+        <div class="row">
+          <ul>
+            <li>
+              <a href="/">Home</a> <span><i class="fa-solid fa-arrow-right-long"></i></span>
+            </li>
+            <li>
+              Tools <span><i class="fa-solid fa-arrow-right-long"></i></span>
+            </li>
+            <li>Calculator</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tax callulater -->
+    <div class="boxbocotex">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="hedtittex">Tax <b>Calculator </b></h3>
+            <h4>Comparison IT Calculator Financial Year 2023 - 24</h4>
+          </div>
+          <div class="col-md-12">
+            <form>
+              <div class="form-group row">
+                <label for="age" class="col-sm-7 col-form-label fw-bold">Age</label>
+                <div class="col-sm-5">
+                  <select class="form-select" id="age" aria-label="Select Age">
+                    <option selected>Select Age</option>
+                    <option value="1">Below 60 Years (Normal Citizen)</option>
+                    <option value="2">Between 60 Years to 79 Years (Senior Citizen)</option>
+                    <option value="3">Above 79 Years (Super Senior Citizen)</option>
+                  </select>
+                </div>
+              </div>
+              <br />
+              <div class="form-group row">
+                <label for="AnSalary" class="col-sm-7 col-form-label fw-bold">Estimated Annual Income #</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control text-end" id="AnSalary" />
+                </div>
+              </div>
+              <br />
+              <div class="form-group row">
+                <label for="AnSalaryAfterDeduc" class="col-sm-7 col-form-label fw-bold">Less:- Exemptions / Deductions*</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control text-end" onfocusout="IncomeNew()" id="AnSalaryAfterDeduc" />
+                </div>
+              </div>
+              <br />
+              <div class="form-group row">
+                <label for="IncomeOld" class="col-sm-7 col-form-label fw-bold">Net Taxable Income as per Old Regime</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control text-end" id="IncomeOld" />
+                </div>
+              </div>
+              <br />
+              <div class="form-group row">
+                <label for="IncomeNew" class="col-sm-7 col-form-label fw-bold">Net Taxable Income as per New Regime</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control text-end" id="IncomeNew" />
+                </div>
+              </div>
+              <br />
+              <div class="form-group row">
+                <div class="col-sm-12 text-center">
+                  <button type="button" class="btn btn-primary btn-md btn-block" onclick="calculate()">Compare Tax Under Old & New Regime</button>
+                </div>
+              </div>
+              <br />
+              <div class="form-group row">
+                <label for="OldTax" class="col-sm-7 col-form-label fw-bold">Tax Payble as per Old Regime</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control text-end" id="OldTax" />
+                </div>
+              </div>
+              <br />
+              <div class="form-group row">
+                <label for="NewTax" class="col-sm-7 col-form-label fw-bold">Tax Payble as per New Regime</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control text-end" id="NewTax" />
+                </div>
+              </div>
+              <br />
+              <div class="form-group row">
+                <label for="Old_New" class="col-sm-7 col-form-label fw-bold" id="TaxMsg">Your Tax Benefit as per</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control text-end fw-bold" id="Old_New" disabled />
+                </div>
+              </div>
+              <br />
+              <div class="form-group row text-center">
+                <label class="col-sm-12 col-form-label fw-bold text-start" style="font-size: xx-small">***No Surcharge is considered for Tax Calculation</label>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <article>
+            <div class="annual-btn1">
+              <div class="button1">
+                <a href="https://www.taxmanager.in/efile/aspsubscribe.aspx" style="color: white !important" target="_blank">Annual Subscription FY 23-24 </a>
+              </div>
+              <div class="button1">
+                <a href="https://www.taxmanager.in/efile/ctcoptimizer.aspx " style="color: white !important" target="_blank">CTC Optimizer FY 23-24 </a>
+              </div>
+            </div>
+
+            <h3>Union Budget Highlights 2023</h3>
+            <p>On 1 Feb 2023 , our honourable Finance minister Nirmala Sitharaman presented her last full year budget of the Modi government. Major highlights for a taxpayer from the presentation are listed below-</p>
+            <h4>Major Highlights Of The Budget 2023</h4>
+            <ul>
+              <li>The 75th year of Independence has recognised India as a bright star.</li>
+              <li>The new slab rate for the Fy 2023-24 is as follows</li>
+              <li>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td colspan="2">Annual Income</td>
+                      <td>Rate Of Tax</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">0 to 3,00,000</td>
+                      <td>Nil</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">3,00,000 to 6,00,000</td>
+                      <td>5%</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">6,00,000 to 9,00,000</td>
+                      <td>10%</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">9,00,000 to 12,00,000</td>
+                      <td>15%</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">12,00,000 to 15,00,000</td>
+                      <td>20%</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">Above 15,00,000</td>
+                      <td>30%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </li>
+              <li>The Government has enhanced income tax exemption limit up to Rs. 7 lakh under the new tax regime</li>
+              <li>Individuals with an annual income of Rs.9 lakh will only pay tax of Rs. 45 thousand only earlier it was Rs. 60 thousand.</li>
+              <li>Standard deduction under the New Tax regime for individuals with income up to Rs.15 lakh will be Rs. 52,400.</li>
+              <li>The tax exemption limit is Rs.25 lakh on leave encashment on retirement for non-government salaried employees.</li>
+            </ul>
+
+            <h3>Calculate Your Tax Return FY 23-24 Under New Tax Regime and Old Tax Regime</h3>
+            <p>
+              Anyone who has an income that crosses a specific threshold is required to pay taxes. Income Tax is the tax that is levied by the Central Government on the income earned during the financial year by individuals and businesses. The most
+              confused any intelligent man becomes when asked to calculate taxes. But technology has made life convenient for all of us. The introduction of an <b>Income Tax Calculator FY 2023-24</b> is a great help for a taxpayer to calculate the
+              Income Tax online that they are liable to pay in a financial year. It is a great online tool to help you plan your investments too as every year. This is a great tool for an assessee to analyse well in advance their tax liability. This
+              article will help you understand how to use this online tool to calculate income tax liability according to the new tax regime.
+            </p>
+            <h3>Income Tax Calculator Fy23-24?</h3>
+            <p>
+              Every year this tool is updated according to the changes given in the budget. <b>The Income-tax slab for FY 2023-24</b> has been updated on our Income Tax Calculator Fy23-24 for your convenience. Let's check out the steps to use it
+              furthermore-
+            </p>
+            <ul>
+              <li>The first step is to select the assessment year for which you are calculating the tax liability.</li>
+              <li>Now we select ourselves as the respective head we are filing tax under such as Individual, HUF, AOP/BOI, Domestic Company, Foreign Company, Firms, LLP, Co-operative society.</li>
+              <li>The third step is to check in our gender or if you fall under senior citizen, needs to be categorised separately.</li>
+              <li>We need to fill in our taxable income after deducting HRA, LTA and Standard deduction.</li>
+              <li>A few other details need to be checked like interest income, rental income, and interest paid on the home loan.</li>
+              <li>If you want to calculate your taxes under the old tax slab then you need to enter the amount for tax-saving investments under sections 80C,80D,80G,80E, and 80TTA.</li>
+              <li>Now, you will get the result in the old tax regime and the new tax regime so you can go ahead with your choice and whatever is more beneficial for you.</li>
+            </ul>
+            <h3>Conclusion- Get set Go</h3>
+            <p>
+              A few simple steps and you are all set to compute your tax liability sitting at home. This online tool is helpful in not only calculating your tax liability but in making decisions regarding tax-saving investments. As before starting of
+              the year, it will help you in planning your investments. Make use of the <b>Income Tax Calculator for AY 2024-25</b> to prepare well in advance your financial plans.
+            </p>
+            <p>Use our Tax Calculator FY 2023-24 to calculate your taxes in advance and we will help you save taxes with our Annual Subscription Package FY 23-24 or CTC Optimizer.</p>
+
+            <div class="annual-btn1">
+              <div class="button1">
+                <a href="https://www.taxmanager.in/efile/aspsubscribe.aspx" style="color: white !important" target="_blank">Annual Subscription FY 23-24 </a>
+              </div>
+              <div class="button1">
+                <a href="https://www.taxmanager.in/efile/ctcoptimizer.aspx " style="color: white !important" target="_blank">CTC Optimizer FY 23-24 </a>
+              </div>
+            </div>
+
+            <h3>Is It Important To Consult A Tax Professional?</h3>
+            <p>
+              We are living in an era of professionals, there are experts in every field to assist and guide a layman. For a taxpayer, filing taxes can be confusing and if left as a last-minute job it will be frustrating also. At the onset of the
+              financial budget every year there are changes brought about in the Income-tax slab rates and the rules and regulations of the Income-tax act. The dilemma to hire a professional and file your tax return or if you have complete knowledge
+              and are capable of filing an error-free tax return then do it yourself will prevail till the time you understand the benefits of hiring an expert.
+            </p>
+            <h4>Why A Tax Expert Is Required?</h4>
+            <p>
+              Filing an Income Tax return may be a simple procedure for an individual who has complete knowledge about taxation laws but there are updations time and again which one has to keep in touch with although for some, there are possibilities
+              of complex finances and many sources of income than professional assistance is a must.
+            </p>
+            <ul>
+              <li><b>To file an error-free tax return</b> - There are minimal chances of mistakes if an expert helps an individual to file a tax return. As they have complete knowledge of the procedure you can remain calm and relaxed.</li>
+              <li><b>Complex returns</b>- For some taxpayers, there are various sources of income and foreign assets. In a year there could be many transactions which require professional assistance at the time of filing the tax return.</li>
+              <li>
+                <b>Updation In The Income Tax Act</b>- There are many changes in the Income Tax Act for the FY 2022-23 from adding Crypto tax, taxes on long-term capital gains, filing of updated income tax returns and many more which will require
+                expert hands to complete your filing of tax returns for smooth sailing.
+              </li>
+              <li>
+                <b>Not Expensive</b>- If an individual chooses peace over panic then the cost paid to hire a professional would seem minimal. These experts charge a very nominal amount to give you a hassle-free experience for filing Income Tax
+                Returns.
+              </li>
+              <li>
+                <b>Saving And Investment Plans</b>- If you file your taxes correctly then you can save money for future economic growth. As your tax returns are filed correctly and efficiently, a taxpayer will save money which can be further used in
+                tax-saving investments to gain deductions and avail tax-saving options.
+              </li>
+            </ul>
+
+            <h4>Conclusion- Ask For Help</h4>
+            <p>
+              An individual sometimes keeps pushing important tasks like filing Income Tax returns furthermore as the date to file the return is extended. But all this procrastination of tasks will lead to hassles and wrong filing of the returns.
+              Therefore to file an error-free tax return it is beneficial to ask for professional help
+            </p>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- Frequently Asked Questions - FAQs -->
+    <div class="freasque comonmarpad phone-card-container">
+      <div class="container">
+        <div class="row">
+          <h2 class="hedtittex">Frequently Asked Questions - FAQs</h2>
+          <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion" id="accordionExample">
+              <div class="accordion-item feauturedsec">
+                <div class="freasquebox">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Can I file an Income Tax Retun using Taxmanger.in services?</button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p>Yes any individual having the following type of Income can go for Taxmanager services:-</p>
+                      <ul>
+                        <li>Income From Salary.</li>
+                        <li>Income from House Property.</li>
+                        <li>Income from sales of saving schemes like Shares, Mutual Funds Units, Bonds.</li>
+                        <li>Income from other sources (Interest from investments, dividends, income from winning lottery or horse race etc).</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item feauturedsec">
+                <div class="freasquebox">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">What are the steps for filing an Income Tax Return?</button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <ul>
+                        <li><a href="#">Register</a> with <a href="index">Taxmanager.in</a> and fill your Personal Information.</li>
+                        <li>Enter the relevant financial details like Income sources, Investments, Expenditure, Losses etc.</li>
+                        <li><a href="index">Taxmanager.in</a> generate your return based on this data.</li>
+                        <li>View your tax computation and review other information.</li>
+                        <li>Make a payment to <a href="index">Taxmanager.in </a>based on the Filing Plan you chose.</li>
+                        <li>Authorize <a href="index">Taxmanager.in</a> to efile your Income Tax Return.</li>
+                        <li>Receive an Acknowledgement via eMail (if return is signed digitally).</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item feauturedsec">
+                <div class="freasquebox">
+                  <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">How can I create my ITR?</button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <ul>
+                        <li>Go to <a href="#">My Account</a> page.</li>
+                        <li>Click on Create New ITR and provide it an appropriate name.</li>
+                        <li>Click on Submit button.</li>
+                        <li>ITR will add in the My Account Page.</li>
+                        <li>Click on the Edit Button for inserting and updating the information.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item feauturedsec">
+                <div class="freasquebox">
+                  <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">How to fill Tax Return details?</button>
+                  </h2>
+                  <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <ul>
+                        <li>After Creating your ITR Click on the Edit Button for inserting the information</li>
+                        <li>Follow Personal Information link for fill your personal details.</li>
+                        <li>Follow Salary Link for fill the information of your income sources and other financial details.</li>
+                        <li>Follow Deduction link for fill the information of Investments and Expenditures.</li>
+                        <li>Follow the others link like Losses, Tax Computation, Bank Details, Filling Status, AIR Details, Verification and fill the related information.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item feauturedsec">
+                <div class="freasquebox">
+                  <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">How to fill Income Sources Details?</button>
+                  </h2>
+                  <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <ul>
+                        <li>Follow the Income Link on My ITR Page.</li>
+                        <li>Click on the Edit Button on Income Summary page for Providing the details of Income Source.</li>
+                        <li>
+                          Go through Income From Salary if you have income from Salary.
+                          <ol>
+                            <li>Click on Edit button for providing Employer's Detail.</li>
+                            <li>Provide the Employer Information as mention in your Form-16</li>
+                            <li>Click on Save &amp; Continue with form-16 button.</li>
+                            <li>Fill the details of your Income as mention in the Form-16</li>
+                            <li>Provide the Investment and Deduction details.</li>
+                            <li>Click on the Save and Continue button.</li>
+                            <li>Follow the same process if you have more than one Form-16.</li>
+                          </ol>
+                        </li>
+                        <li>
+                          <b>Income from House Property:</b> Provide information about the income you are getting from your house-hold properties. If you don't have that income then fill the amount of interest on housing loan from Form-16 provided by
+                          your employer.
+                        </li>
+                        <li><b>Income from Capital Gain:</b> The income you are withdrawing through Mutual Funds, Shares, Bonds and Other Capital assets</li>
+                        <li><b>Income from Other Sources:</b> The income you are getting from family pension, agricultural, Rent, lottery, gift etc.</li>
+                        <li><b>Clubbing of Income:</b> Provide details of the particular person if you want to clubbed your income with your family members.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Partnership & Alliances -->
+    <div class="feautured comonmarpad phone-card-container">
+      <div class="container">
+        <div class="row">
+          <h2 class="hedtittex">Partnership & Alliances</h2>
+        </div>
+        <div class="row">
+          <div class="owl-carousel owl-theme featured_in">
+            <div class="item">
+              <a href="#">
+                <div class="featureclient">
+                  <img src="/tm360/Images/partnership/hdfc-bank.webp" alt="" />
+                </div>
+              </a>
+            </div>
+            <div class="item">
+              <a href="#">
+                <div class="featureclient">
+                  <img src="/tm360/Images/partnership/hdfc-securities.webp" alt="" />
+                </div>
+              </a>
+            </div>
+            <div class="item">
+              <a href="#">
+                <div class="featureclient">
+                  <img src="/tm360/Images/partnership/au-small-bank.webp" alt="" />
+                </div>
+              </a>
+            </div>
+            <div class="item">
+              <a href="#">
+                <div class="featureclient">
+                  <img src="/tm360/Images/partnership/easemytrip.webp" alt="" />
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Support -->
+    <div class="needtohelp comonmarpad phone-card-container">
+      <div class="container">
+        <div class="row">
+          <h4>Support</h4>
+          <ul>
+            <li>
+              <a href="mailto:support@TaxManager.in">
+                <span><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                <div class="texspan">
+                  <h5>eMail</h5>
+                  <p>support@TaxManager.in</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="tel:+91-9555331122">
+                <span><i class="fas fa-phone-alt" aria-hidden="true"></i></span>
+                <div class="texspan">
+                  <h5>Call Us</h5>
+                  <p>+91-9555331122</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="https://api.whatsapp.com/send?phone=919625445516&amp;text=Hi I am Looking for Tax Expert Assistance"
+                ><span><i class="fa fa-whatsapp" aria-hidden="true"></i></span>
+                <div class="texspan">
+                  <h5>Chat With Us</h5>
+                  <p>+91-9625445516</p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row firstsection">
+          <div class="col-md-12 col-lg-1"></div>
+          <div class="col-md-4 col-lg-2">
+            <div class="footer_menu_Sec">
+              <h4>Assisted Tax Filing</h4>
+              <h5>Resident</h5>
+              <ul>
+                <li><a href="/efile/CAAssistedSalary.aspx">Salaried</a></li>
+                <li><a href="/efile/CAAssistedSalary50Lakhs.aspx">Salaried over Rs 50 Lakhs</a></li>
+                <li><a href="/efile/CAAssistedCG.aspx">Capital Gains (Equity &amp; MF Sale)</a></li>
+                <li><a href="/efile/CAAssistedCG_PS.aspx">Capital Gains (Property Sale)</a></li>
+                <li><a href="/efile/itr4.aspx">Professional/ Self Employed</a></li>
+                <li><a href="#">Presumptive Income</a></li>
+                <li><a href="/efile/ResidentwithForeignIncome.aspx">Foreign Income</a></li>
+              </ul>
+            </div>
+            <div class="footer_menu_Sec">
+              <h5 class="last">NRI</h5>
+              <ul>
+                <li><a href="/efile/NRI_FD.aspx">Other Income</a></li>
+                <li><a href="/efile/NRI_Equity.aspx">Capital Gains (Equity & MF Sale)</a></li>
+                <li><a href="/efile/NRI_PS.aspx">Capital Gains (Property Sale)</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-2">
+            <div class="footer_menu_Sec">
+              <h4>Tax Management</h4>
+              <h5>Resident</h5>
+              <ul>
+                <li><a href="/efile/aspsubscribe.aspx">Tax Advisory</a></li>
+                <li><a href="#">Tax Treatment on Property Sale</a></li>
+                <li><a href="/efile/aspsubscribe.aspx">Advance Tax Calculation</a></li>
+                <li><a href="/efile/aspsubscribe.aspx">Annual Subscription Package</a></li>
+                <li><a href="/efile/ctcoptimizer.aspx">CTC Optimizer</a></li>
+                <li><a href="/efile/taxquery.aspx">Tax Query</a></li>
+                <li><a href="/efile/taxnoticeservice.aspx">Tax Notice – Demand/ Notice Reply</a></li>
+                <li><a href="/efile/taxnoticeservice.aspx">Tax Rectification</a></li>
+                <li><a href="/efile/taxhistoryservice.aspx">Tax Health Check-up</a></li>
+                <li><a href="/tm360/individuals/index.html">PAN Application</a></li>
+                <li><a href="/tm360/individuals/index.html">Digital Signature</a></li>
+              </ul>
+            </div>
+            <div class="footer_menu_Sec">
+              <h5 class="last">NRI</h5>
+              <ul>
+                <li><a href="#">Tax Treatment on Property Sale</a></li>
+                <li><a href="/efile/aspsubscribe.aspx">Advance Tax Calculation</a></li>
+                <li><a href="#">CA Certification on Foreign Remittance</a></li>
+                <li><a href="/efile/taxquery.aspx">Tax Query</a></li>
+                <li><a href="/efile/aspsubscribe.aspx">Annual Subscription Package</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-2">
+            <div class="footer_menu_Sec">
+              <h4>Investments</h4>
+              <ul>
+                <li><a href="/efile/aspsubscribe.aspx">Plan your Tax Savings</a></li>
+                <li><a href="#">Start Investing</a></li>
+                <li><a href="#">Mutual Funds</a></li>
+                <li><a href="#">Life Insurance</a></li>
+                <li><a href="#">Health Insurance</a></li>
+                <li><a href="#">Public Provident Fund</a></li>
+                <li><a href="#">National Saving Certificates</a></li>
+                <li><a href="#">NPS</a></li>
+                <li><a href="#">Others</a></li>
+              </ul>
+            </div>
+            <div class="footer_menu_Sec">
+              <h4>Startups</h4>
+              <ul>
+                <li><a href="/tm360/startup/LaunchYourStartup.html">Launch your Startup</a></li>
+                <li><a href="/tm360/startup/ManageYourStartup.html">Manage your Startup</a></li>
+                <li><a href="/tm360/startup/ManageYourStartup.html">Grow your Startup</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-2">
+            <div class="footer_menu_Sec">
+              <h4>Business</h4>
+              <h5>Assisted Tax Filing</h5>
+              <ul>
+                <li><a href="#">Proprietor</a></li>
+                <li><a href="#">Presumptive Income</a></li>
+                <li><a href="#">LLP</a></li>
+                <li><a href="#">Pvt Ltd Company</a></li>
+              </ul>
+            </div>
+            <div class="footer_menu_Sec">
+              <h5 class="last">Others</h5>
+              <ul>
+                <li><a href="/tm360/business/corporate-plan.html">Employee Care – eForm 16/ Payroll</a></li>
+                <li><a href="/tm360/business/gst-services.html">GST Services</a></li>
+                <li><a href="/tm360/business/index.html">Start-up Program</a></li>
+                <li><a href="/tm360/business/accounting-management.html">Accounting Retainership</a></li>
+                <li><a href="/tm360/business/tds-taxmanagement.html">TDS & Tax Management</a></li>
+                <li><a href="/tm360/business/compliancemgmt.html">Compliance Management</a></li>
+                <li><a href="/tm360/business/companyregistration.html">Company Registration</a></li>
+                <li><a href="#">RBI Compliance</a></li>
+                <li><a href="#">Trademark Registration</a></li>
+                <li><a href="#">Legal Compliances</a></li>
+                <li><a href="#">Government Registration</a></li>
+                <li><a href="#">MSME Program</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="footer_menu_Sec">
+              <h4>Us</h4>
+              <ul>
+                <li><a href="/tm360/About_Us.html">About Us</a></li>
+                <li><a href="/tm360/Contact.html">Contact Us</a></li>
+                <li><a href="/tm360/Contact.html">Support</a></li>
+                <li><a href="/career">Careers</a></li>
+                <li><a href="/blogs">Blogs</a></li>
+                <li><a href="/tm360/Inmedia.html">Media</a></li>
+                <li><a href="/leadership.html">Leadership</a></li>
+                <li><a href="/knowledgebank">Knowledge Bank</a></li>
+                <li><a href="/tm360/faqs.html">FAQ’s</a></li>
+                <li><a href="#">Gallery</a></li>
+              </ul>
+            </div>
+            <div class="footer_menu_Sec">
+              <h4>Tools</h4>
+              <ul>
+                <li><a href="/calculator/23-24">Tax Calculator</a></li>
+                <li><a href="/tm360/tools/Calculator/Hra/Hra.aspx">HRA Calculator</a></li>
+                <li><a href="#">Other Calculators</a></li>
+              </ul>
+            </div>
+            <div class="footer_menu_Sec">
+              <h4>Support</h4>
+              <ul class="support_sec_are">
+                <li>
+                  <a href="/tm360/Contact.html"
+                    ><span><i class="fa fa-life-ring"></i></span> Need CA Help?</a
+                  >
+                </li>
+                <li>
+                  <a href="tel:+91-9555331122"
+                    ><span><i class="fa fa-phone"></i></span> +91-9555331122</a
+                  >
+                </li>
+                <li>
+                  <a href="mailto:Support@TaxManager.in"
+                    ><span><i class="fa fa-envelope"></i></span> Support@TaxManager.in</a
+                  >
+                </li>
+              </ul>
+              <ul class="catifications">
+                <li>
+                  <a href="/tm360/certified.html"><img src="/tm360/Images/RISING-ADVISORY-SERVICES-PRIVATE-LIMITED-ISO-9001.webp" alt="RISING ADVISORY SERVICES PRIVATE LIMITED ISO 9001" /></a>
+                </li>
+                <li>
+                  <a href="https://www.ssl.com/faqs/faq-what-is-ssl/" target="_blank"><img src="/tm360/Images/ssl-1.webp" alt="RISING ADVISORY SERVICES PRIVATE LIMITED ISO 27001" /></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="second-footer">
+        <div class="container">
+          <div class="row secondfooter">
+            <div class="col-md-6 col-lg-3">
+              <ul>
+                <li><a href="/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/terms-and-conditions">Terms & Conditions</a></li>
+              </ul>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <ul>
+                <li><a href="/legal-disclaimer">Legal Disclaimer</a></li>
+                <li><a href="/security">Security</a></li>
+                <li><a href="/refund-policy">Refund Policy</a></li>
+              </ul>
+            </div>
+            <div class="col-md-6 col-lg-2">
+              <span id="siteseal">
+                <script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=hfWt4Lbyg7Aq8Lv9qJbo518SKoqGu9oKaGpc35I4EQx12oaanVgRzZPAljsR"></script>
+              </span>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <ul class="social-mediased">
+                <li>
+                  <h2>Follow us on</h2>
+                </li>
+                <li>
+                  <a target="_blank" href="https://www.facebook.com/efileitr" aria-label="Facebook taxmanager"
+                    ><span><i class="fab fa-facebook-f"></i></span
+                  ></a>
+                </li>
+                <li>
+                  <a target="_blank" href="https://www.instagram.com/taxmanagerofficial/" aria-label="Instagram taxmanager"
+                    ><span><i class="fa-brands fa-instagram"></i></span
+                  ></a>
+                </li>
+                <li>
+                  <a target="_blank" href="https://twitter.com/taxmanagerindia" aria-label="Twitter taxmanager"
+                    ><span><i class="fa-brands fa-x-twitter"></i></span
+                  ></a>
+                </li>
+                <li>
+                  <a target="_blank" href="https://in.linkedin.com/company/taxmanager-in" aria-label="Linkedin Taxmanager"
+                    ><span><i class="fab fa-linkedin-in"></i></span
+                  ></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Copyright -->
+    <div class="copyright">
+      <div class="container">
+        <div class="row">
+          <p><span>@Rising Advisory Services Private Limited.</span> All rights reserved</p>
+        </div>
+      </div>
+    </div>
+
+    <!--fixed-->
+    <div class="fixed">
+      <ul>
+        <li>
+          <a target="_blank" href="https://api.whatsapp.com/send?phone=919625445516&amp;text=Hi I am Looking for Tax Expert Assistance"><i class="fa-brands fa-whatsapp"></i></a>
+        </li>
+        <li>
+          <a href="/Contact.html"><img src="/tm360/Images/icon/support-icon.webp" alt="" /></a>
+        </li>
+        <li id="clickshowpopup"><i class="fa-solid fa-envelope"></i></li>
+      </ul>
+    </div>
+    <!-- Repblic Day
+    <div class="repblicday">
+        <canvas id="myCanvas"></canvas>
+        <div id="chakraContainer"></div>
+    </div>-->
+
+    <!-- Script File -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Swiper Slider -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"></script>
+    <!-- Scroller -->
+    <script src="https://cdn.rawgit.com/peterhry/CircleType/master/dist/circletype.min.js"></script>
+    <!-- carousel -->
+    <script src="/tm360/js/owl.carousel.js"></script>
+    <!-- lAzay load -->
+    <script src="/tm360/js/jquery.lazyload.js"></script>
+    <!-- Other js -->
+    <script src="/tm360/js/main.js"></script>
+
+    <!-- Slider Code -->
+    <script src="/tm360/js/owl.slider.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="/public/js/script.js "></script>
+  </body>
+</html>
