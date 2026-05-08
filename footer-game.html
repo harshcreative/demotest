@@ -1,0 +1,153 @@
+<!-- Footer Unbeatable Tic-Tac-Toe -->
+<div class="ttt-wrapper" style="background:#1e1e2f; padding:2rem 1rem; text-align:center; font-family:sans-serif; color:#fff;">
+  <h2 style="margin-bottom:1rem;">❌⭕ Footer Arcade</h2>
+  
+  <div id="ttt-board" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; max-width:300px; margin:0 auto;"></div>
+  
+  <div id="ttt-message" style="margin-top:1rem; font-size:1rem; min-height:1.5rem;"></div>
+  
+  <button id="ttt-restart" style="margin-top:0.5rem; background:#d97757; color:#fff; border:none; padding:0.5rem 1.2rem; border-radius:8px; cursor:pointer;">Restart</button>
+</div>
+
+<style>
+  .ttt-cell {
+    aspect-ratio: 1 / 1;
+    background: #2d2d44;
+    border: 2px solid #4a4a6a;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+  .ttt-cell.taken { pointer-events: none; }
+  .ttt-cell.x { color: #68d391; }
+  .ttt-cell.o { color: #fc8181; }
+</style>
+
+<script>
+(function() {
+  const boardEl = document.getElementById("ttt-board");
+  const messageEl = document.getElementById("ttt-message");
+  const restartBtn = document.getElementById("ttt-restart");
+
+  let board = Array(9).fill(null);
+  let gameOver = false;
+  const HUMAN = "X";
+  const AI = "O";
+
+  const wins = [
+    [0,1,2], [3,4,5], [6,7,8],
+    [0,3,6], [1,4,7], [2,5,8],
+    [0,4,8], [2,4,6]
+  ];
+
+  function checkWinner(b) {
+    for (let [a,bIdx,c] of wins) {
+      if (b[a] && b[a] === b[bIdx] && b[a] === b[c]) return b[a];
+    }
+    return b.every(cell => cell) ? "draw" : null;
+  }
+
+  function renderBoard() {
+    boardEl.innerHTML = "";
+    board.forEach((cell, idx) => {
+      const div = document.createElement("div");
+      div.className = "ttt-cell";
+      if (cell) {
+        div.textContent = cell;
+        div.classList.add("taken", cell === "X" ? "x" : "o");
+      }
+      div.addEventListener("click", () => humanMove(idx));
+      boardEl.appendChild(div);
+    });
+  }
+
+  // Minimax – AI is maximizing, human minimizing
+  function minimax(b, isMaximizing) {
+    const result = checkWinner(b);
+    if (result === AI) return 10;
+    if (result === HUMAN) return -10;
+    if (result === "draw") return 0;
+
+    if (isMaximizing) {
+      let best = -Infinity;
+      for (let i = 0; i < 9; i++) {
+        if (!b[i]) {
+          b[i] = AI;
+          best = Math.max(best, minimax(b, false));
+          b[i] = null;
+        }
+      }
+      return best;
+    } else {
+      let best = Infinity;
+      for (let i = 0; i < 9; i++) {
+        if (!b[i]) {
+          b[i] = HUMAN;
+          best = Math.min(best, minimax(b, true));
+          b[i] = null;
+        }
+      }
+      return best;
+    }
+  }
+
+  function aiMove() {
+    let bestScore = -Infinity;
+    let bestMove = null;
+    for (let i = 0; i < 9; i++) {
+      if (!board[i]) {
+        board[i] = AI;
+        let score = minimax(board, false);
+        board[i] = null;
+        if (score > bestScore) {
+          bestScore = score;
+          bestMove = i;
+        }
+      }
+    }
+    return bestMove;
+  }
+
+  function endGame(result) {
+    gameOver = true;
+    if (result === "draw") messageEl.textContent = "Draw. Try again.";
+    else if (result === HUMAN) messageEl.textContent = "You won! (How? This shouldn't happen.)";
+    else if (result === AI) messageEl.textContent = "I wins. You need to improve your skills ";
+    renderBoard();
+  }
+
+  function humanMove(idx) {
+    if (gameOver || board[idx]) return;
+    board[idx] = HUMAN;
+    renderBoard();
+    let result = checkWinner(board);
+    if (result) { endGame(result); return; }
+
+    setTimeout(() => {
+      const move = aiMove();
+      if (move !== null) {
+        board[move] = AI;
+        renderBoard();
+        result = checkWinner(board);
+        if (result) endGame(result);
+      }
+    }, 200);
+  }
+
+  function resetGame() {
+    board = Array(9).fill(null);
+    gameOver = false;
+    messageEl.textContent = "";
+    renderBoard();
+  }
+
+  restartBtn.addEventListener("click", resetGame);
+  resetGame();
+})();
+</script>
