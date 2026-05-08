@@ -1,12 +1,14 @@
-<!-- Footer Unbeatable Tic-Tac-Toe -->
+<!-- Unbeatable Tic-Tac-Toe with alternating starts -->
 <div class="ttt-wrapper" style="background:#1e1e2f; padding:2rem 1rem; text-align:center; font-family:sans-serif; color:#fff;">
-  <h2 style="margin-bottom:1rem;">❌⭕ Footer Arcade</h2>
+  <h2 style="margin-bottom:1rem;"> Tic‑Tac‑Toe </h2>
+  
+  <div id="ttt-start-msg" style="margin-bottom:0.5rem; font-size:0.9rem; color:#aaa;"></div>
   
   <div id="ttt-board" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; max-width:300px; margin:0 auto;"></div>
   
   <div id="ttt-message" style="margin-top:1rem; font-size:1rem; min-height:1.5rem;"></div>
   
-  <button id="ttt-restart" style="margin-top:0.5rem; background:#d97757; color:#fff; border:none; padding:0.5rem 1.2rem; border-radius:8px; cursor:pointer;">Restart</button>
+  <button id="ttt-restart" style="margin-top:0.5rem; background:#d97757; color:#fff; border:none; padding:0.5rem 1.2rem; border-radius:8px; cursor:pointer;">New Game</button>
 </div>
 
 <style>
@@ -25,20 +27,23 @@
     transition: background 0.1s;
   }
   .ttt-cell.taken { pointer-events: none; }
-  .ttt-cell.x { color: #68d391; }
-  .ttt-cell.o { color: #fc8181; }
+  .ttt-cell.X { color: #68d391; }
+  .ttt-cell.O { color: #fc8181; }
 </style>
 
 <script>
 (function() {
   const boardEl = document.getElementById("ttt-board");
   const messageEl = document.getElementById("ttt-message");
+  const startMsgEl = document.getElementById("ttt-start-msg");
   const restartBtn = document.getElementById("ttt-restart");
 
   let board = Array(9).fill(null);
   let gameOver = false;
-  const HUMAN = "X";
-  const AI = "O";
+  let humanSymbol = "X";      // human's symbol
+  let aiSymbol = "O";
+  let humanStarts = true;    // true if human moves first
+  let currentTurn = "human"; // "human" or "ai"
 
   const wins = [
     [0,1,2], [3,4,5], [6,7,8],
@@ -60,25 +65,25 @@
       div.className = "ttt-cell";
       if (cell) {
         div.textContent = cell;
-        div.classList.add("taken", cell === "X" ? "x" : "o");
+        div.classList.add("taken", cell);
       }
       div.addEventListener("click", () => humanMove(idx));
       boardEl.appendChild(div);
     });
   }
 
-  // Minimax – AI is maximizing, human minimizing
+  // Minimax: AI maximises for aiSymbol, human minimises for humanSymbol
   function minimax(b, isMaximizing) {
     const result = checkWinner(b);
-    if (result === AI) return 10;
-    if (result === HUMAN) return -10;
+    if (result === aiSymbol) return 10;
+    if (result === humanSymbol) return -10;
     if (result === "draw") return 0;
 
     if (isMaximizing) {
       let best = -Infinity;
       for (let i = 0; i < 9; i++) {
         if (!b[i]) {
-          b[i] = AI;
+          b[i] = aiSymbol;
           best = Math.max(best, minimax(b, false));
           b[i] = null;
         }
@@ -88,7 +93,7 @@
       let best = Infinity;
       for (let i = 0; i < 9; i++) {
         if (!b[i]) {
-          b[i] = HUMAN;
+          b[i] = humanSymbol;
           best = Math.min(best, minimax(b, true));
           b[i] = null;
         }
@@ -97,12 +102,12 @@
     }
   }
 
-  function aiMove() {
+  function getBestMove() {
     let bestScore = -Infinity;
     let bestMove = null;
     for (let i = 0; i < 9; i++) {
       if (!board[i]) {
-        board[i] = AI;
+        board[i] = aiSymbol;
         let score = minimax(board, false);
         board[i] = null;
         if (score > bestScore) {
@@ -114,40 +119,62 @@
     return bestMove;
   }
 
-  function endGame(result) {
-    gameOver = true;
-    if (result === "draw") messageEl.textContent = "Draw. Try again.";
-    else if (result === HUMAN) messageEl.textContent = "You won! (How? This shouldn't happen.)";
-    else if (result === AI) messageEl.textContent = "I wins. You need to improve your skills ";
-    renderBoard();
+  function makeAIMove() {
+    if (gameOver) return;
+    const move = getBestMove();
+    if (move !== null) {
+      board[move] = aiSymbol;
+      renderBoard();
+      const result = checkWinner(board);
+      if (result) endGame(result);
+      else {
+        currentTurn = "human";
+      }
+    }
   }
 
   function humanMove(idx) {
-    if (gameOver || board[idx]) return;
-    board[idx] = HUMAN;
+    if (gameOver || board[idx] || currentTurn !== "human") return;
+    board[idx] = humanSymbol;
     renderBoard();
-    let result = checkWinner(board);
+    const result = checkWinner(board);
     if (result) { endGame(result); return; }
-
-    setTimeout(() => {
-      const move = aiMove();
-      if (move !== null) {
-        board[move] = AI;
-        renderBoard();
-        result = checkWinner(board);
-        if (result) endGame(result);
-      }
-    }, 200);
+    currentTurn = "ai";
+    setTimeout(makeAIMove, 200);
   }
 
-  function resetGame() {
+  function endGame(result) {
+    gameOver = true;
+    if (result === "draw") messageEl.textContent = "Draw. Play again.";
+    else if (result === humanSymbol) messageEl.textContent = "You won! (How? This shouldn't happen.)";
+    else messageEl.textContent = "I won. Improve your game skill";
+    renderBoard();
+  }
+
+  function setupGame() {
     board = Array(9).fill(null);
     gameOver = false;
+
+    // Toggle who starts for this game
+    humanStarts = !humanStarts;
+    humanSymbol = humanStarts ? "X" : "O";
+    aiSymbol = humanStarts ? "O" : "X";
+    currentTurn = humanStarts ? "human" : "ai";
+
+    startMsgEl.textContent = humanStarts ? "You start (X)" : "I starts (X), you play as O";
     messageEl.textContent = "";
     renderBoard();
+
+    if (!humanStarts) {
+      // AI moves first
+      setTimeout(makeAIMove, 400);
+    }
   }
 
-  restartBtn.addEventListener("click", resetGame);
-  resetGame();
+  restartBtn.addEventListener("click", setupGame);
+
+  // Initial start (human begins first game)
+  humanStarts = false; // so first toggle makes it true
+  setupGame();
 })();
 </script>
