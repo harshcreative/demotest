@@ -1,14 +1,31 @@
-<!-- Unbeatable Tic-Tac-Toe with alternating starts -->
+<!-- Unbeatable Tic-Tac-Toe with choosable start & symbol -->
 <div class="ttt-wrapper" style="background:#1e1e2f; padding:2rem 1rem; text-align:center; font-family:sans-serif; color:#fff;">
-  <h2 style="margin-bottom:1rem;"> Tic‑Tac‑Toe </h2>
-  
+  <h2 style="margin-bottom:1rem;">🎯 Impossible Tic‑Tac‑Toe</h2>
+
+  <!-- Controls -->
+  <div style="display:flex; justify-content:center; gap:1.5rem; margin-bottom:1rem; flex-wrap:wrap;">
+    <div>
+      <span style="color:#aaa;">Your symbol:</span><br>
+      <button id="sym-x" class="ttt-ctrl-btn" style="margin-right:5px;">X</button>
+      <button id="sym-o" class="ttt-ctrl-btn">O</button>
+    </div>
+    <div>
+      <span style="color:#aaa;">Who starts?</span><br>
+      <button id="start-you" class="ttt-ctrl-btn" style="margin-right:5px;">You</button>
+      <button id="start-ai" class="ttt-ctrl-btn">AI</button>
+    </div>
+    
+  </div>
+
   <div id="ttt-start-msg" style="margin-bottom:0.5rem; font-size:0.9rem; color:#aaa;"></div>
-  
+
   <div id="ttt-board" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; max-width:300px; margin:0 auto;"></div>
-  
+
   <div id="ttt-message" style="margin-top:1rem; font-size:1rem; min-height:1.5rem;"></div>
-  
-  <button id="ttt-restart" style="margin-top:0.5rem; background:#d97757; color:#fff; border:none; padding:0.5rem 1.2rem; border-radius:8px; cursor:pointer;">New Game</button>
+
+  <button id="ttt-restart" style="margin-top:0.5rem; background:#d97757; color:#fff; border:none; padding:0.5rem 1.2rem; border-radius:8px; cursor:pointer;">
+    Restart Game
+  </button>
 </div>
 
 <style>
@@ -29,6 +46,20 @@
   .ttt-cell.taken { pointer-events: none; }
   .ttt-cell.X { color: #68d391; }
   .ttt-cell.O { color: #fc8181; }
+
+  .ttt-ctrl-btn {
+    background: #2d3748;
+    color: #fff;
+    border: 2px solid #4a4a6a;
+    padding: 0.4rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .ttt-ctrl-btn.active {
+    background: #4a5568;
+    border-color: #a0aec0;
+  }
 </style>
 
 <script>
@@ -37,12 +68,17 @@
   const messageEl = document.getElementById("ttt-message");
   const startMsgEl = document.getElementById("ttt-start-msg");
   const restartBtn = document.getElementById("ttt-restart");
+  const btnStartYou = document.getElementById("start-you");
+  const btnStartAi = document.getElementById("start-ai");
+  const btnSymX = document.getElementById("sym-x");
+  const btnSymO = document.getElementById("sym-o");
 
+  // Game settings (defaults: human starts as X)
+  let humanStarts = true;
+  let humanSymbol = "X";
+  let aiSymbol = "O";
   let board = Array(9).fill(null);
   let gameOver = false;
-  let humanSymbol = "X";      // human's symbol
-  let aiSymbol = "O";
-  let humanStarts = true;    // true if human moves first
   let currentTurn = "human"; // "human" or "ai"
 
   const wins = [
@@ -72,7 +108,6 @@
     });
   }
 
-  // Minimax: AI maximises for aiSymbol, human minimises for humanSymbol
   function minimax(b, isMaximizing) {
     const result = checkWinner(b);
     if (result === aiSymbol) return 10;
@@ -120,14 +155,15 @@
   }
 
   function makeAIMove() {
-    if (gameOver) return;
+    if (gameOver || currentTurn !== "ai") return;
     const move = getBestMove();
     if (move !== null) {
       board[move] = aiSymbol;
       renderBoard();
       const result = checkWinner(board);
-      if (result) endGame(result);
-      else {
+      if (result) {
+        endGame(result);
+      } else {
         currentTurn = "human";
       }
     }
@@ -145,36 +181,68 @@
 
   function endGame(result) {
     gameOver = true;
-    if (result === "draw") messageEl.textContent = "Draw. Play again.";
-    else if (result === humanSymbol) messageEl.textContent = "You won! (How? This shouldn't happen.)";
-    else messageEl.textContent = "I won. Improve your game skill";
+    if (result === "draw") {
+      messageEl.textContent = "Draw. Impossible to win.";
+    } else if (result === humanSymbol) {
+      messageEl.textContent = "You won! (This shouldn’t happen…)";
+    } else {
+      messageEl.textContent = "AI wins. Told you it’s impossible.";
+    }
     renderBoard();
   }
 
-  function setupGame() {
+  function updateUI() {
+    // Update control buttons active state
+    btnStartYou.classList.toggle("active", humanStarts);
+    btnStartAi.classList.toggle("active", !humanStarts);
+    btnSymX.classList.toggle("active", humanSymbol === "X");
+    btnSymO.classList.toggle("active", humanSymbol === "O");
+
+    // Update start message
+    const who = humanStarts ? "You" : "AI";
+    const symbol = humanSymbol;
+    startMsgEl.textContent = `${who} start${humanStarts ? "" : "s"} | You play as ${symbol}`;
+  }
+
+  function resetGame() {
+    clearTimeout(window._aiTimeout);
     board = Array(9).fill(null);
     gameOver = false;
-
-    // Toggle who starts for this game
-    humanStarts = !humanStarts;
-    humanSymbol = humanStarts ? "X" : "O";
-    aiSymbol = humanStarts ? "O" : "X";
+    aiSymbol = humanSymbol === "X" ? "O" : "X";
     currentTurn = humanStarts ? "human" : "ai";
-
-    startMsgEl.textContent = humanStarts ? "You start (X)" : "I starts (X), you play as O";
     messageEl.textContent = "";
+    updateUI();
     renderBoard();
 
     if (!humanStarts) {
-      // AI moves first
-      setTimeout(makeAIMove, 400);
+      window._aiTimeout = setTimeout(makeAIMove, 400);
     }
   }
 
-  restartBtn.addEventListener("click", setupGame);
+  // Event handlers for control buttons
+  btnStartYou.addEventListener("click", () => {
+    if (humanStarts) return; // already set
+    humanStarts = true;
+    resetGame();
+  });
+  btnStartAi.addEventListener("click", () => {
+    if (!humanStarts) return;
+    humanStarts = false;
+    resetGame();
+  });
+  btnSymX.addEventListener("click", () => {
+    if (humanSymbol === "X") return;
+    humanSymbol = "X";
+    resetGame();
+  });
+  btnSymO.addEventListener("click", () => {
+    if (humanSymbol === "O") return;
+    humanSymbol = "O";
+    resetGame();
+  });
+  restartBtn.addEventListener("click", resetGame);
 
-  // Initial start (human begins first game)
-  humanStarts = false; // so first toggle makes it true
-  setupGame();
+  // Initial setup
+  resetGame();
 })();
 </script>
